@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+
+<StackPane fx:id="mainPane" prefWidth="420.0" xmlns="http://javafx.com/javafx/17.0.2" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <AnchorPane prefHeight="800.0" prefWidth="420.0" styleClass="pane">
+         <children>
+            <Label fx:id="rightWindowText" prefWidth="200.0" text="底圖切換" AnchorPane.leftAnchor="3.0" AnchorPane.topAnchor="3.0" />
+            <ImageView fx:id="minimizeButton" fitHeight="28.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="3.0">
+               <image>
+                  <Image requestedHeight="24" requestedWidth="24" url="/icons/icons8-close-window-24.png" />
+               </image>
+            </ImageView>
+            <VBox prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="30.0">
+               <children>
+                  <HBox prefHeight="100.0" prefWidth="300.0" spacing="3.0">
+                     <children>
+                        <VBox prefHeight="200.0" prefWidth="210.0">
+                           <children>
+                              <ImageView fx:id="ivImgery" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+				               <image>
+				                  <Image requestedHeight="150.0" requestedWidth="200.0" url="/icons/全球衛星影像圖(縮圖).jpg" />
+				               </image>
+                              </ImageView>
+                              <Label alignment="CENTER" maxWidth="1.7976931348623157E308" text="全球衛星影像圖" />
+                           </children>
+                        </VBox>
+                        <VBox prefHeight="200.0" prefWidth="210.0">
+                           <children>
+                              <ImageView fx:id="ivVector" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+				               <image>
+				                  <Image requestedHeight="150.0" requestedWidth="200.0" url="/icons/全球開放街圖(縮圖).jpg" />
+				               </image>                              
+				               </ImageView>
+                              <Label alignment="CENTER" maxWidth="1.7976931348623157E308" text="全球開放街圖" />
+                           </children>
+                        </VBox>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="100.0" prefWidth="300.0" spacing="3.0">
+                     <children>
+                        <VBox prefHeight="200.0" prefWidth="210.0">
+                           <children>
+                              <ImageView fx:id="ivVector2" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+				               <image>
+				                  <Image requestedHeight="150.0" requestedWidth="200.0" url="/icons/全球亮灰階縮圖_.jpg" />
+				               </image>
+                              </ImageView>
+                              <Label alignment="CENTER" maxWidth="1.7976931348623157E308" text="全球亮灰階" />
+                           </children>
+                        </VBox>
+                        <VBox prefHeight="200.0" prefWidth="210.0">
+                           <children>
+                              <ImageView fx:id="ivVector3" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+				               <image>
+				                  <Image requestedHeight="150.0" requestedWidth="200.0" url="/icons/全球暗灰階縮圖_.jpg" />
+				               </image>                              
+				               </ImageView>
+                              <Label alignment="CENTER" maxWidth="1.7976931348623157E308" text="全球暗灰階" />
+                           </children>
+                        </VBox>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="100.0" prefWidth="300.0" spacing="3.0">
+                     <children>
+                        <VBox prefHeight="200.0" prefWidth="210.0">
+                           <children>
+                              <ImageView fx:id="ivVector4" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+				               <image>
+				                  <Image requestedHeight="150.0" requestedWidth="200.0" url="/icons/全球海洋基本圖(縮圖).jpg" />
+				               </image>
+                              </ImageView>
+                              <Label alignment="CENTER" maxWidth="1.7976931348623157E308" text="全球海洋基本圖" />
+                           </children>
+                        </VBox>
+                     </children>
+                  </HBox>                  
+               </children>
+            </VBox>
+         </children>
+      </AnchorPane>
+   </children>
+</StackPane>

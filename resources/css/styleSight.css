@@ -1,0 +1,31 @@
+.panel-region .label {
+  -fx-text-fill: white;
+}
+
+.label {
+  -fx-text-fill: white;
+}
+
+.slider .axis {
+    -fx-tick-label-fill: white;
+}
+
+.range-slider .axis {
+    -fx-tick-label-fill: white;
+}
+
+.panel-region .check-box {
+   -fx-text-fill: white;
+}
+
+.panel-region .radio-button {
+   -fx-text-fill: white;
+}
+
+.color-picker .color-picker-label {
+   -fx-text-fill: white;
+}
+
+.background {
+    -fx-background-color:rgb(74.0, 77.0, 80.0);
+}

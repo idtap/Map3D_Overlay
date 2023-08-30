@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.esri.arcgisruntime.mapping.view.SceneView?>
+<?import com.esri.arcgisruntime.mapping.view.MapView?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.control.*?>
+
+<StackPane fx:id="mapStackPane" maxHeight="1080.0" maxWidth="1920.0" prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/17.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MapContentController">
+   <AnchorPane prefHeight="192.0" prefWidth="441.0">
+      <StackPane.margin>
+         <Insets />
+      </StackPane.margin>
+      <children>
+         <SceneView fx:id="sceneView" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+         <MapView fx:id="mapView" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+         
+         <!-- Ribbon顯隱按鈕 -->
+	  
+		  <!-- 地圖上工具按鈕 -->
+          <VBox fx:id="vboxLeft" spacing="2.0" prefHeight="170.0" prefWidth="32.0" AnchorPane.leftAnchor="3.0" AnchorPane.topAnchor="195.0">
+			  <children>
+					<ImageView fx:id="imageViewHome" pickOnBounds="true">
+						<image>
+							<Image requestedHeight="44" requestedWidth="44" url="@../icons/home-32.png" />
+						</image>
+					</ImageView>
+					<ImageView fx:id="imageViewZoomIn" pickOnBounds="true">
+						<image>
+							<Image requestedHeight="44" requestedWidth="44" url="@../icons/plus-32.png" />
+						</image>
+					</ImageView>
+					<ImageView fx:id="imageViewZoomOut" pickOnBounds="true">
+						<image>
+							<Image requestedHeight="44" requestedWidth="44" url="@../icons/minus-32.png" />
+						</image>
+					</ImageView>
+					<ImageView fx:id="imageView2DView" pickOnBounds="true">
+						<image>
+							<Image requestedHeight="44" requestedWidth="44" url="@../icons/view-2d-32.png" />
+						</image>
+					</ImageView>					
+			   </children>         	
+          </VBox>
+	 
+		 <!-- 右邊功能視窗 -->
+	     <AnchorPane fx:id="topRightPane" visible="false" maxWidth="350.0" prefHeight="150.0" prefWidth="350.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" StackPane.alignment="TOP_RIGHT" />
+	     
+      </children>
+   </AnchorPane>    
+</StackPane>

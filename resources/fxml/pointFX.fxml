@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.ColorPicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.text.Font?>
+
+<VBox prefHeight="200.0" prefWidth="300.0" spacing="5" stylesheets="/css/paramStyle.css" styleClass="background"
+      xmlns="http://javafx.com/javafx/17.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.PointFXController">
+   <children>
+      <GridPane prefHeight="202.0" prefWidth="239.0">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="196.4621796506617" minWidth="10.0" prefWidth="88.73950084974257" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="228.30250184575232" minWidth="10.0" prefWidth="212.16805252949086" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Label alignment="BOTTOM_CENTER" prefHeight="18.0" prefWidth="85.0" text="顏色" textAlignment="RIGHT">
+               <font>
+                  <Font size="14.0" />
+               </font></Label>
+            <ColorPicker fx:id="ParamPointColor" editable="true" prefHeight="26.0" prefWidth="209.0" GridPane.columnIndex="1">
+               <value>
+                  <Color red="0.9133509993553162" green="0.034048501402139664" blue="0.04870354384183884" />
+               </value></ColorPicker>
+            <Label alignment="BOTTOM_CENTER" prefHeight="18.0" prefWidth="89.0" text="大小" textAlignment="RIGHT" GridPane.rowIndex="1">
+               <font>
+                  <Font size="14.0" />
+               </font></Label>
+            <TextField fx:id="ParamPointSize" alignment="BOTTOM_CENTER" text="12" GridPane.columnIndex="1" GridPane.rowIndex="1">
+               <font>
+                  <Font size="9.0" />
+               </font>
+            </TextField>
+         </children>
+         <VBox.margin>
+            <Insets bottom="4.0" left="8.0" right="15.0" top="4.0" />
+         </VBox.margin>
+      </GridPane>
+   </children>    
+</VBox>

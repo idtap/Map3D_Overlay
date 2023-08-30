@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.ColorPicker?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.text.Font?>
+
+<VBox prefHeight="214.0" prefWidth="300.0" spacing="5" stylesheets="/css/paramStyle.css" styleClass="background"
+      xmlns="http://javafx.com/javafx/17.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.TextFXController">
+   <children>
+      <GridPane prefHeight="191.0" prefWidth="262.0">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="196.4621796506617" minWidth="10.0" prefWidth="88.73950084974257" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="228.30250184575232" minWidth="10.0" prefWidth="212.16805252949086" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints maxHeight="82.285703396277" minHeight="10.0" prefHeight="44.369740910352014" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="101.64704174696081" minHeight="10.0" prefHeight="47.40335620044783" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="110.9159649750009" minHeight="10.0" prefHeight="50.01678806431815" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="99.96637428811141" minHeight="10.0" prefHeight="50.82354483756973" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Label alignment="BOTTOM_CENTER" prefHeight="18.0" prefWidth="85.0" text="內容" textAlignment="RIGHT">
+               <font>
+                  <Font size="14.0" />
+               </font></Label>
+            <TextField fx:id="ParamTextContent" alignment="BOTTOM_CENTER" prefHeight="20.0" prefWidth="190.0" text="" GridPane.columnIndex="1">
+               <font>
+                  <Font size="9.0" />
+               </font>
+            </TextField>
+            <Label alignment="BOTTOM_CENTER" prefHeight="18.0" prefWidth="86.0" text="大小" textAlignment="RIGHT" GridPane.rowIndex="1">
+               <font>
+                  <Font size="14.0" />
+               </font></Label>
+            <TextField fx:id="ParamTextSize" alignment="BOTTOM_CENTER" text="20" GridPane.columnIndex="1" GridPane.rowIndex="1">
+               <font>
+                  <Font size="9.0" />
+               </font>
+            </TextField>
+            <Label alignment="BOTTOM_CENTER" prefHeight="18.0" prefWidth="85.0" text="顏色" textAlignment="RIGHT" GridPane.rowIndex="2">
+               <font>
+                  <Font size="14.0" />
+               </font></Label>
+            <ColorPicker fx:id="ParamTextColor" editable="true" prefHeight="26.0" prefWidth="209.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+               <value>
+                  <Color red="0.9133509993553162" green="0.034048501402139664" blue="0.04870354384183884" />
+               </value></ColorPicker>
+            <Label alignment="BOTTOM_CENTER" prefHeight="18.0" prefWidth="85.0" text="字型" textAlignment="RIGHT" GridPane.rowIndex="3">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <ComboBox fx:id="ParamFontFamily" prefHeight="26.0" prefWidth="209.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
+            </ComboBox>                                                                                       
+         </children>
+         <VBox.margin>
+            <Insets bottom="4.0" left="8.0" right="15.0" top="4.0" />
+         </VBox.margin>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+      </GridPane>
+   </children>    
+</VBox>

@@ -1,0 +1,1243 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+
+<TreeView text="MIL-STD 2525B">
+    <TreeNode text="軍隊符號">
+      <TreeNode text="太空航跡">
+        <TreeNode text="衛星" name="S*P*S-----*****" shape="POINT" />
+		<TreeNode text="氣象衛星" name="SUPPL----------" shape="POINT" />
+		<TreeNode text="軍用衛星" name="SUPPS----------" shape="POINT" />
+        <TreeNode text="載人太空載具" name="S*P*V-----*****" shape="POINT" />
+        <TreeNode text="太空站" name="S*P*T-----*****" shape="POINT" />
+      </TreeNode>
+      <TreeNode text="空中航跡">
+        <TreeNode text="軍機">
+          <TreeNode text="定翼機">
+            <TreeNode text="戰鬥機">
+              <TreeNode text="戰鬥機" name="S*A*MFF---*****" shape="POINT" />
+              <TreeNode text="攔截機" name="S*A*MFFI--*****" shape="POINT" />
+            </TreeNode>
+            <TreeNode text="貨運">
+              <TreeNode text="貨運" name="S*A*MFC---*****" shape="POINT" />
+              <TreeNode text="輕型" name="S*A*MFCL--*****" shape="POINT" />
+              <TreeNode text="中型" name="S*A*MFCM--*****" shape="POINT" />
+              <TreeNode text="重型" name="S*A*MFCH--*****" shape="POINT" />
+            </TreeNode>
+            <TreeNode text="偵察">
+              <TreeNode text="偵察" name="S*A*MFR---*****" shape="POINT" />
+              <TreeNode text="空中預警" name="S*A*MFRW--*****" shape="POINT" />
+              <TreeNode text="電子監偵" name="S*A*MFRZ--*****" shape="POINT" />
+              <TreeNode text="照相" name="S*A*MFRX--*****" shape="POINT" />
+            </TreeNode>
+            <TreeNode text="巡邏">
+              <TreeNode text="巡邏" name="S*A*MFP---*****" shape="POINT" />
+              <TreeNode text="水面反制作戰" name="S*A*MFPN--*****" shape="POINT" />
+              <TreeNode text="水雷反制" name="S*A*MFPM--*****" shape="POINT" />
+            </TreeNode>
+            <TreeNode text="通用">
+              <TreeNode text="通用" name="S*A*MFU---*****" shape="POINT" />
+              <TreeNode text="輕型" name="S*A*MFUL--*****" shape="POINT" />
+              <TreeNode text="中型" name="S*A*MFUM--*****" shape="POINT" />
+              <TreeNode text="重型" name="S*A*MFUH--*****" shape="POINT" />
+            </TreeNode>
+            <TreeNode text="無人載具">
+              <TreeNode text="偵查">
+                <TreeNode text="偵察" name="S*A*MFQR--*****" shape="POINT" />
+                <TreeNode text="空中早期預警" name="S*A*MFQRW-*****" shape="POINT" />
+                <TreeNode text="電子監偵" name="S*A*MFQRZ-*****" shape="POINT" />
+                <TreeNode text="照相" name="S*A*MFQRX-*****" shape="POINT" />
+              </TreeNode>
+              <TreeNode text="無人載具" name="S*A*MFQ---*****" shape="POINT" />
+              <TreeNode text="攻擊" name="S*A*MFQA--*****" shape="POINT" />
+              <TreeNode text="轟炸" name="S*A*MFQB--*****" shape="POINT" />
+              <TreeNode text="空運" name="S*A*MFQC--*****" shape="POINT" />
+              <TreeNode text="空中管制站" name="S*A*MFQD--*****" shape="POINT" />
+              <TreeNode text="戰鬥" name="S*A*MFQF--*****" shape="POINT" />
+              <TreeNode text="戰鬥搜救" name="S*A*MFQH--*****" shape="POINT" />
+              <TreeNode text="電子反制/干擾" name="S*A*MFQJ--*****" shape="POINT" />
+              <TreeNode text="空中加油" name="S*A*MFQK--*****" shape="POINT" />
+              <TreeNode text="垂直/短程起降" name="S*A*MFQL--*****" shape="POINT" />
+              <TreeNode text="特戰部隊" name="S*A*MFQM--*****" shape="POINT" />
+              <TreeNode text="水雷反制" name="S*A*MFQI--*****" shape="POINT" />
+              <TreeNode text="水面反制作戰" name="S*A*MFQN--*****" shape="POINT" />
+              <TreeNode text="巡邏" name="S*A*MFQP--*****" shape="POINT" />
+              <TreeNode text="反潛作戰" name="S*A*MFQS--*****" shape="POINT" />
+              <TreeNode text="訓練" name="S*A*MFQT--*****" shape="POINT" />
+              <TreeNode text="通用" name="S*A*MFQU--*****" shape="POINT" />
+              <TreeNode text="通信" name="S*A*MFQY--*****" shape="POINT" />
+              <TreeNode text="傷患後送" name="S*A*MFQO--*****" shape="POINT" />
+              <TreeNode text="鑑載" name="S*A*MFS---*****" shape="POINT" />
+              <TreeNode text="特戰部隊" name="S*A*MFM---*****" shape="POINT" />
+            </TreeNode>
+            <TreeNode text="定翼機" name="S*A*MF----*****" shape="POINT" />
+            <TreeNode text="轟炸機" name="S*A*MFB---*****" shape="POINT" />
+            <TreeNode text="教練機" name="S*A*MFT---*****" shape="POINT" />
+            <TreeNode text="攻擊/打擊" name="S*A*MFA---*****" shape="POINT" />
+            <TreeNode text="垂直/短程起降" name="S*A*MFL---*****" shape="POINT" />
+            <TreeNode text="空中加油機" name="S*A*MFK---*****" shape="POINT" />
+            <TreeNode text="電子反制/干擾" name="S*A*MFJ---*****" shape="POINT" />
+            <TreeNode text="傷患後送" name="S*A*MFO---*****" shape="POINT" />
+            <TreeNode text="中繼通信" name="S*A*MFY----****" shape="POINT" />
+            <TreeNode text="戰鬥搜救" name="S*A*MFH---*****" shape="POINT" />
+            <TreeNode text="空中指揮機" name="S*A*MFD---*****" shape="POINT" />
+          </TreeNode>
+          <TreeNode text="旋翼機">
+            <TreeNode text="通用">
+              <TreeNode text="通用" name="S*A*MHU---*****" shape="POINT" />
+              <TreeNode text="輕型" name="S*A*MHUL--*****" shape="POINT" />
+              <TreeNode text="中型" name="S*A*MHUM--*****" shape="POINT" />
+              <TreeNode text="重型" name="S*A*MHUH--*****" shape="POINT" />
+            </TreeNode>
+            <TreeNode text="貨機">
+              <TreeNode text="貨機" name="S*A*MHC---*****" shape="POINT" />
+              <TreeNode text="輕型" name="S*A*MHCL--*****" shape="POINT" />
+              <TreeNode text="中型" name="S*A*MHCM--*****" shape="POINT" />
+              <TreeNode text="重型" name="S*A*MHCH--*****" shape="POINT" />
+            </TreeNode>
+            <TreeNode text="旋翼機" name="S*A*MH----*****" shape="POINT" />
+            <TreeNode text="攻擊" name="S*A*MHA---*****" shape="POINT" />
+            <TreeNode text="反潛作戰" name="S*A*MHS---*****" shape="POINT" />
+            <TreeNode text="水雷反制" name="S*A*MHI---*****" shape="POINT" />
+            <TreeNode text="戰鬥搜救" name="S*A*MHH---*****" shape="POINT" />
+            <TreeNode text="偵察" name="S*A*MHR---*****" shape="POINT" />
+            <TreeNode text="無人載具" name="S*A*MHQ---*****" shape="POINT" />
+            <TreeNode text="教練機" name="S*A*MHT---*****" shape="POINT" />
+            <TreeNode text="傷患後送" name="S*A*MHO---*****" shape="POINT" />
+            <TreeNode text="特戰部隊" name="S*A*MHM---*****" shape="POINT" />
+            <TreeNode text="空中指揮所" name="S*A*MHD---*****" shape="POINT" />
+            <TreeNode text="加油機" name="S*A*MHK---*****" shape="POINT" />
+            <TreeNode text="電子反制/干擾" name="S*A*MHJ---*****" shape="POINT" />
+          </TreeNode>
+          <TreeNode text="軍機" name="S*A*M------****" shape="POINT" />
+          <TreeNode text="空飄飛行戰" name="S*A*ML-----****" shape="POINT" />
+        </TreeNode>
+        <TreeNode text="飛彈">
+          <TreeNode text="飛行中飛彈">
+            <TreeNode text="飛行中飛彈" name="S*A*WM----*****" shape="POINT" />
+            <TreeNode text="面射飛彈" name="S*A*WMS---*****" shape="POINT" />
+            <TreeNode text="面對面飛彈" name="S*A*WMSS--*****" shape="POINT" />
+            <TreeNode text="面對空飛彈" name="S*A*WMSA--*****" shape="POINT" />
+            <TreeNode text="空射飛彈" name="S*A*WMA---*****" shape="POINT" />
+            <TreeNode text="空對面飛彈" name="S*A*WMAS--*****" shape="POINT" />
+            <TreeNode text="空對空飛彈" name="S*A*WMAA--*****" shape="POINT" />
+            <TreeNode text="潛射飛彈" name="S*A*WMU---*****" shape="POINT" />
+            <TreeNode text="巡弋飛彈" name="S*A*WMCM--*****" shape="POINT" />
+          </TreeNode>
+          <TreeNode text="飛彈" name="S*A*W-----*****" shape="POINT" />
+          <TreeNode text="誘標" name="S*A*WD----*****" shape="POINT" />
+        </TreeNode>
+        <TreeNode text="民航機">
+          <TreeNode text="民航機" name="S*A*C-----*****" shape="POINT" />
+          <TreeNode text="定翼機" name="S*A*CF----*****" shape="POINT" />
+          <TreeNode text="旋翼機" name="S*A*CH----*****" shape="POINT" />
+          <TreeNode text="熱氣球(空飄飛行器)" name="S*A*CL----*****" shape="POINT" />
+        </TreeNode>
+      </TreeNode>
+      <TreeNode text="地面符號">
+        <TreeNode text="單位">
+          <TreeNode text="戰鬥">
+            <TreeNode text="防空">
+              <TreeNode text="短程">
+                <TreeNode text="短程" name="S*G*UCDS--*****" shape="POINT" />
+                <TreeNode text="檞樹" name="S*G*UCDSC-*****" shape="POINT" />
+                <TreeNode text="刺針" name="S*G*UCDSS-*****" shape="POINT" />
+                <TreeNode text="火神" name="S*G*UCDSV-*****" shape="POINT" />
+              </TreeNode>
+              <TreeNode text="飛彈">
+                <TreeNode text="飛彈" name="S*G*UCDM--*****" shape="POINT" />
+                <TreeNode text="輕型" name="S*G*UCDML-*****" shape="POINT" />
+                <TreeNode text="輪型(復仇者)" name="S*G*UCDMLA*****" shape="POINT" />
+                <TreeNode text="中型" name="S*G*UCDMM-*****" shape="POINT" />
+                <TreeNode text="重型" name="S*G*UCDMH-*****" shape="POINT" />
+              </TreeNode>
+              <TreeNode text="中高空">
+                <TreeNode text="中高空" name="S*G*UCDH--*****" shape="POINT" />
+                <TreeNode text="鷹式" name="S*G*UCDHH-*****" shape="POINT" />
+                <TreeNode text="愛國者" name="S*G*UCDHP-*****" shape="POINT" />
+              </TreeNode>
+              <TreeNode text="防空" name="S*G*UCD---*****" shape="POINT" />
+              <TreeNode text="防砲" name="S*G*UCDG--*****" shape="POINT" />
+              <TreeNode text="飛彈防砲混合編組" name="S*G*UCDC--*****" shape="POINT" />
+              <TreeNode text="防空搜索雷達" name="S*G*UCDT--*****" shape="POINT" />
+              <TreeNode text="戰區飛彈防禦單位" name="S*G*UCDO--*****" shape="POINT" />
+            </TreeNode>
+            <TreeNode text="裝甲">
+              <TreeNode text="履帶">
+                <TreeNode text="兩棲">
+                  <TreeNode text="兩棲" name="S*G*UCATW-*****" shape="POINT" />
+                  <TreeNode text="救濟" name="S*G*UCATWR*****" shape="POINT" />
+                </TreeNode>
+                <TreeNode text="履帶" name="S*G*UCAT--*****" shape="POINT" />
+                <TreeNode text="空降" name="S*G*UCATA-*****" shape="POINT" />
+                <TreeNode text="輕型" name="S*G*UCATL-*****" shape="POINT" />
+                <TreeNode text="中型" name="S*G*UCATM-*****" shape="POINT" />
+                <TreeNode text="重型" name="S*G*UCATH-*****" shape="POINT" />
+                <TreeNode text="救濟" name="S*G*UCATR-*****" shape="POINT" />
+              </TreeNode>
+              <TreeNode text="輪型">
+                <TreeNode text="兩棲">
+                  <TreeNode text="兩棲" name="S*G*UCAWW-*****" shape="POINT" />
+                  <TreeNode text="救濟" name="S*G*UCAWWR*****" shape="POINT" />
+                </TreeNode>
+                <TreeNode text="輪型" name="S*G*UCAW--*****" shape="POINT" />
+                <TreeNode text="空中攻擊" name="S*G*UCAWS-*****" shape="POINT" />
+                <TreeNode text="空降" name="S*G*UCAWA-*****" shape="POINT" />
+                <TreeNode text="輕型" name="S*G*UCAWL-*****" shape="POINT" />
+                <TreeNode text="中型" name="S*G*UCAWM-*****" shape="POINT" />
+                <TreeNode text="重型" name="S*G*UCAWH-*****" shape="POINT" />
+                <TreeNode text="救濟" name="S*G*UCAWR-*****" shape="POINT" />
+              </TreeNode>
+              <TreeNode text="裝甲" name="S*G*UCA---*****" shape="POINT" />
+            </TreeNode>
+            <TreeNode text="反裝甲">
+              <TreeNode text="裝甲防護">
+                <TreeNode text="裝甲防護" name="S*G*UCAAA-*****" shape="POINT" />
+                <TreeNode text="履帶" name="S*G*UCAAAT*****" shape="POINT" />
+                <TreeNode text="輪型" name="S*G*UCAAAW*****" shape="POINT" />
+                <TreeNode text="空騎" name="S*G*UCAAAS*****" shape="POINT" />
+              </TreeNode>
+              <TreeNode text="摩托化">
+                <TreeNode text="摩托化" name="S*G*UCAAO-*****" shape="POINT" />
+                <TreeNode text="空騎" name="S*G*UCAAOS*****" shape="POINT" />
+              </TreeNode>
+              <TreeNode text="反裝甲" name="S*G*UCAA--*****" shape="POINT" />
+              <TreeNode text="徒步" name="S*G*UCAAD-*****" shape="POINT" />
+              <TreeNode text="輕型" name="S*G*UCAAL-*****" shape="POINT" />
+              <TreeNode text="空降" name="S*G*UCAAM-*****" shape="POINT" />
+              <TreeNode text="空騎" name="S*G*UCAAS-*****" shape="POINT" />
+              <TreeNode text="山地" name="S*G*UCAAU-*****" shape="POINT" />
+              <TreeNode text="寒地" name="S*G*UCAAC-*****" shape="POINT" />
+            </TreeNode>
+            <TreeNode text="陸航">
+              <TreeNode text="定翼機">
+                <TreeNode text="定翼機" name="S*G*UCVF--*****" shape="POINT" />
+                <TreeNode text="通用" name="S*G*UCVFU-*****" shape="POINT" />
+                <TreeNode text="攻擊" name="S*G*UCVFA-*****" shape="POINT" />
+                <TreeNode text="偵察" name="S*G*UCVFR-*****" shape="POINT" />
+              </TreeNode>
+              <TreeNode text="旋翼機">
+                <TreeNode text="通用">
+                  <TreeNode text="通用" name="S*G*UCVRU-*****" shape="POINT" />
+                  <TreeNode text="輕型" name="S*G*UCVRUL*****" shape="POINT" />
+                  <TreeNode text="中型" name="S*G*UCVRUM*****" shape="POINT" />
+                  <TreeNode text="重型" name="S*G*UCVRUH*****" shape="POINT" />
+                </TreeNode>
+                <TreeNode text="旋翼機" name="S*G*UCVR--*****" shape="POINT" />
+                <TreeNode text="攻擊" name="S*G*UCVRA-*****" shape="POINT" />
+                <TreeNode text="偵察" name="S*G*UCVRS-*****" shape="POINT" />
+                <TreeNode text="反潛作戰" name="S*G*UCVRW-*****" shape="POINT" />
+                <TreeNode text="空中指揮機" name="S*G*UCVRUC*****" shape="POINT" />
+                <TreeNode text="傷患後送" name="S*G*UCVRUE*****" shape="POINT" />
+                <TreeNode text="水雷反制" name="S*G*UCVRM-*****" shape="POINT" />
+              </TreeNode>
+              <TreeNode text="陸航" name="S*G*UCV---*****" shape="POINT" />
+              <TreeNode text="搜救" name="S*G*UCVS--*****" shape="POINT" />
+              <TreeNode text="旋翼機/定翼機混合編組" name="S*G*UCVC--*****" shape="POINT" />
+              <TreeNode text="短程垂直起降" name="S*G*UCVV--*****" shape="POINT" />
+              <TreeNode text="空中無人載具">
+                <TreeNode text="空中無人載具" name="S*G*UCVU--*****" shape="POINT" />
+                <TreeNode text="定翼機" name="S*G*UCVUF-*****" shape="POINT" />
+                <TreeNode text="旋翼機" name="S*G*UCVUR-*****" shape="POINT" />
+              </TreeNode>
+            </TreeNode>
+            <TreeNode text="步兵">
+              <TreeNode text="步兵" name="S*G*UCI---*****" shape="POINT" />
+              <TreeNode text="輕型" name="S*G*UCIL--*****" shape="POINT" />
+              <TreeNode text="摩托化" name="S*G*UCIM--*****" shape="POINT" />
+              <TreeNode text="山地" name="S*G*UCIO--*****" shape="POINT" />
+              <TreeNode text="空降" name="S*G*UCIA--*****" shape="POINT" />
+              <TreeNode text="空騎" name="S*G*UCIS--*****" shape="POINT" />
+              <TreeNode text="機械化" name="S*G*UCIZ--*****" shape="POINT" />
+              <TreeNode text="海軍" name="S*G*UCIN--*****" shape="POINT" />
+              <TreeNode text="裝步戰鬥車" name="S*G*UCII--*****" shape="POINT" />
+              <TreeNode text="寒地" name="S*G*UCIC--*****" shape="POINT" />
+            </TreeNode>
+            <TreeNode text="工兵">
+              <TreeNode text="戰鬥">
+                <TreeNode text="戰鬥" name="S*G*UCEC--*****" shape="POINT" />
+                <TreeNode text="空騎" name="S*G*UCECS-*****" shape="POINT" />
+                <TreeNode text="空降" name="S*G*UCECA-*****" shape="POINT" />
+                <TreeNode text="寒地" name="S*G*UCECC-*****" shape="POINT" />
+                <TreeNode text="輕型" name="S*G*UCECL-*****" shape="POINT" />
+                <TreeNode text="中型" name="S*G*UCECM-*****" shape="POINT" />
+                <TreeNode text="重型" name="S*G*UCECH-*****" shape="POINT" />
+                <TreeNode text="機械化(履帶式)" name="S*G*UCECT-*****" shape="POINT" />
+                <TreeNode text="摩托化" name="S*G*UCECW-*****" shape="POINT" />
+                <TreeNode text="山地" name="S*G*UCECO-*****" shape="POINT" />
+                <TreeNode text="偵察" name="S*G*UCECR-*****" shape="POINT" />
+              </TreeNode>
+              <TreeNode text="工程">
+                <TreeNode text="工程" name="S*G*UCEN--*****" shape="POINT" />
+                <TreeNode text="海軍" name="S*G*UCENN-*****" shape="POINT" />
+              </TreeNode>
+              <TreeNode text="工兵" name="S*G*UCE---*****" shape="POINT" />
+            </TreeNode>
+            <TreeNode text="野戰砲兵">
+              <TreeNode text="榴砲">
+                <TreeNode text="榴砲" name="S*G*UCFH--*****" shape="POINT" />
+                <TreeNode text="自走砲" name="S*G*UCFHE-*****" shape="POINT" />
+                <TreeNode text="空騎" name="S*G*UCFHS-*****" shape="POINT" />
+                <TreeNode text="空降" name="S*G*UCFHA-*****" shape="POINT" />
+                <TreeNode text="寒地" name="S*G*UCFHC-*****" shape="POINT" />
+                <TreeNode text="山地" name="S*G*UCFHO-*****" shape="POINT" />
+                <TreeNode text="輕型" name="S*G*UCFHL-*****" shape="POINT" />
+                <TreeNode text="中型" name="S*G*UCFHM-*****" shape="POINT" />
+                <TreeNode text="重型" name="S*G*UCFHH-*****" shape="POINT" />
+                <TreeNode text="兩棲" name="S*G*UCFHX-*****" shape="POINT" />
+              </TreeNode>
+              <TreeNode text="火箭">
+                <TreeNode text="單管火箭發射器">
+                  <TreeNode text="單管火箭發射器" name="S*G*UCFRS-*****" shape="POINT" />
+                  <TreeNode text="單管火箭履車式" name="S*G*UCFRSS*****" shape="POINT" />
+                  <TreeNode text="單管火箭輪車式" name="S*G*UCFRSR*****" shape="POINT" />
+                  <TreeNode text="單管火箭牽引式" name="S*G*UCFRST*****" shape="POINT" />
+                </TreeNode>
+                <TreeNode text="多管火箭發射器">
+                  <TreeNode text="多管火箭發射器" name="S*G*UCFRM-*****" shape="POINT" />
+                  <TreeNode text="多管火箭履車式" name="S*G*UCFRMS*****" shape="POINT" />
+                  <TreeNode text="多管火箭輪車式" name="S*G*UCFRMR*****" shape="POINT" />
+                  <TreeNode text="多管火箭牽引式" name="S*G*UCFRMT*****" shape="POINT" />
+                </TreeNode>
+                <TreeNode text="火箭" name="S*G*UCFR--*****" shape="POINT" />
+              </TreeNode>
+              <TreeNode text="目標穫得">
+                <TreeNode text="火力支援組(前進觀測組)">
+                  <TreeNode text="火力支援組(前進觀測組)" name="S*G*UCFTC-*****" shape="POINT" />
+                  <TreeNode text="徒步" name="S*G*UCFTCD*****" shape="POINT" />
+                  <TreeNode text="履車式" name="S*G*UCFTCM*****" shape="POINT" />
+                </TreeNode>
+                <TreeNode text="目標穫得" name="S*G*UCFT--*****" shape="POINT" />
+                <TreeNode text="雷達" name="S*G*UCFTR-*****" shape="POINT" />
+                <TreeNode text="音訊" name="S*G*UCFTS-*****" shape="POINT" />
+                <TreeNode text="光學" name="S*G*UCFTF-*****" shape="POINT" />
+                <TreeNode text="海空火力聯絡組(艦砲聯絡組)" name="S*G*UCFTA-*****" shape="POINT" />
+              </TreeNode>
+              <TreeNode text="迫砲">
+                <TreeNode text="牽引式">
+                  <TreeNode text="牽引式" name="S*G*UCFMT-*****" shape="POINT" />
+                  <TreeNode text="空降" name="S*G*UCFMTA*****" shape="POINT" />
+                  <TreeNode text="空騎" name="S*G*UCFMTS*****" shape="POINT" />
+                  <TreeNode text="寒地" name="S*G*UCFMTC*****" shape="POINT" />
+                  <TreeNode text="山地" name="S*G*UCFMTO*****" shape="POINT" />
+                </TreeNode>
+                <TreeNode text="迫砲" name="S*G*UCFM--*****" shape="POINT" />
+                <TreeNode text="履車式" name="S*G*UCFMS-*****" shape="POINT" />
+                <TreeNode text="輪車式" name="S*G*UCFMW-*****" shape="POINT" />
+                <TreeNode text="兩棲" name="S*G*UCFML-*****" shape="POINT" />
+              </TreeNode>
+              <TreeNode text="砲兵測量">
+                <TreeNode text="砲兵測量" name="S*G*UCFS--*****" shape="POINT" />
+                <TreeNode text="空騎" name="S*G*UCFSS-*****" shape="POINT" />
+                <TreeNode text="空降" name="S*G*UCFSA-*****" shape="POINT" />
+                <TreeNode text="輕型" name="S*G*UCFSL-*****" shape="POINT" />
+                <TreeNode text="山地" name="S*G*UCFSO-*****" shape="POINT" />
+              </TreeNode>
+              <TreeNode text="氣象">
+                <TreeNode text="氣象" name="S*G*UCFO--*****" shape="POINT" />
+                <TreeNode text="空騎" name="S*G*UCFOS-*****" shape="POINT" />
+                <TreeNode text="空降" name="S*G*UCFOA-*****" shape="POINT" />
+                <TreeNode text="輕型" name="S*G*UCFOL-*****" shape="POINT" />
+                <TreeNode text="山地" name="S*G*UCFOO-*****" shape="POINT" />
+              </TreeNode>
+              <TreeNode text="野戰砲兵" name="S*G*UCF---*****" shape="POINT" />
+            </TreeNode>
+            <TreeNode text="偵蒐" >
+              <TreeNode text="騎兵">
+                <TreeNode text="騎兵" name="S*G*UCRV--*****" shape="POINT" />
+                <TreeNode text="裝甲" name="S*G*UCRVA-*****" shape="POINT" />
+                <TreeNode text="摩托化" name="S*G*UCRVM-*****" shape="POINT" />
+                <TreeNode text="地面" name="S*G*UCRVG-*****" shape="POINT" />
+                <TreeNode text="空中" name="S*G*UCRVO-*****" shape="POINT" />
+              </TreeNode>
+              <TreeNode text="陸戰隊">
+                <TreeNode text="陸戰隊" name="S*G*UCRR--*****" shape="POINT" />
+                <TreeNode text="師級" name="S*G*UCRRD-*****" shape="POINT" />
+                <TreeNode text="軍級特遣隊" name="S*G*UCRRF-*****" shape="POINT" />
+                <TreeNode text="輕型裝甲偵蒐" name="S*G*UCRRL-*****" shape="POINT" />
+              </TreeNode>
+              <TreeNode text="偵蒐" name="S*G*UCR---*****" shape="POINT" />
+              <TreeNode text="馬" name="S*G*UCRH--*****" shape="POINT" />
+              <TreeNode text="寒地" name="S*G*UCRC--*****" shape="POINT" />
+              <TreeNode text="空騎" name="S*G*UCRS--*****" shape="POINT" />
+              <TreeNode text="空降" name="S*G*UCRA--*****" shape="POINT" />
+              <TreeNode text="山地" name="S*G*UCRO--*****" shape="POINT" />
+              <TreeNode text="輕型" name="S*G*UCRL--*****" shape="POINT" />
+              <TreeNode text="長距離監視" name="S*G*UCRX--*****" shape="POINT" />
+            </TreeNode>
+            <TreeNode text="飛彈(地對地)" >
+              <TreeNode text="飛彈(地對地)" name="S*G*UCM---*****" shape="POINT" />
+              <TreeNode text="戰術" name="S*G*UCMT--*****" shape="POINT" />
+              <TreeNode text="戰略" name="S*G*UCMS--*****" shape="POINT" />
+            </TreeNode>
+            <TreeNode text="國內安全部隊" >
+              <TreeNode text="地面" >
+                <TreeNode text="地面" name="S*G*UCSG--*****" shape="POINT" />
+                <TreeNode text="徒步" name="S*G*UCSGD-*****" shape="POINT" />
+                <TreeNode text="摩托化" name="S*G*UCSGM-*****" shape="POINT" />
+                <TreeNode text="機械化" name="S*G*UCSGA-*****" shape="POINT" />
+              </TreeNode>
+              <TreeNode text="國內安全部隊" name="S*G*UCS---*****" shape="POINT" />
+              <TreeNode text="內河" name="S*G*UCSW--*****" shape="POINT" />
+              <TreeNode text="輪型機械化" name="S*G*UCSM--*****" shape="POINT" />
+              <TreeNode text="鐵路" name="S*G*UCSR--*****" shape="POINT" />
+              <TreeNode text="航空" name="S*G*UCSA--*****" shape="POINT" />
+            </TreeNode>
+            <TreeNode text="戰鬥" name="S*G*UC----*****" shape="POINT" />
+          </TreeNode>
+          <TreeNode text="戰鬥支援">
+            <TreeNode text="核生化">
+              <TreeNode text="化學">
+                <TreeNode text="煙幕/消除">
+                  <TreeNode text="煙幕/消除" name="S*G*UUACC-*****" shape="POINT" />
+                  <TreeNode text="機械化" name="S*G*UUACCK*****" shape="POINT" />
+                  <TreeNode text="摩托化" name="S*G*UUACCM*****" shape="POINT" />
+                </TreeNode>
+                <TreeNode text="煙幕">
+                  <TreeNode text="煙幕" name="S*G*UUACS-*****" shape="POINT" />
+                  <TreeNode text="摩托化" name="S*G*UUACSM*****" shape="POINT" />
+                  <TreeNode text="裝甲" name="S*G*UUACSA*****" shape="POINT" />
+                </TreeNode>
+                <TreeNode text="偵察">
+                  <TreeNode text="偵察" name="S*G*UUACR-*****" shape="POINT" />
+                  <TreeNode text="輪型裝甲車輪" name="S*G*UUACRW*****" shape="POINT" />
+                  <TreeNode text="監視" name="S*G*UUACRS*****" shape="POINT" />
+                </TreeNode>
+                <TreeNode text="化學" name="S*G*UUAC--*****" shape="POINT" />
+              </TreeNode>
+              <TreeNode text="生物">
+                <TreeNode text="生物" name="S*G*UUAB--*****" shape="POINT" />
+                <TreeNode text="全裝偵查" name="S*G*UUABR-*****" shape="POINT" />
+              </TreeNode>
+              <TreeNode text="核生化" name="S*G*UUA---*****" shape="POINT" />
+              <TreeNode text="核子" name="S*G*UUAN--*****" shape="POINT" />
+              <TreeNode text="消除" name="S*G*UUAD--*****" shape="POINT" />
+            </TreeNode>
+            <TreeNode text="軍事情報">
+              <TreeNode text="信息情報">
+                <TreeNode text="電子戰">
+                  <TreeNode text="電子戰" name="S*G*UUMSE-*****" shape="POINT" />
+                  <TreeNode text="裝甲輪型車輪" name="S*G*UUMSEA*****" shape="POINT" />
+                  <TreeNode text="定向" name="S*G*UUMSED*****" shape="POINT" />
+                  <TreeNode text="攔截" name="S*G*UUMSEI*****" shape="POINT" />
+                  <TreeNode text="干擾" name="S*G*UUMSEJ*****" shape="POINT" />
+                  <TreeNode text="戰區" name="S*G*UUMSET*****" shape="POINT" />
+                  <TreeNode text="軍級" name="S*G*UUMSEC*****" shape="POINT" />
+                </TreeNode>
+                <TreeNode text="信息情報" name="S*G*UUMS--*****" shape="POINT" />
+              </TreeNode>
+              <TreeNode text="監視">
+                <TreeNode text="感測器">
+                  <TreeNode text="感測器" name="S*G*UUMRS-*****" shape="POINT" />
+                  <TreeNode text="感測器管制與管理" name="S*G*UUMRSS*****" shape="POINT" />
+                </TreeNode>
+                <TreeNode text="監視" name="S*G*UUMR--*****" shape="POINT" />
+                <TreeNode text="地面監視雷達" name="S*G*UUMRG-*****" shape="POINT" />
+                <TreeNode text="地面站模組" name="S*G*UUMRX-*****" shape="POINT" />
+                <TreeNode text="氣象" name="S*G*UUMMO-*****" shape="POINT" />
+              </TreeNode>
+              <TreeNode text="軍事情報" name="S*G*UUM---*****" shape="POINT" />
+              <TreeNode text="空中獲取" name="S*G*UUMA--*****" shape="POINT" />
+              <TreeNode text="反情報" name="S*G*UUMC--*****" shape="POINT" />
+              <TreeNode text="作戰" name="S*G*UUMO--*****" shape="POINT" />
+              <TreeNode text="滲透" name="S*G*UUMT--*****" shape="POINT" />
+              <TreeNode text="詢問敵俘" name="S*G*UUMQ--*****" shape="POINT" />
+              <TreeNode text="聯合情報中心" name="S*G*UUMJ--*****" shape="POINT" />
+            </TreeNode>
+            <TreeNode text="法律執行單位">
+              <TreeNode text="法律執行單位" name="S*G*UUL---*****" shape="POINT" />
+              <TreeNode text="岸巡" name="S*G*UULS--*****" shape="POINT" />
+              <TreeNode text="憲兵" name="S*G*UULM--*****" shape="POINT" />
+              <TreeNode text="民法執行單位" name="S*G*UULC--*****" shape="POINT" />
+              <TreeNode text="安全警察(空中)" name="S*G*UULF--*****" shape="POINT" />
+              <TreeNode text="中央情報單位" name="S*G*UULD--*****" shape="POINT" />
+            </TreeNode>
+            <TreeNode text="通信單位">
+              <TreeNode text="通信建構組裝">
+                <TreeNode text="通信建構組裝" name="S*G*UUSC--*****" shape="POINT" />
+                <TreeNode text="大型通信建構組裝" name="S*G*UUSCL-*****" shape="POINT" />
+              </TreeNode>
+              <TreeNode text="多方用戶單位">
+                <TreeNode text="多方用戶單位" name="S*G*UUSM--*****" shape="POINT" />
+                <TreeNode text="小型延伸節點" name="S*G*UUSMS-*****" shape="POINT" />
+                <TreeNode text="大型延伸節點" name="S*G*UUSML-*****" shape="POINT" />
+                <TreeNode text="節點中心" name="S*G*UUSMN-*****" shape="POINT" />
+              </TreeNode>
+              <TreeNode text="無線電單位">
+                <TreeNode text="無線電單位" name="S*G*UUSR--*****" shape="POINT" />
+                <TreeNode text="戰術衛星" name="S*G*UUSRS-*****" shape="POINT" />
+                <TreeNode text="電報中心" name="S*G*UUSRT-*****" shape="POINT" />
+                <TreeNode text="中繼" name="S*G*UUSRW-*****" shape="POINT" />
+              </TreeNode>
+              <TreeNode text="通信單位" name="S*G*UUS---*****" shape="POINT" />
+              <TreeNode text="指揮作戰" name="S*G*UUSO--*****" shape="POINT" />
+              <TreeNode text="前方通信" name="S*G*UUSF--*****" shape="POINT" />
+              <TreeNode text="地區" name="S*G*UUSA--*****" shape="POINT" />
+              <TreeNode text="通信支援" name="S*G*UUSS--*****" shape="POINT" />
+              <TreeNode text="電話轉接" name="S*G*UUSW--*****" shape="POINT" />
+              <TreeNode text="電子測距" name="S*G*UUSX--*****" shape="POINT" />
+            </TreeNode>
+            <TreeNode text="戰鬥支援" name="S*G*UU----*****" shape="POINT" />
+            <TreeNode text="資訊戰單位" name="S*G*UUI---*****" shape="POINT" />
+            <TreeNode text="登錄支援" name="S*G*UUP---*****" shape="POINT" />
+            <TreeNode text="未爆彈處理" name="S*G*UUE---*****" shape="POINT" />
+            <TreeNode text="政戰部隊" name="S*G*UUB---*****" shape="POINT" />
+          </TreeNode>
+          <TreeNode text="勤務支援">
+            <TreeNode text="行政">
+              <TreeNode text="軍法處">
+                <TreeNode text="軍法處" name="S*G*USAJ--*****" shape="POINT" />
+                <TreeNode text="戰區" name="S*G*USAJT-*****" shape="POINT" />
+                <TreeNode text="軍級" name="S*G*USAJC-*****" shape="POINT" />
+              </TreeNode>
+              <TreeNode text="郵政">
+                <TreeNode text="郵政" name="S*G*USAO--*****" shape="POINT" />
+                <TreeNode text="戰區" name="S*G*USAOT-*****" shape="POINT" />
+                <TreeNode text="軍級" name="S*G*USAOC-*****" shape="POINT" />
+              </TreeNode>
+              <TreeNode text="主計">
+                <TreeNode text="主計" name="S*G*USAF--*****" shape="POINT" />
+                <TreeNode text="戰區" name="S*G*USAFT-*****" shape="POINT" />
+                <TreeNode text="軍級" name="S*G*USAFC-*****" shape="POINT" />
+              </TreeNode>
+              <TreeNode text="人事勤務">
+                <TreeNode text="人事勤務" name="S*G*USAS--*****" shape="POINT" />
+                <TreeNode text="戰區" name="S*G*USAST-*****" shape="POINT" />
+                <TreeNode text="軍級" name="S*G*USASC-*****" shape="POINT" />
+              </TreeNode>
+              <TreeNode text="軍墓勤務">
+                <TreeNode text="軍墓勤務" name="S*G*USAM--*****" shape="POINT" />
+                <TreeNode text="戰區" name="S*G*USAMT-*****" shape="POINT" />
+                <TreeNode text="軍級" name="S*G*USAMC-*****" shape="POINT" />
+              </TreeNode>
+              <TreeNode text="宗教/牧師">
+                <TreeNode text="宗教/牧師" name="S*G*USAR--*****" shape="POINT" />
+                <TreeNode text="戰區" name="S*G*USART-*****" shape="POINT" />
+                <TreeNode text="軍級" name="S*G*USARC-*****" shape="POINT" />
+              </TreeNode>
+              <TreeNode text="公共事務">
+                <TreeNode text="廣播">
+                  <TreeNode text="廣播" name="S*G*USAPB-*****" shape="POINT" />
+                  <TreeNode text="戰區" name="S*G*USAPBT*****" shape="POINT" />
+                  <TreeNode text="軍級" name="S*G*USAPBC*****" shape="POINT" />
+                </TreeNode>
+                <TreeNode text="聯合資訊局">
+                  <TreeNode text="聯合資訊局" name="S*G*USAPM-*****" shape="POINT" />
+                  <TreeNode text="戰區" name="S*G*USAPMT*****" shape="POINT" />
+                  <TreeNode text="軍級" name="S*G*USAPMC*****" shape="POINT" />
+                </TreeNode>
+                <TreeNode text="公共事務" name="S*G*USAP--*****" shape="POINT" />
+                <TreeNode text="戰區" name="S*G*USAPT-*****" shape="POINT" />
+                <TreeNode text="軍級" name="S*G*USAPC-*****" shape="POINT" />
+              </TreeNode>
+              <TreeNode text="兵員補充單位">
+                <TreeNode text="兵員補充單位" name="S*G*USAX--*****" shape="POINT" />
+                <TreeNode text="戰區" name="S*G*USAXT-*****" shape="POINT" />
+                <TreeNode text="軍級" name="S*G*USAXC-*****" shape="POINT" />
+              </TreeNode>
+              <TreeNode text="勞工(軍勤隊)">
+                <TreeNode text="勞工(軍勤隊)" name="S*G*USAL--*****" shape="POINT" />
+                <TreeNode text="戰區" name="S*G*USALT-*****" shape="POINT" />
+                <TreeNode text="軍級" name="S*G*USALC-*****" shape="POINT" />
+              </TreeNode>
+              <TreeNode text="士氣、福利及娛樂">
+                <TreeNode text="士氣、福利及娛樂" name="S*G*USAW--*****" shape="POINT" />
+                <TreeNode text="戰區" name="S*G*USAWT-*****" shape="POINT" />
+                <TreeNode text="軍級" name="S*G*USAWC-*****" shape="POINT" />
+                <TreeNode text="藝宣部隊" name="S*G*USAWA-*****" shape="POINT" />
+              </TreeNode>
+              <TreeNode text="住宿、補給">
+                <TreeNode text="住宿、補給" name="S*G*USAQ--*****" shape="POINT" />
+                <TreeNode text="戰區" name="S*G*USAQT-*****" shape="POINT" />
+                <TreeNode text="軍級" name="S*G*USAQC-*****" shape="POINT" />
+              </TreeNode>
+              <TreeNode text="行政" name="S*G*USA---*****" shape="POINT" />
+              <TreeNode text="戰區" name="S*G*USAT--*****" shape="POINT" />
+              <TreeNode text="軍級" name="S*G*USAC--*****" shape="POINT" />
+            </TreeNode>
+            <TreeNode text="衛生">
+              <TreeNode text="醫療設施">
+                <TreeNode text="醫療設施" name="S*G*USMM--*****" shape="POINT" />
+                <TreeNode text="戰區" name="S*G*USMMT-*****" shape="POINT" />
+                <TreeNode text="軍級" name="S*G*USMMC-*****" shape="POINT" />
+              </TreeNode>
+              <TreeNode text="獸醫">
+                <TreeNode text="獸醫" name="S*G*USMV--*****" shape="POINT" />
+                <TreeNode text="戰區" name="S*G*USMVT-*****" shape="POINT" />
+                <TreeNode text="軍級" name="S*G*USMVC-*****" shape="POINT" />
+              </TreeNode>
+              <TreeNode text="牙醫">
+                <TreeNode text="牙醫" name="S*G*USMD--*****" shape="POINT" />
+                <TreeNode text="戰區" name="S*G*USMDT-*****" shape="POINT" />
+                <TreeNode text="軍級" name="S*G*USMDC-*****" shape="POINT" />
+              </TreeNode>
+              <TreeNode text="心理">
+                <TreeNode text="心理" name="S*G*USMP--*****" shape="POINT" />
+                <TreeNode text="戰區" name="S*G*USMPT-*****" shape="POINT" />
+                <TreeNode text="軍級" name="S*G*USMPC-*****" shape="POINT" />
+              </TreeNode>
+              <TreeNode text="衛生" name="S*G*USM---*****" shape="POINT" />
+              <TreeNode text="戰區" name="S*G*USMT--*****" shape="POINT" />
+              <TreeNode text="軍級" name="S*G*USMC--*****" shape="POINT" />
+            </TreeNode>
+            <TreeNode text="補給">
+              <TreeNode text="第一類">
+                <TreeNode text="第一類" name="S*G*USS1--*****" shape="POINT" />
+                <TreeNode text="戰區" name="S*G*USS1T-*****" shape="POINT" />
+                <TreeNode text="軍級" name="S*G*USS1C-*****" shape="POINT" />
+              </TreeNode>
+              <TreeNode text="第二類">
+                <TreeNode text="第二類" name="S*G*USS2--*****" shape="POINT" />
+                <TreeNode text="戰區" name="S*G*USS2T-*****" shape="POINT" />
+                <TreeNode text="軍級" name="S*G*USS2C-*****" shape="POINT" />
+              </TreeNode>
+              <TreeNode text="第三類">
+                <TreeNode text="航空油料">
+                  <TreeNode text="航空油料" name="S*G*USS3A-*****" shape="POINT" />
+                  <TreeNode text="戰區" name="S*G*USS3AT*****" shape="POINT" />
+                  <TreeNode text="軍級" name="S*G*USS3AC*****" shape="POINT" />
+                </TreeNode>
+                <TreeNode text="第三類" name="S*G*USS3--*****" shape="POINT" />
+                <TreeNode text="戰區" name="S*G*USS3T-*****" shape="POINT" />
+                <TreeNode text="軍級" name="S*G*USS3C-*****" shape="POINT" />
+              </TreeNode>
+              <TreeNode text="第四類">
+                <TreeNode text="第四類" name="S*G*USS4--*****" shape="POINT" />
+                <TreeNode text="戰區" name="S*G*USS4T-*****" shape="POINT" />
+                <TreeNode text="軍級" name="S*G*USS4C-*****" shape="POINT" />
+              </TreeNode>
+              <TreeNode text="第五類">
+                <TreeNode text="第五類" name="S*G*USS5--*****" shape="POINT" />
+                <TreeNode text="戰區" name="S*G*USS5T-*****" shape="POINT" />
+                <TreeNode text="軍級" name="S*G*USS5C-*****" shape="POINT" />
+              </TreeNode>
+              <TreeNode text="第六類">
+                <TreeNode text="第六類" name="S*G*USS6--*****" shape="POINT" />
+                <TreeNode text="戰區" name="S*G*USS6T-*****" shape="POINT" />
+                <TreeNode text="軍級" name="S*G*USS6C-*****" shape="POINT" />
+              </TreeNode>
+              <TreeNode text="第七類">
+                <TreeNode text="第七類" name="S*G*USS7--*****" shape="POINT" />
+                <TreeNode text="戰區" name="S*G*USS7T-*****" shape="POINT" />
+                <TreeNode text="軍級" name="S*G*USS7C-*****" shape="POINT" />
+              </TreeNode>
+              <TreeNode text="第八類">
+                <TreeNode text="第八類" name="S*G*USS8--*****" shape="POINT" />
+                <TreeNode text="戰區" name="S*G*USS8T-*****" shape="POINT" />
+                <TreeNode text="軍級" name="S*G*USS8C-*****" shape="POINT" />
+              </TreeNode>
+              <TreeNode text="第九類">
+                <TreeNode text="第九類" name="S*G*USS9--*****" shape="POINT" />
+                <TreeNode text="戰區" name="S*G*USS9T-*****" shape="POINT" />
+                <TreeNode text="軍級" name="S*G*USS9C-*****" shape="POINT" />
+              </TreeNode>
+              <TreeNode text="第X類">
+                <TreeNode text="第X類" name="S*G*USSX--*****" shape="POINT" />
+                <TreeNode text="戰區" name="S*G*USSXT-*****" shape="POINT" />
+                <TreeNode text="軍級" name="S*G*USSXC-*****" shape="POINT" />
+              </TreeNode>
+              <TreeNode text="洗衣/沐浴">
+                <TreeNode text="洗衣/沐浴" name="S*G*USSL--*****" shape="POINT" />
+                <TreeNode text="戰區" name="S*G*USSLT-*****" shape="POINT" />
+                <TreeNode text="軍級" name="S*G*USSLC-*****" shape="POINT" />
+              </TreeNode>
+              <TreeNode text="供水">
+                <TreeNode text="淨化">
+                  <TreeNode text="淨化" name="S*G*USSWP-*****" shape="POINT" />
+                  <TreeNode text="戰區" name="S*G*USSWPT*****" shape="POINT" />
+                  <TreeNode text="軍級" name="S*G*USSWPC*****" shape="POINT" />
+                </TreeNode>
+                <TreeNode text="供水" name="S*G*USSW--*****" shape="POINT" />
+                <TreeNode text="戰區" name="S*G*USSWT-*****" shape="POINT" />
+                <TreeNode text="軍級" name="S*G*USSWC-*****" shape="POINT" />
+              </TreeNode>
+              <TreeNode text="補給" name="S*G*USS---*****" shape="POINT" />
+              <TreeNode text="戰區" name="S*G*USST--*****" shape="POINT" />
+              <TreeNode text="軍級" name="S*G*USSC--*****" shape="POINT" />
+            </TreeNode>
+            <TreeNode text="運輸">
+              <TreeNode text="運動管制中心">
+                <TreeNode text="運動管制中心" name="S*G*USTM--*****" shape="POINT" />
+                <TreeNode text="戰區" name="S*G*USTMT-*****" shape="POINT" />
+                <TreeNode text="軍級" name="S*G*USTMC-*****" shape="POINT" />
+              </TreeNode>
+              <TreeNode text="鐵路末站">
+                <TreeNode text="鐵路末站" name="S*G*USTR--*****" shape="POINT" />
+                <TreeNode text="戰區" name="S*G*USTRT-*****" shape="POINT" />
+                <TreeNode text="軍級" name="S*G*USTRC-*****" shape="POINT" />
+              </TreeNode>
+              <TreeNode text="港口裝卸">
+                <TreeNode text="港口裝卸" name="S*G*USTS--*****" shape="POINT" />
+                <TreeNode text="戰區" name="S*G*USTST-*****" shape="POINT" />
+                <TreeNode text="軍級" name="S*G*USTSC-*****" shape="POINT" />
+              </TreeNode>
+              <TreeNode text="機場裝卸">
+                <TreeNode text="機場裝卸" name="S*G*USTA--*****" shape="POINT" />
+                <TreeNode text="戰區" name="S*G*USTAT-*****" shape="POINT" />
+                <TreeNode text="軍級" name="S*G*USTAC-*****" shape="POINT" />
+              </TreeNode>
+              <TreeNode text="飛彈">
+                <TreeNode text="飛彈" name="S*G*USTI--*****" shape="POINT" />
+                <TreeNode text="戰區" name="S*G*USTIT-*****" shape="POINT" />
+                <TreeNode text="軍級" name="S*G*USTIC-*****" shape="POINT" />
+              </TreeNode>
+              <TreeNode text="運輸" name="S*G*UST---*****" shape="POINT" />
+              <TreeNode text="戰區" name="S*G*USTT--*****" shape="POINT" />
+              <TreeNode text="軍級" name="S*G*USTC--*****" shape="POINT" />
+            </TreeNode>
+            <TreeNode text="保修">
+              <TreeNode text="重型">
+                <TreeNode text="重型" name="S*G*USXH--*****" shape="POINT" />
+                <TreeNode text="戰區" name="S*G*USXHT-*****" shape="POINT" />
+                <TreeNode text="軍級" name="S*G*USXHC-*****" shape="POINT" />
+              </TreeNode>
+              <TreeNode text="救濟">
+                <TreeNode text="救濟" name="S*G*USXR--*****" shape="POINT" />
+                <TreeNode text="戰區" name="S*G*USXRT-*****" shape="POINT" />
+                <TreeNode text="軍級" name="S*G*USXRC-*****" shape="POINT" />
+              </TreeNode>
+              <TreeNode text="兵工">
+                <TreeNode text="飛彈">
+                  <TreeNode text="飛彈" name="S*G*USXOM-*****" shape="POINT" />
+                  <TreeNode text="戰區" name="S*G*USXOMT*****" shape="POINT" />
+                  <TreeNode text="軍級" name="S*G*USXOMC*****" shape="POINT" />
+                </TreeNode>
+                <TreeNode text="兵工" name="S*G*USXO--*****" shape="POINT" />
+                <TreeNode text="戰區" name="S*G*USXOT-*****" shape="POINT" />
+                <TreeNode text="軍級" name="S*G*USXOC-*****" shape="POINT" />
+              </TreeNode>
+              <TreeNode text="光電">
+                <TreeNode text="光電" name="S*G*USXE--*****" shape="POINT" />
+                <TreeNode text="戰區" name="S*G*USXET-*****" shape="POINT" />
+                <TreeNode text="軍級" name="S*G*USXEC-*****" shape="POINT" />
+              </TreeNode>
+              <TreeNode text="保修" name="S*G*USX---*****" shape="POINT" />
+              <TreeNode text="戰區" name="S*G*USXT--*****" shape="POINT" />
+              <TreeNode text="軍級" name="S*G*USXC--*****" shape="POINT" />
+            </TreeNode>
+            <TreeNode text="勤務支援" name="S*G*US----*****" shape="POINT" />
+          </TreeNode>
+          <TreeNode text="單位" name="S*G*U-----*****" shape="POINT" />
+          <TreeNode text="特種指管機構" name="S*G*UH----*****" shape="POINT" />
+        </TreeNode>
+        <TreeNode text="裝備">
+          <TreeNode text="武器">
+            <TreeNode text="飛彈發射器">
+              <TreeNode text="防空">
+                <TreeNode text="短程">
+                  <TreeNode text="短程" name="S*G*EWMAS-*****" shape="POINT" />
+                  <TreeNode text="無起降機式" name="S*G*EWMASR*****" shape="POINT" />
+                  <TreeNode text="起降機式" name="S*G*EWMASE*****" shape="POINT" />
+                </TreeNode>
+                <TreeNode text="中程">
+                  <TreeNode text="中程" name="S*G*EWMAI-*****" shape="POINT" />
+                  <TreeNode text="無起降機式" name="S*G*EWMAIR*****" shape="POINT" />
+                  <TreeNode text="起降機式" name="S*G*EWMAIE*****" shape="POINT" />
+                </TreeNode>
+                <TreeNode text="長程">
+                  <TreeNode text="長程" name="S*G*EWMAL-*****" shape="POINT" />
+                  <TreeNode text="無起降機式" name="S*G*EWMALR*****" shape="POINT" />
+                  <TreeNode text="起降機式" name="S*G*EWMALE*****" shape="POINT" />
+                </TreeNode>
+                <TreeNode text="戰區">
+                  <TreeNode text="戰區" name="S*G*EWMAT-*****" shape="POINT" />
+                  <TreeNode text="無起降機式" name="S*G*EWMATR*****" shape="POINT" />
+                  <TreeNode text="起降機式" name="S*G*EWMATE*****" shape="POINT" />
+                </TreeNode>
+                <TreeNode text="防空" name="S*G*EWMA--*****" shape="POINT" />
+              </TreeNode>
+              <TreeNode text="地對地">
+                <TreeNode text="地對地" name="S*G*EWMS--*****" shape="POINT" />
+                <TreeNode text="短程" name="S*G*EWMSS-*****" shape="POINT" />
+                <TreeNode text="中程" name="S*G*EWMSI-*****" shape="POINT" />
+                <TreeNode text="長程" name="S*G*EWMSL-*****" shape="POINT" />
+              </TreeNode>
+              <TreeNode text="反裝甲">
+                <TreeNode text="反裝甲" name="S*G*EWMT--*****" shape="POINT" />
+                <TreeNode text="輕型" name="S*G*EWMTL-*****" shape="POINT" />
+                <TreeNode text="中型" name="S*G*EWMTM-*****" shape="POINT" />
+                <TreeNode text="重型" name="S*G*EWMTH-*****" shape="POINT" />
+              </TreeNode>
+              <TreeNode text="飛彈發射器" name="S*G*EWM---*****" shape="POINT" />
+            </TreeNode>
+            <TreeNode text="單管火箭發射器">
+              <TreeNode text="單管火箭發射器" name="S*G*EWS---*****" shape="POINT" />
+              <TreeNode text="輕型" name="S*G*EWSL--*****" shape="POINT" />
+              <TreeNode text="中型" name="S*G*EWSM--*****" shape="POINT" />
+              <TreeNode text="重型" name="S*G*EWSH--*****" shape="POINT" />
+            </TreeNode>
+            <TreeNode text="多管火箭發射器">
+              <TreeNode text="多管火箭發射器" name="S*G*EWX---*****" shape="POINT" />
+              <TreeNode text="輕型" name="S*G*EWXL--*****" shape="POINT" />
+              <TreeNode text="中型" name="S*G*EWXM--*****" shape="POINT" />
+              <TreeNode text="重型" name="S*G*EWXH--*****" shape="POINT" />
+            </TreeNode>
+            <TreeNode text="反裝甲火箭發射器">
+              <TreeNode text="反裝甲火箭發射器" name="S*G*EWT---*****" shape="POINT" />
+              <TreeNode text="輕型" name="S*G*EWTL--*****" shape="POINT" />
+              <TreeNode text="中型" name="S*G*EWTM--*****" shape="POINT" />
+              <TreeNode text="重型" name="S*G*EWTH--*****" shape="POINT" />
+            </TreeNode>
+            <TreeNode text="步槍/自動武器">
+              <TreeNode text="步槍/自動武器" name="S*G*EWR---*****" shape="POINT" />
+              <TreeNode text="步槍" name="S*G*EWRR--*****" shape="POINT" />
+              <TreeNode text="輕機槍" name="S*G*EWRL--*****" shape="POINT" />
+              <TreeNode text="重機槍" name="S*G*EWRH--*****" shape="POINT" />
+            </TreeNode>
+            <TreeNode text="榴彈發射器">
+              <TreeNode text="榴彈發射器" name="S*G*EWZ---*****" shape="POINT" />
+              <TreeNode text="輕型" name="S*G*EWZL--*****" shape="POINT" />
+              <TreeNode text="中型" name="S*G*EWZM--*****" shape="POINT" />
+              <TreeNode text="重型" name="S*G*EWZH--*****" shape="POINT" />
+            </TreeNode>
+            <TreeNode text="迫擊砲">
+              <TreeNode text="迫擊砲" name="S*G*EWO---*****" shape="POINT" />
+              <TreeNode text="輕型" name="S*G*EWOL--*****" shape="POINT" />
+              <TreeNode text="中型" name="S*G*EWOM--*****" shape="POINT" />
+              <TreeNode text="重型" name="S*G*EWOH--*****" shape="POINT" />
+            </TreeNode>
+            <TreeNode text="榴砲">
+              <TreeNode text="輕型">
+                <TreeNode text="輕型" name="S*G*EWHL--*****" shape="POINT" />
+                <TreeNode text="自走" name="S*G*EWHLS-*****" shape="POINT" />
+              </TreeNode>
+              <TreeNode text="中型">
+                <TreeNode text="中型" name="S*G*EWHM--*****" shape="POINT" />
+                <TreeNode text="自走" name="S*G*EWHMS-*****" shape="POINT" />
+              </TreeNode>
+              <TreeNode text="重型">
+                <TreeNode text="重型" name="S*G*EWHH--*****" shape="POINT" />
+                <TreeNode text="自走" name="S*G*EWHHS-*****" shape="POINT" />
+              </TreeNode>
+              <TreeNode text="榴砲" name="S*G*EWH---*****" shape="POINT" />
+            </TreeNode>
+            <TreeNode text="反戰車砲">
+              <TreeNode text="反戰車砲" name="S*G*EWG---*****" shape="POINT" />
+              <TreeNode text="輕型" name="S*G*EWGL--*****" shape="POINT" />
+              <TreeNode text="中型" name="S*G*EWGM--*****" shape="POINT" />
+              <TreeNode text="重型" name="S*G*EWGH--*****" shape="POINT" />
+              <TreeNode text="無座力" name="S*G*EWGR--*****" shape="POINT" />
+            </TreeNode>
+            <TreeNode text="直射砲">
+              <TreeNode text="輕型">
+                <TreeNode text="輕型" name="S*G*EWDL--*****" shape="POINT" />
+                <TreeNode text="自走" name="S*G*EWDLS-*****" shape="POINT" />
+              </TreeNode>
+              <TreeNode text="中型">
+                <TreeNode text="中型" name="S*G*EWDM--*****" shape="POINT" />
+                <TreeNode text="自走" name="S*G*EWDMS-*****" shape="POINT" />
+              </TreeNode>
+              <TreeNode text="重型">
+                <TreeNode text="重型" name="S*G*EWDH--*****" shape="POINT" />
+                <TreeNode text="自走" name="S*G*EWDHS-*****" shape="POINT" />
+              </TreeNode>
+              <TreeNode text="直射砲" name="S*G*EWD---*****" shape="POINT" />
+            </TreeNode>
+            <TreeNode text="防空砲">
+              <TreeNode text="防空砲" name="S*G*EWA---*****" shape="POINT" />
+              <TreeNode text="輕型" name="S*G*EWAL--*****" shape="POINT" />
+              <TreeNode text="中型" name="S*G*EWAM--*****" shape="POINT" />
+              <TreeNode text="重型" name="S*G*EWAH--*****" shape="POINT" />
+            </TreeNode>
+          </TreeNode>
+          <TreeNode text="地面載具">
+            <TreeNode text="裝甲車輛">
+              <TreeNode text="坦克">
+                <TreeNode text="輕型">
+                  <TreeNode text="輕型" name="S*G*EVATL-*****" shape="POINT" />
+                  <TreeNode text="救濟" name="S*G*EVATLR*****" shape="POINT" />
+                </TreeNode>
+                <TreeNode text="中型">
+                  <TreeNode text="中型" name="S*G*EVATM-*****" shape="POINT" />
+                  <TreeNode text="救濟" name="S*G*EVATMR*****" shape="POINT" />
+                </TreeNode>
+                <TreeNode text="重型">
+                  <TreeNode text="重型" name="S*G*EVATH-*****" shape="POINT" />
+                  <TreeNode text="救濟" name="S*G*EVATHR*****" shape="POINT" />
+                </TreeNode>
+                <TreeNode text="坦克" name="S*G*EVAT--*****" shape="POINT" />
+              </TreeNode>
+              <TreeNode text="裝甲人員運輸車">
+                <TreeNode text="裝甲人員運輸車" name="S*G*EVAA--*****" shape="POINT" />
+                <TreeNode text="救濟" name="S*G*EVAAR-*****" shape="POINT" />
+              </TreeNode>
+              <TreeNode text="裝甲車輛" name="S*G*EVA---*****" shape="POINT" />
+              <TreeNode text="裝甲步兵" name="S*G*EVAI--*****" shape="POINT" />
+              <TreeNode text="指管車" name="S*G*EVAC--*****" shape="POINT" />
+              <TreeNode text="勤務支援車輛" name="S*G*EVAS--*****" shape="POINT" />
+              <TreeNode text="輕型輪型甲車" name="S*G*EVAL--*****" shape="POINT" />
+            </TreeNode>
+            <TreeNode text="通用車輛">
+              <TreeNode text="半牽引式">
+                <TreeNode text="半牽引式" name="S*G*EVUS--*****" shape="POINT" />
+                <TreeNode text="輕型" name="S*G*EVUSL-*****" shape="POINT" />
+                <TreeNode text="中型" name="S*G*EVUSM-*****" shape="POINT" />
+                <TreeNode text="重型" name="S*G*EVUSH-*****" shape="POINT" />
+              </TreeNode>
+              <TreeNode text="牽引車">
+                <TreeNode text="牽引車" name="S*G*EVUT--*****" shape="POINT" />
+                <TreeNode text="輕型" name="S*G*EVUTL-*****" shape="POINT" />
+                <TreeNode text="重型" name="S*G*EVUTH-*****" shape="POINT" />
+              </TreeNode>
+              <TreeNode text="救護車(傷患後送)">
+                <TreeNode text="救護車(傷患後送)" name="S*G*EVUA--*****" shape="POINT" />
+                <TreeNode text="裝甲車" name="S*G*EVUAA-*****" shape="POINT" />
+              </TreeNode>
+              <TreeNode text="通用車輛" name="S*G*EVU---*****" shape="POINT" />
+              <TreeNode text="巴士" name="S*G*EVUB--*****" shape="POINT" />
+              <TreeNode text="有限越野卡車" name="S*G*EVUL--*****" shape="POINT" />
+              <TreeNode text="越野卡車" name="S*G*EVUX--*****" shape="POINT" />
+              <TreeNode text="水上駁船" name="S*G*EVUR--*****" shape="POINT" />
+            </TreeNode>
+
+            <TreeNode text="工兵車輛">
+              <TreeNode text="佈雷車">
+                <TreeNode text="佈雷車" name="S*G*EVEM--*****" shape="POINT" />
+                <TreeNode text="攜帶火神防砲之裝甲運輸車" name="S*G*EVEMV-*****" shape="POINT" />
+                <TreeNode text="裝載火神防砲之卡車" name="S*G*EVEML-*****" shape="POINT" />
+              </TreeNode>
+              <TreeNode text="掃雷車輛">
+                <TreeNode text="掃雷車輛" name="S*G*EVEA--*****" shape="POINT" />
+                <TreeNode text="裝載裝甲車" name="S*G*EVEAA-*****" shape="POINT" />
+                <TreeNode text="裝載尾車" name="S*G*EVEAT-*****" shape="POINT" />
+              </TreeNode>
+              <TreeNode text="推土機">
+                <TreeNode text="推土機" name="S*G*EVED--*****" shape="POINT" />
+                <TreeNode text="裝甲車" name="S*G*EVEDA-*****" shape="POINT" />
+              </TreeNode>
+              <TreeNode text="工兵車輛" name="S*G*EVE---*****" shape="POINT" />
+              <TreeNode text="架橋" name="S*G*EVEB--*****" shape="POINT" />
+              <TreeNode text="挖土機" name="S*G*EVEE--*****" shape="POINT" />
+              <TreeNode text="工程車輛" name="S*G*EVEC--*****" shape="POINT" />
+              <TreeNode text="裝甲突擊式" name="S*G*EVES--*****" shape="POINT" />
+              <TreeNode text="裝甲式偵察車" name="S*G*EVER--*****" shape="POINT" />
+              <TreeNode text="鋤耕車(鬆土除草)" name="S*G*EVEH--*****" shape="POINT" />
+              <TreeNode text="渡車(鬆土除草)" name="S*G*EVEF--*****" shape="POINT" />
+            </TreeNode>
+            <TreeNode text="地面載具" name="S*G*EV----*****" shape="POINT" />
+            <TreeNode text="火車頭" name="S*G*EVT---*****" shape="POINT" />
+            <TreeNode text="民車" name="S*G*EVC---*****" shape="POINT" />
+            <TreeNode text="駝獸" name="S*G*EVM---*****" shape="POINT" />
+          </TreeNode>
+          <TreeNode text="感測器">
+            <TreeNode text="感測器" name="S*G*ES----*****" shape="POINT" />
+            <TreeNode text="雷達" name="S*G*ESR---*****" shape="POINT" />
+            <TreeNode text="已架設天線" name="S*G*ESE---*****" shape="POINT" />
+          </TreeNode>
+          <TreeNode text="特種">
+            <TreeNode text="地雷">
+              <TreeNode text="地雷" name="S*G*EXM---*****" shape="POINT" />
+              <TreeNode text="定向破片人員殺傷雷" name="S*G*EXMC--*****" shape="POINT" />
+              <TreeNode text="非致命性" name="S*G*EXML--*****" shape="POINT" />
+            </TreeNode>
+            <TreeNode text="心戰裝備">
+              <TreeNode text="心戰裝備" name="S*G*EXP---*****" shape="POINT" />
+              <TreeNode text="機動廣播" name="S*G*EXP---*****" shape="POINT" />
+              <TreeNode text="機動喊話" name="S*G*EXP---*****" shape="POINT" />
+            </TreeNode>
+            <TreeNode text="雷射" name="S*G*EXL---*****" shape="POINT" />
+            <TreeNode text="核生化裝備" name="S*G*EXN---*****" shape="POINT" />
+            <TreeNode text="噴火器" name="S*G*EXF---*****" shape="POINT" />
+          </TreeNode>
+          <TreeNode text="裝備" name="S*G*E-----*****" shape="POINT" />
+        </TreeNode>
+        <TreeNode text="設施">
+          <TreeNode text="原料產品/儲存">
+            <TreeNode text="NBC">
+              <TreeNode text="NBC" name="S*G*IRN---H****" shape="POINT" />
+              <TreeNode text="生物" name="S*G*IRNB--H****" shape="POINT" />
+              <TreeNode text="化學" name="S*G*IRNC--H****" shape="POINT" />
+              <TreeNode text="核子" name="S*G*IRNN--H****" shape="POINT" />
+            </TreeNode>
+            <TreeNode text="原料產品/儲存" name="S*G*IR----H****" shape="POINT" />
+            <TreeNode text="地雷" name="S*G*IRM---H****" shape="POINT" />
+            <TreeNode text="原油/汽柴油/潤滑油" name="S*G*IRP---H****" shape="POINT" />
+          </TreeNode>
+          <TreeNode text="處理機構">
+            <TreeNode text="處理機構" name="S*G*IP----H****" shape="POINT" />
+            <TreeNode text="消除" name="S*G*IPD---H****" shape="POINT" />
+          </TreeNode>
+          <TreeNode text="民生設施">
+            <TreeNode text="電力機構">
+              <TreeNode text="電力機構" name="S*G*IUE---H****" shape="POINT" />
+              <TreeNode text="核電廠" name="S*G*IUEN--H****" shape="POINT" />
+              <TreeNode text="水霸" name="S*G*IUED--H****" shape="POINT" />
+              <TreeNode text="石化燃料" name="S*G*IUEF--H****" shape="POINT" />
+            </TreeNode>
+            <TreeNode text="民生設施" name="S*G*IU----H****" shape="POINT" />
+            <TreeNode text="技術研究機構" name="S*G*IUR---H****" shape="POINT" />
+            <TreeNode text="電信機構" name="S*G*IUT---H****" shape="POINT" />
+            <TreeNode text="供水設施" name="S*G*IUP---H****" shape="POINT" />
+          </TreeNode>
+          <TreeNode text="軍品生產設施">
+            <TreeNode text="核能">
+              <TreeNode text="核產品生產設施">
+                <TreeNode text="核產品生產設施" name="S*G*IMFP--H****" shape="POINT" />
+                <TreeNode text="核武生產設施" name="S*G*IMFPW-H****" shape="POINT" />
+              </TreeNode>
+              <TreeNode text="核能" name="S*G*IMF---H****" shape="POINT" />
+              <TreeNode text="核子反應器" name="S*G*IMFA--H****" shape="POINT" />
+              <TreeNode text="核子料件儲存設施" name="S*G*IMFS--H****" shape="POINT" />
+            </TreeNode>
+            <TreeNode text="工兵裝備生產">
+              <TreeNode text="工兵裝備生產" name="S*G*IMN---H****" shape="POINT" />
+              <TreeNode text="工兵裝備生產橋才" name="S*G*IMNB--H****" shape="POINT" />
+            </TreeNode>
+            <TreeNode text="飛機生產及組裝" name="S*G*IMA---H****" shape="POINT" />
+            <TreeNode text="彈藥生產" name="S*G*IME---H****" shape="POINT" />
+            <TreeNode text="軍備生產(戰甲砲車、輕重兵器)" name="S*G*IMG---H****" shape="POINT" />
+            <TreeNode text="軍車生產" name="S*G*IMV---H****" shape="POINT" />
+            <TreeNode text="生化產品" name="S*G*IMC---H****" shape="POINT" />
+            <TreeNode text="造船廠" name="S*G*IMS---H****" shape="POINT" />
+            <TreeNode text="飛彈及大空系統生產" name="S*G*IMM---H****" shape="POINT" />
+          </TreeNode>
+          <TreeNode text="軍事基地/設施">
+            <TreeNode text="軍事基地/設施" name="S*G*IB----H****" shape="POINT" />
+            <TreeNode text="機場/空軍基地" name="S*G*IBA---H****" shape="POINT" />
+            <TreeNode text="港口/海事基地" name="S*G*IBN---H****" shape="POINT" />
+            <TreeNode text="心戰設施" name="S*G*IBG---H****" shape="POINT" />
+          </TreeNode>
+          <TreeNode text="醫療機構">
+            <TreeNode text="醫療機構" name="S*G*IX----H****" shape="POINT" />
+            <TreeNode text="醫院" name="S*G*IXH---H****" shape="POINT" />
+          </TreeNode>
+          <TreeNode text="設施" name="S*G*I-----H****" shape="POINT" />
+          <TreeNode text="裝備製造" name="S*G*IE----H****" shape="POINT" />
+          <TreeNode text="主要領導人處所" name="S*G*IG----H****" shape="POINT" />
+          <TreeNode text="運輸機構" name="S*G*IT----H****" shape="POINT" />
+        </TreeNode>
+      </TreeNode>
+      <TreeNode text="水面符號">
+        <TreeNode text="戰鬥部隊">
+          <TreeNode text="艦隊">
+            <TreeNode text="艦隊" name="S*S*CL----*****" shape="POINT" />
+            <TreeNode text="航空母艦" name="S*S*CLCV--*****" shape="POINT" />
+            <TreeNode text="戰艦" name="S*S*CLBB--*****" shape="POINT" />
+            <TreeNode text="巡洋艦" name="S*S*CLCC--*****" shape="POINT" />
+            <TreeNode text="驅逐艦" name="S*S*CLDD--*****" shape="POINT" />
+            <TreeNode text="巡防艦" name="S*S*CLFF--*****" shape="POINT" />
+          </TreeNode>
+          <TreeNode text="兩棲戰艦">
+            <TreeNode text="登陸艦">
+              <TreeNode text="登陸艦" name="S*S*CALS--*****" shape="POINT" />
+              <TreeNode text="登陸艦(Medium)" name="S*S*CALSM-*****" shape="POINT" />
+              <TreeNode text="油料補給艦" name="S*S*CALST-*****" shape="POINT" />
+            </TreeNode>
+            <TreeNode text="兩棲戰艦" name="S*S*CA----*****" shape="POINT" />
+            <TreeNode text="攻擊艦" name="S*S*CALA--*****" shape="POINT" />
+            <TreeNode text="兩棲戰艦登陸艇" name="S*S*CALC--*****" shape="POINT" />
+          </TreeNode>
+          <TreeNode text="水雷作戰艦">
+            <TreeNode text="水雷作戰艦" name="S*S*CM----*****" shape="POINT" />
+            <TreeNode text="佈雷艦" name="S*S*CMML--*****" shape="POINT" />
+            <TreeNode text="掃雷艦" name="S*S*CMMS--*****" shape="POINT" />
+            <TreeNode text="獵雷艦" name="S*S*CMMH--*****" shape="POINT" />
+            <TreeNode text="支援艦(水雷反制)" name="S*S*CMMA--*****" shape="POINT" />
+            <TreeNode text="無人載具(水雷反制)" name="S*S*CMMD--*****" shape="POINT" />
+          </TreeNode>
+          <TreeNode text="巡邏">
+            <TreeNode text="巡邏" name="S*S*CP----*****" shape="POINT" />
+            <TreeNode text="反潛作戰" name="S*S*CPSB--*****" shape="POINT" />
+            <TreeNode text="反水面作戰" name="S*S*CPSU--*****" shape="POINT" />
+          </TreeNode>
+          <TreeNode text="站">
+            <TreeNode text="站" name="S*S*S-----*****" shape="POINT" />
+            <TreeNode text="哨戒艇" name="S*S*SP----*****" shape="POINT" />
+            <TreeNode text="反潛艦" name="S*S*SP----*****" shape="POINT" />
+          </TreeNode>
+          <TreeNode text="戰鬥部隊" name="S*S*C-----*****" shape="POINT" />
+          <TreeNode text="氣墊船" name="S*S*CH----*****" shape="POINT" />
+        </TreeNode>
+        <TreeNode text="海軍支隊部">
+          <TreeNode text="海軍支隊部" name="S*S*G-----*****" shape="POINT" />
+          <TreeNode text="海軍特遣部隊" name="S*S*GT----*****" shape="POINT" />
+          <TreeNode text="海軍特遣支隊" name="S*S*GG----*****" shape="POINT" />
+          <TreeNode text="海軍特遣區隊" name="S*S*GU----*****" shape="POINT" />
+          <TreeNode text="護航船團" name="S*S*GC----*****" shape="POINT" />
+        </TreeNode>
+        <TreeNode text="非戰鬥部隊">
+          <TreeNode text="站">
+            <TreeNode text="站" name="S*S*NN----*****" shape="POINT" />
+            <TreeNode text="救援" name="S*S*NNR---*****" shape="POINT" />
+          </TreeNode>
+          <TreeNode text="非戰鬥部隊" name="S*S*N-----*****" shape="POINT" />
+          <TreeNode text="水面整補" name="S*S*NR----*****" shape="POINT" />
+          <TreeNode text="艦隊支援" name="S*S*NF----*****" shape="POINT" />
+          <TreeNode text="情報" name="S*S*NI----*****" shape="POINT" />
+          <TreeNode text="港口勤務支援" name="S*S*NS----*****" shape="POINT" />
+          <TreeNode text="醫療船" name="S*S*NM----*****" shape="POINT" />
+          <TreeNode text="氣墊船" name="S*S*NH----*****" shape="POINT" />
+        </TreeNode>
+        <TreeNode text="非軍事">
+          <TreeNode text="商船">
+            <TreeNode text="商船" name="S*S*XM----*****" shape="POINT" />
+            <TreeNode text="貨櫃" name="S*S*XMC---*****" shape="POINT" />
+            <TreeNode text="滾裝貨輪" name="S*S*XMR---*****" shape="POINT" />
+            <TreeNode text="運油輪" name="S*S*XMO---*****" shape="POINT" />
+            <TreeNode text="拖輪(港灣勤務)" name="S*S*XMTU--*****" shape="POINT" />
+            <TreeNode text="渡輪" name="S*S*XMF---*****" shape="POINT" />
+            <TreeNode text="客輪" name="S*S*XMP---*****" shape="POINT" />
+            <TreeNode text="危險物料" name="S*S*XMH---*****" shape="POINT" />
+            <TreeNode text="拖船" name="S*S*XMTO--*****" shape="POINT" />
+          </TreeNode>
+          <TreeNode text="漁船">
+            <TreeNode text="漁船" name="S*S*XF----*****" shape="POINT" />
+            <TreeNode text="流刺網漁船" name="S*S*XFDF--*****" shape="POINT" />
+            <TreeNode text="拖撈網漁船" name="S*S*XFDR--*****" shape="POINT" />
+            <TreeNode text="拖網漁船" name="S*S*XFTR--*****" shape="POINT" />
+          </TreeNode>
+          <TreeNode text="休閒艇" name="S*S*XR----*****" shape="POINT" />
+          <TreeNode text="法律執行艦(海巡)" name="S*S*XL----*****" shape="POINT" />
+          <TreeNode text="氣墊船" name="S*S*XH----*****" shape="POINT" />
+        </TreeNode>
+        <TreeNode text="水面符號" name="S*S*------*****" shape="POINT" />
+        <TreeNode text="本艦" name="S*S*O-----*****" shape="POINT" />
+      </TreeNode>
+      <TreeNode text="水下符號">
+        <TreeNode text="潛艦">
+          <TreeNode text="核子推進">
+            <TreeNode text="核子推進" name="S*U*SN----*****" shape="POINT" />
+            <TreeNode text="攻擊" name="S*U*SNA---*****" shape="POINT" />
+            <TreeNode text="飛彈(種類不明)" name="S*U*SNM---*****" shape="POINT" />
+            <TreeNode text="導彈" name="S*U*SNG---*****" shape="POINT" />
+            <TreeNode text="彈道飛彈" name="S*U*SNB---*****" shape="POINT" />
+          </TreeNode>
+          <TreeNode text="傳統推進">
+            <TreeNode text="傳統推進" name="S*U*SC----*****" shape="POINT" />
+            <TreeNode text="攻擊" name="S*U*SCA---*****" shape="POINT" />
+            <TreeNode text="飛彈(種類不明)" name="S*U*SCM---*****" shape="POINT" />
+            <TreeNode text="導彈" name="S*U*SCG---*****" shape="POINT" />
+            <TreeNode text="彈道飛彈" name="S*U*SCB---*****" shape="POINT" />
+          </TreeNode>
+          <TreeNode text="其它能潛航之艦艇">
+            <TreeNode text="其它能潛航之艦艇" name="S*U*SO----*****" shape="POINT" />
+            <TreeNode text="無人水下載具" name="S*U*SU----*****" shape="POINT" />
+          </TreeNode>
+          <TreeNode text="站">
+            <TreeNode text="站" name="S*U*SS----*****" shape="POINT" />
+            <TreeNode text="反潛作戰潛艦" name="S*U*SSA---*****" shape="POINT" />
+          </TreeNode>
+          <TreeNode text="潛艦" name="S*U*S-----*****" shape="POINT" />
+        </TreeNode>
+        <TreeNode text="水下武器">
+          <TreeNode text="水雷">
+            <TreeNode text="水雷(沉府雷)">
+              <TreeNode text="水雷(沉府雷)" name="S*U*WMG---*****" shape="POINT" />
+              <TreeNode text="已處理" name="S*U*WMGD--*****" shape="POINT" />
+            </TreeNode>
+            <TreeNode text="水雷(繫留)">
+              <TreeNode text="水雷(繫留)" name="S*U*WMM---*****" shape="POINT" />
+              <TreeNode text="已處理" name="S*U*WMMD--*****" shape="POINT" />
+            </TreeNode>
+            <TreeNode text="漂雷">
+              <TreeNode text="漂雷" name="S*U*WMF---*****" shape="POINT" />
+              <TreeNode text="已處理" name="S*U*WMFD--*****" shape="POINT" />
+            </TreeNode>
+            <TreeNode text="水雷(其他位置)">
+              <TreeNode text="水雷(其他位置)" name="S*U*WMO---*****" shape="POINT" />
+              <TreeNode text="已處理" name="S*U*WMOD--*****" shape="POINT" />
+            </TreeNode>
+            <TreeNode text="水雷" name="S*U*WM----*****" shape="POINT" />
+            <TreeNode text="已處理" name="S*U*WMD---*****" shape="POINT" />
+          </TreeNode>
+          <TreeNode text="水下誘標">
+            <TreeNode text="水下誘標" name="S*U*WD----*****" shape="POINT" />
+            <TreeNode text="誘雷" name="S*U*WDM---*****" shape="POINT" />
+          </TreeNode>
+          <TreeNode text="非潛艦">
+            <TreeNode text="潛水人員" name="S*U*ND----*****" shape="POINT" />
+          </TreeNode>
+          <TreeNode text="水下武器" name="S*U*W-----*****" shape="POINT" />
+          <TreeNode text="魚雷" name="S*U*WT----*****" shape="POINT" />
+        </TreeNode>
+        <TreeNode text="水下符號" name="S*U*------*****" shape="POINT" />
+      </TreeNode>
+	  <TreeNode text="電子戰">
+		 <TreeNode text="電子戰" name="SUGPUUMSE------" shape="POINT" />
+		 <TreeNode text="電子偵蒐" name="SUGPUUMSED-----" shape="POINT" />
+		 <TreeNode text="電子攔截" name="SUGPUUMSEI-----" shape="POINT" />
+		 <TreeNode text="電子干擾" name="SUGPUUMSEJ-----" shape="POINT" />
+	  </TreeNode>
+	  <TreeNode text="氣象符號">
+		 <TreeNode text="熱帶低氣壓" name="WAS-WSTSD-P--**" shape="POINT" />
+		 <TreeNode text="輕度颱風" name="WAS-WSTSS-P--**" shape="POINT" />
+		 <TreeNode text="強烈颱風" name="WAS-WSTSH-P--**" shape="POINT" />
+	  </TreeNode>	  
+      <TreeNode text="特戰部隊">
+        <TreeNode text="空中">
+          <TreeNode text="定翼機">
+            <TreeNode text="通用">
+              <TreeNode text="通用" name="S*F*AFU---*****" shape="POINT" />
+              <TreeNode text="輕型" name="S*F*AFUL--*****" shape="POINT" />
+              <TreeNode text="中型" name="S*F*AFUM--*****" shape="POINT" />
+              <TreeNode text="重型" name="S*F*AFUH--*****" shape="POINT" />
+            </TreeNode>
+            <TreeNode text="定翼機" name="S*F*AF----*****" shape="POINT" />
+            <TreeNode text="攻擊" name="S*F*AFA---*****" shape="POINT" />
+            <TreeNode text="加油" name="S*F*AFK---*****" shape="POINT" />
+          </TreeNode>
+          <TreeNode text="旋翼機">
+            <TreeNode text="通用">
+              <TreeNode text="通用" name="S*F*AHU---*****" shape="POINT" />
+              <TreeNode text="輕型" name="S*F*AHUL--*****" shape="POINT" />
+              <TreeNode text="中型" name="S*F*AHUM--*****" shape="POINT" />
+              <TreeNode text="重型" name="S*F*AHUH--*****" shape="POINT" />
+            </TreeNode>
+            <TreeNode text="旋翼機" name="S*F*AH----*****" shape="POINT" />
+            <TreeNode text="戰鬥搜救" name="S*F*AHH---*****" shape="POINT" />
+            <TreeNode text="攻擊" name="S*F*AHA---*****" shape="POINT" />
+          </TreeNode>
+          <TreeNode text="空中" name="S*F*A-----*****" shape="POINT" />
+          <TreeNode text="短程垂直起降" name="S*F*AV----*****" shape="POINT" />
+        </TreeNode>
+        <TreeNode text="水上">
+          <TreeNode text="水上" name="S*F*N-----*****" shape="POINT" />
+          <TreeNode text="海豹" name="S*F*NS----*****" shape="POINT" />
+          <TreeNode text="水中爆破隊" name="S*F*NU----*****" shape="POINT" />
+          <TreeNode text="特戰小艇" name="S*F*NB----*****" shape="POINT" />
+          <TreeNode text="核子動力雷達巡邏潛艦" name="S*F*NN----*****" shape="POINT" />
+        </TreeNode>
+        <TreeNode text="陸上">
+          <TreeNode text="心戰">
+            <TreeNode text="心戰" name="S*F*GP----*****" shape="POINT" />
+            <TreeNode text="定翼機航空" name="S*F*GPA---*****" shape="POINT" />
+            <TreeNode text="廣播" name="S*F*GPB---*****" shape="POINT" />
+          </TreeNode>
+          <TreeNode text="陸上" name="S*F*G-----*****" shape="POINT" />
+          <TreeNode text="特戰部隊" name="S*F*GS----*****" shape="POINT" />
+          <TreeNode text="突擊兵(陸軍特戰部隊)" name="S*F*GR----*****" shape="POINT" />
+          <TreeNode text="民事" name="S*F*GC----*****" shape="POINT" />
+        </TreeNode>
+        <TreeNode text="特戰部隊" name="S*F*------*****" shape="POINT" />
+        <TreeNode text="支援" name="S*F*B-----*****" shape="POINT" />
+      </TreeNode>
+	  <TreeNode text="目標位置" name="G*GPDPT---****X" shape="POINT" />
+	  <TreeNode text="觀測所" name="G*GPDPO---****X" shape="POINT" />
+	</TreeNode>
+    <TreeNode text="戰術符號">
+      <TreeNode text="戰術點">
+        <TreeNode text="管制點" name="GFGPGPPK-------" shape="POINT" />
+        <TreeNode text="分進點" name="GFGPGPPE-------" shape="POINT" />
+        <TreeNode text="通過點" name="GFGPGPPP-------" shape="POINT" />
+        <TreeNode text="出發點" name="GFGPGPPS-------" shape="POINT" />
+        <TreeNode text="點目標" name="GUFPPTS--------" shape="POINT" />
+      </TreeNode>
+      <TreeNode text="戰術線">
+        <TreeNode text="線形目標" name="GUFPLT---------" shape="LINE" />
+        <TreeNode text="火力協調線" name="GUGPOLF--------" shape="LINE" />
+        <TreeNode text="前進限制線" name="GUGPOLL--------" shape="LINE" />
+        <TreeNode text="攻擊發起線" name="GUGPOLT--------" shape="LINE" />
+        <TreeNode text="攻擊軸線" name="G*GPOLAGM-----X" shape="LINE" />
+        <TreeNode text="攻擊發起線" name="G*GPOLT-------X" shape="LINE" />
+        <TreeNode text="敵我接觸線" name="G*GPGLC-------X" shape="LINE" />
+        <TreeNode text="攻擊發起線即是敵我接觸線" name="G*GPOLC-------X" shape="LINE" />
+        <TreeNode text="火力支援協調線" name="GUFPLCF--------" shape="LINE" />
+        <TreeNode text="地境線" name="GFGPGLB--------" shape="LINE" />
+     </TreeNode>
+      <TreeNode text="戰術區">
+        <TreeNode text="火力自由射擊區" name="GUFPACFI-------" shape="AREA" />
+		<TreeNode text="限制射擊區" name="GUFPACRI-------" shape="AREA" />
+		<TreeNode text="禁射區" name="GUFPACNI-------" shape="AREA" />
+		<TreeNode text="砲兵陣地區" name="GUFPACPR-------" shape="AREA" />
+		<TreeNode text="目標群" name="GUFPATG--------" shape="AREA" />
+      </TreeNode>
+    </TreeNode>
+</TreeView>

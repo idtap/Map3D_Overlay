@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+
+<?import tornadofx.control.DateTimePicker?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="465.0" prefWidth="552.0" xmlns="http://javafx.com/javafx/17.0.2" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <TitledPane collapsible="false" layoutX="33.0" layoutY="14.0" prefHeight="427.0" prefWidth="552.0" text="屬性" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <content>
+            <GridPane hgap="1.0" prefHeight="251.0" prefWidth="550.0" styleClass="pane" vgap="1.0">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="200.0" minWidth="10.0" prefWidth="185.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="244.0" minWidth="10.0" prefWidth="154.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="202.0" minWidth="10.0" prefWidth="185.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <Label text="日時組" />
+                  <Label text="編制層級/裝備數量" GridPane.columnIndex="1" />
+                  <Label text="強度" GridPane.columnIndex="2" />
+                  <Label text="裝備型式" GridPane.rowIndex="4" />
+                  <TextField fx:id="txtQuantity" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <ComboBox fx:id="cboStrength" maxWidth="1.7976931348623157E308" prefWidth="150.0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                  <TextField fx:id="txtType" GridPane.rowIndex="5" />
+                  <Label text="特殊註記" GridPane.columnIndex="2" GridPane.rowIndex="4" />
+                  <Label text="參謀註記" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                  <Label text="上級番號" GridPane.columnIndex="2" GridPane.rowIndex="6" />
+                  <TextField fx:id="txtComment" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+                  <TextField fx:id="txtMoreInfo" GridPane.columnIndex="2" GridPane.rowIndex="5" />
+                  <TextField fx:id="txtParent" GridPane.columnIndex="2" GridPane.rowIndex="7" />
+                  <TextField fx:id="txtName" GridPane.rowIndex="7" />
+                  <Label text="番號或編號" GridPane.rowIndex="6" />
+                  <Label text="速度" GridPane.rowIndex="8" />
+                  <TextField fx:id="txtSpeed" GridPane.rowIndex="9" />
+                  <Label text="指揮部" visible="false" GridPane.columnIndex="1" GridPane.rowIndex="8" />
+                  <TextField fx:id="txtHQ" visible="false" GridPane.columnIndex="1" GridPane.rowIndex="9" />
+                  <GridPane GridPane.rowIndex="2" GridPane.rowSpan="2">
+                    <columnConstraints>
+                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="87.0" minWidth="10.0" prefWidth="78.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="107.0" minWidth="10.0" prefWidth="107.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                        <Label text="高度/深度" />
+                        <Label text="座標" GridPane.columnIndex="1" />
+                        <TextField fx:id="txtAltDepth" GridPane.rowIndex="1" />
+                        <TextField fx:id="txtLocation" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                     </children>
+                  </GridPane>
+                  <Label text="方向" GridPane.columnIndex="1" GridPane.rowIndex="10" />
+                  <TextField fx:id="txtDirection" GridPane.columnIndex="1" GridPane.rowIndex="11" />
+                  <TitledPane animated="false" text="識別模式" GridPane.columnIndex="2" GridPane.rowIndex="8" GridPane.rowSpan="6">
+                    <content>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" styleClass="pane">
+                           <children>
+                              <GridPane AnchorPane.leftAnchor="-9.599999999999994" AnchorPane.rightAnchor="-9.0">
+                                <columnConstraints>
+                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                </columnConstraints>
+                                <rowConstraints>
+                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                </rowConstraints>
+                                 <children>
+                                    <Label text="可信度" />
+                                    <Label text="效果" GridPane.columnIndex="1" />
+                                    <Label text="來源" GridPane.rowIndex="2" />
+                                    <Label text="敵我識別" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                    <ComboBox fx:id="cboRating" prefWidth="150.0" GridPane.rowIndex="1" />
+                                    <TextField fx:id="txtEffectiveness" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                    <TextField fx:id="txtSignature" GridPane.rowIndex="3" />
+                                    <TextField fx:id="txtIFFSIF" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                                 </children>
+                              </GridPane>
+                           </children>
+                        </AnchorPane>
+                    </content>
+                  </TitledPane>
+                  <AnchorPane styleClass="pane" GridPane.columnIndex="1" GridPane.rowIndex="4" GridPane.rowSpan="5">
+                     <GridPane.margin>
+                        <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                     </GridPane.margin>
+                     <children>
+                        <ImageView fx:id="imgViewSymbol" fitHeight="120.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true" />
+                     </children>
+                  </AnchorPane>
+                  <DateTimePicker fx:id="dtpDateTime" GridPane.rowIndex="1" /> 
+               </children>
+            </GridPane>
+         </content>
+      </TitledPane>
+   </children>
+</AnchorPane>

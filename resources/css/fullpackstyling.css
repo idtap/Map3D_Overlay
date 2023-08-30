@@ -1,0 +1,332 @@
+.root{
+	-fx-background-color:rgb(74.0, 77.0, 80.0);
+	-fx-font: 14px "Noto Sans CJK";
+	-fx-text-fill: whitesmoke;
+}
+
+/***dialog***/
+.dialog-pane{
+	-fx-background-color: #2F304D;
+}
+
+.dialog-pane > .content{
+	-fx-font: 14px "Noto Sans CJK";
+	-fx-text-fill: whitesmoke;
+}
+
+.dialog-pane:header *.header-panel{
+    -fx-background-color: #2F304D;
+}
+
+.dialog-pane:header *.header-panel *.label{
+	-fx-font: 14px "Noto Sans CJK";
+	-fx-text-fill:white;
+}
+
+/***radioButton***/
+.radio-button{
+	-fx-text-fill: whitesmoke;
+	-fx-font: 14px "Noto Sans CJK";
+}
+
+/***checkBox***/
+.check-box {
+	-fx-text-fill: whitesmoke;
+	-fx-font: 14px "Noto Sans CJK";
+}
+.check-box:selected .mark {
+	-fx-background-color: whitesmoke;
+}
+
+.check-box:selected .box {
+	-fx-background-color: #28a3f4;
+}
+/*** end of checkBox***/
+
+.TableView {
+	-fx-text-fill: whitesmoke;	
+	-fx-font: 14px "Noto Sans CJK";
+}
+
+.tree-cell {
+	-fx-background-color:rgb(74.0, 77.0, 80.0);
+	-fx-font: 14px "Noto Sans CJK";
+	-fx-text-fill:white;		
+}
+
+.tree-cell:selected {
+	-fx-background-color:rgb(41.0,49.0,56.0);
+    -fx-font-weight: bold ;
+}
+
+.pane{
+	-fx-background-color:rgb(74.0, 77.0, 80.0);
+	-fx-border-color:rgb(105.0,105.0,105.0);
+	-fx-font: 14px "Noto Sans CJK";
+	-fx-text-fill:white;
+}
+
+.titled-pane {
+	-fx-background-color:rgb(74.0, 77.0, 80.0);
+	-fx-font: 14px "Noto Sans CJK";
+}
+
+.gridStyle{
+	-fx-background-color:rgb(0.0,0.0,0.0);
+} 
+
+.gridStyle Line {
+  -fx-stroke   : rgb(101.0,147.0,207.0);
+}
+
+/***Label***/
+.label {
+	-fx-font: 14px "Noto Sans CJK";
+	-fx-text-fill: whitesmoke;
+}
+
+.required {
+	-fx-font: 16px "Noto Sans CJK";
+	-fx-text-fill: #ff0000;
+}
+.required-light {
+	-fx-font: 16px "Noto Sans CJK";
+	-fx-text-fill: #ff8080;
+}
+/*** TextField ***/
+
+.text-field {
+    -fx-background-color: -fx-text-box-border, -fx-background;
+    -fx-font: 14px "Noto Sans CJK";
+}
+
+.text-field:focused {
+    -fx-background-color: -fx-focus-color, -fx-background ;
+	-fx-border-width:2;
+	-fx-border-color:#1EC060;
+}
+
+/*** TextArea ***/
+
+.text-area {
+    -fx-background-color: rgb(74.0, 77.0, 80.0, 0.5);
+    -fx-text-fill: whitesmoke;
+    -fx-font-size: 14px;
+    -fx-font-family: "Noto Sans CJK";
+    -fx-border-color: #29B6CC;
+    -fx-border-width: 1px;
+    -fx-padding: 1px;
+}
+
+.text-area .content {
+    -fx-background-color: rgb(74.0, 77.0, 80.0, 0.5);
+}
+
+/***Button***/
+
+.button{
+	-fx-text-fill: whitesmoke;
+	-fx-font: 14px "Noto Sans CJK";
+	-fx-background-color: #338BA0;
+	-fx-border-color: #29B6CC;
+}
+
+.button:hover{
+	-fx-text-fill: whitesmoke;
+	-fx-font: 14px "Noto Sans CJK";
+	-fx-background-color: #29B6CC;
+	-fx-border-width:2;
+	-fx-border-color: #29B6CC;
+}
+
+.button:pressed{
+	-fx-text-fill: whitesmoke;
+	-fx-font: 14px "Noto Sans CJK";
+	-fx-background-color: #256473;
+	-fx-border-color: #29B6CC;
+}
+
+.button:disabled{
+	-fx-text-fill: #697077;
+	-fx-font: 14px "Noto Sans CJK";
+	-fx-background-color: #A0A3A8;
+	-fx-border-color: #50565B;
+}
+
+/***End of Button ***/
+
+.toggle-button{
+	-fx-text-fill: whitesmoke;
+	-fx-font: 14px "Noto Sans CJK";
+	-fx-background-color: #338BA0;
+	-fx-border-color: #29B6CC;
+}
+
+
+.jfx-toggle-button,
+.jfx-toggle-button:armed,
+.jfx-toggle-button:hover,
+.jfx-toggle-button:focused,
+.jfx-toggle-button:selected,
+.jfx-toggle-button:focused:selected {
+    -fx-background-color: TRANSPARENT, TRANSPARENT, TRANSPARENT, TRANSPARENT;
+    -fx-background-radius: 3px;
+    -fx-background-insets: 0px;
+
+    -jfx-toggle-color: #009688;
+    -jfx-untoggle-color: #FAFAFA;
+    -jfx-toggle-line-color: derive(-jfx-toggle-color, 65%);
+    -jfx-untoggle-line-color: #999999;
+    -jfx-size: 10;
+}
+
+/***Table Column ***/
+
+.table-view {
+    -fx-base:rgb(74.0, 77.0, 80.0, 0.5);
+    -fx-control-inner-background: rgb(74.0, 77.0, 80.0, 0.5);
+	-fx-background-color:rgb(74.0, 77.0, 80.0, 0.5);
+	-fx-font-size: 13px;
+	-fx-font-family: "Noto Sans CJK";
+	-fx-text-fill: whitesmoke;
+	-fx-border-color:rgb(105.0,105.0,105.0);
+}
+.table-view .column-header{
+	-fx-background-color: #c0c0c0;
+	-fx-padding: 0 0 0 10;
+}
+.table-view .column-header .label{
+	-fx-text-fill: rgb(10.0,10.0,10.0);
+	-fx-alignment: CENTER_LEFT;
+}
+.table-view .hyperlink {
+	-fx-text-fill: whitesmoke;
+}
+.table-view .hyperlink:hover {
+	-fx-text-fill: whitesmoke;
+}
+.table-view .check-box {
+	-fx-background-color: #c0c0c0;
+}
+/***End of TableView ***/
+
+/**Chart**/
+
+.chart{
+	-fx-background-color:transparent ;
+}
+
+.chart-plot-background{
+	-fx-background-color:transparent ;
+}
+
+.chart-vertical-grid-lines{
+	-fx-stroke:#505050;
+}
+
+/***End of Chart ***/
+
+/**scroll**/
+
+.scroll-pane{
+	-fx-background-color:transparent;
+	-fx-background:black;
+	
+}
+
+.scroll-bar{
+	-fx-background-color:rgb(96.0,96.0,96.0);
+}
+
+.scroll-pane .viewport {
+       -fx-background-color: transparent;
+}
+
+/***End of scroll ***/
+
+/** context Menu */
+.context-menu {
+  -fx-background-color: rgb(0.0,0.0,0.0);
+  -fx-border-color:rgb(105.0,105.0,105.0);
+  -fx-text-fill: whitesmoke;
+}
+
+.menu-item .label {
+  -fx-text-fill: yellow;
+}
+
+.menu-item:focused .label {
+  -fx-text-fill: whitesmoke;
+}
+/** End of context Menu */
+
+.grid-pane
+{
+	-fx-background-color:rgb(74.0, 77.0, 80.0, 0.5);
+	-fx-font-size: 14px;
+	-fx-font-family: "Noto Sans CJK";
+	-fx-text-fill: whitesmoke;
+}
+
+/** tab-pane */
+.tab-pane
+{
+	-fx-background-color:rgb(74.0, 77.0, 80.0, 0.5);
+	-fx-font-size: 14px;
+	-fx-font-family: "Noto Sans CJK";
+	-fx-text-fill: whitesmoke;
+}
+
+.tab-pane .tab:selected
+{
+    -fx-background-color:rgb(41.0, 49.0, 56.0);
+}
+
+.tab .tab-label { 
+    -fx-alignment: CENTER;
+    -fx-font: 14px "Noto Sans CJK";
+    -fx-text-fill: rgb(10.0,10.0,10.0);
+}
+
+.tab:selected .tab-label { 
+    -fx-alignment: CENTER;
+    -fx-text-fill: #00ffff;
+    -fx-font-weight: bold;
+}
+
+.jfx-toggle-button {
+    -jfx-toggle-color: deepskyblue;
+	-fx-font-family: "Noto Sans CJK";
+	-fx-text-fill: whitesmoke;    
+}
+
+.ribbonPane {
+	-fx-font-family: "Noto Sans CJK";
+	-fx-text-fill: whitesmoke;
+}
+
+.ribbon {
+    ACCENT_COLOR: whitesmoke;
+    RIBBON_BUTTON_HIGHLIGHT_COLOR: rgb(33.0,59.0,108.0);
+    RIBBON_BUTTON_SELECTED_COLOR: Gray;
+    CONTROLS_LABEL_COLOR: whitesmoke;
+    TITLES_COLOR: whitesmoke;
+	RIBBON_GROUP_TITLE: whitesmoke;
+}
+
+.split-pane > .split-pane-divider {
+    -fx-padding: 0 0.15em 0 0.15em; /* 0 3 0 3 */
+}
+
+.form-apply .text-field {
+	-fx-background: whitesmoke;
+	-fx-text-fill: rgb(74.0, 77.0, 80.0)
+}
+
+.tree-view .hyperlink {
+  /* Add your hyperlink styles here */
+	-fx-text-fill: whitesmoke;
+	-fx-underline: false;
+	-fx-cursor: none;
+}
+/* JavaFX CSS - Leave this comment until you have at least create one rule which uses -fx-Property */

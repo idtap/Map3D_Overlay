@@ -1,0 +1,2 @@
+@echo off
+java -Dorg.owasp.esapi.logSpecial.discard=true --module-path ".\javafx-sdk-17.0.2\lib" --add-modules javafx.controls,javafx.fxml,javafx.media,javafx.web,javafx.web,javafx.swing -Dfile.encoding=UTF8 -p ".\javafx-sdk-17.0.2\lib\javafx.base.jar;.\javafx-sdk-17.0.2\lib\javafx.controls.jar;.\javafx-sdk-17.0.2\lib\javafx.fxml.jar;.\javafx-sdk-17.0.2\lib\javafx.graphics.jar;.\javafx-sdk-17.0.2\lib\javafx.media.jar;.\javafx-sdk-17.0.2\lib\javafx.swing.jar;.\javafx-sdk-17.0.2\lib\javafx.web.jar;.\javafx-sdk-17.0.2\lib\javafx-swt.jar" -jar Map3D_Overlay.jar

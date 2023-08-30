@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane prefHeight="350.0" prefWidth="280.0" styleClass="background" stylesheets="/css/paramStyle.css" 
+            xmlns="http://javafx.com/javafx/17.0.2" xmlns:fx="http://javafx.com/fxml/1" 
+            fx:controller="controller.CopyPasteFXController">
+   <center>
+      <ListView fx:id="pasteIDList" prefHeight="321.0" prefWidth="203.0" 
+                BorderPane.alignment="CENTER" />
+   </center>
+   <bottom>
+      <AnchorPane prefHeight="36.0" prefWidth="203.0" BorderPane.alignment="CENTER">
+         <children>
+            <Button fx:id="btnDel" layoutX="7.0" layoutY="2.0" mnemonicParsing="false" 
+                    onAction="#handleDelBtnClicked" prefHeight="27.0" prefWidth="272.0" 
+                    text="移除" />
+         </children>
+      </AnchorPane>
+   </bottom>
+   <top>
+      <VBox prefHeight="38.0" prefWidth="281.0" BorderPane.alignment="CENTER">
+         <children>
+            <HBox prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Label text="複製的圖徵 id：" />
+                  <Label fx:id="copyGraphicID" text="..." />
+               </children>
+            </HBox>
+            <Label text="(註:請以滑鼠雙按貼於地圖上,可貼多筆)" />
+         </children>
+      </VBox>
+   </top>
+</BorderPane>
