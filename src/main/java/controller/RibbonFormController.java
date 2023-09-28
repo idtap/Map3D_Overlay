@@ -1,15 +1,49 @@
 ﻿package controller;
 
+import java.io.BufferedInputStream;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.net.URL;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
+import com.esri.arcgisruntime.concurrent.Job;
+import com.esri.arcgisruntime.data.Feature;
+import com.esri.arcgisruntime.data.FeatureCollection;
+import com.esri.arcgisruntime.data.FeatureCollectionTable;
+import com.esri.arcgisruntime.data.Field;
+import com.esri.arcgisruntime.geometry.GeometryType;
+import com.esri.arcgisruntime.geometry.Point;
+import com.esri.arcgisruntime.geometry.SpatialReferences;
+import com.esri.arcgisruntime.layers.RasterLayer;
+import com.esri.arcgisruntime.loadable.LoadStatus;
+import com.esri.arcgisruntime.localserver.LocalGeoprocessingService;
+import com.esri.arcgisruntime.localserver.LocalGeoprocessingService.ServiceType;
+import com.esri.arcgisruntime.localserver.LocalServer;
+import com.esri.arcgisruntime.localserver.LocalServerStatus;
+import com.esri.arcgisruntime.mapping.Viewpoint;
 import com.esri.arcgisruntime.mapping.view.GraphicsOverlay;
+import com.esri.arcgisruntime.raster.ColormapRenderer;
+import com.esri.arcgisruntime.raster.Raster;
+import com.esri.arcgisruntime.symbology.ColorUtil;
+import com.esri.arcgisruntime.symbology.SimpleMarkerSymbol;
+import com.esri.arcgisruntime.tasks.geoprocessing.GeoprocessingBoolean;
+import com.esri.arcgisruntime.tasks.geoprocessing.GeoprocessingFeatures;
+import com.esri.arcgisruntime.tasks.geoprocessing.GeoprocessingJob;
+import com.esri.arcgisruntime.tasks.geoprocessing.GeoprocessingParameter;
+import com.esri.arcgisruntime.tasks.geoprocessing.GeoprocessingParameters;
+import com.esri.arcgisruntime.tasks.geoprocessing.GeoprocessingRaster;
+import com.esri.arcgisruntime.tasks.geoprocessing.GeoprocessingString;
+import com.esri.arcgisruntime.tasks.geoprocessing.GeoprocessingTask;
 import com.jfoenix.controls.JFXHamburger;
 import com.pixelduke.control.Ribbon;
 import com.pixelduke.control.ribbon.RibbonGroup;
@@ -19,9 +53,15 @@ import feoverlay.AlertDialog;
 import feoverlay.Functions;
 import feoverlay.MapManager;
 import feoverlay.OverlayGroupClass;
+import feoverlay.milSymbolPickerController;
 import javafx.application.Platform;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.ComboBox;
@@ -29,7 +69,9 @@ import javafx.scene.control.ToggleButton;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.StackPane;
+import javafx.scene.paint.Color;
 import javafx.stage.FileChooser;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 public class RibbonFormController {
@@ -201,6 +243,7 @@ public class RibbonFormController {
 			drawerMapContent.getChildren().add(pane);
 
 			initEventHandler();
+			initVisibility();
 		} catch (IOException ex) {
 			ex.printStackTrace();
 		}
@@ -411,4 +454,88 @@ public class RibbonFormController {
 		}
 	}
 
+	///
+	/// 視域分析
+	///
+	private static LocalServer server;
+	private LocalGeoprocessingService localGPService;
+	
+	private Stage stageVisibility;
+	private VisibilityToolController visibilityController;
+	
+	/**
+	 * 初始化
+	 */
+	private void initVisibility() {
+	
+		// check that local server install path can be accessed
+		if (LocalServer.INSTANCE.checkInstallValid()) {
+//			progressBar.setVisible(true);
+			server = LocalServer.INSTANCE;
+			// start the local server
+			server.addStatusChangedListener(status -> {
+				if (server.getStatus() == LocalServerStatus.STARTED) {
+					try {
+						String gpServiceURL = new File(System.getProperty("data.dir"),
+								"./samples-data/local_server/Visibility7.gpkx").getAbsolutePath();
+						// need map server result to add contour lines to map
+						localGPService = new LocalGeoprocessingService(gpServiceURL,
+								ServiceType.ASYNCHRONOUS_SUBMIT_WITH_MAP_SERVER_RESULT);
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
+
+					localGPService.addStatusChangedListener(s -> {
+						// create geoprocessing task once local geoprocessing service is started
+						if (s.getNewStatus() == LocalServerStatus.STARTED) {
+							// add `/Contour` to use contour geoprocessing tool
+							VisibilityToolController.gpTask = new GeoprocessingTask(localGPService.getUrl() + "/Visibility");
+//							progressBar.setVisible(false);
+						}
+					});
+					localGPService.startAsync();
+				} else if (server.getStatus() == LocalServerStatus.FAILED) {
+					AlertDialog.informationAlert("本地端Geoprocessing載入失敗", false);
+				}
+			});
+
+			server.startAsync();
+		} else {
+			AlertDialog.informationAlert("本地端Geoprocessing載入失敗", false);
+		}
+	}
+
+    /** 點選編輯,開始編輯軍符 */
+	@FXML
+    void handleVisibility(ActionEvent event) {
+        try {
+            if (stageVisibility == null) {
+            	visibilityController = new VisibilityToolController(stageVisibility);
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/VisibilityTool.fxml"));
+                loader.setController(visibilityController);
+                Parent root = (Parent) loader.load();
+                Scene scene = new Scene(root, 250, 150);
+                scene.getStylesheets().add(Functions.appStylesheet);
+                stageVisibility = new Stage();
+                stageVisibility.setX(300);
+                stageVisibility.setY(150);
+                stageVisibility.setScene(scene);
+                stageVisibility.initModality(Modality.NONE);
+                stageVisibility.initOwner(Functions.primaryStage);
+                stageVisibility.setMaximized(false);
+                stageVisibility.setResizable(false);
+                stageVisibility.setTitle("視域分析");
+                stageVisibility.setScene(scene);
+            }
+            stageVisibility.show();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+	
+	private void terminateVisibility() {
+		if (server != null)
+			server.stopAsync();
+	}
 }

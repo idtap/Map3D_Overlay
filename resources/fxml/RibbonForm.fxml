@@ -307,8 +307,23 @@
                                                 </RibbonGroup>                                                                                  
                                         </ribbonGroups>
                                 </RibbonTab>
-                         </tabs>
-                </Ribbon>
+                        </tabs>
+                        <tabs>
+                                <RibbonTab fx:id="RibbonTab分析" styleClass="ribbonPane" text="分析">  
+                                               <RibbonGroup fx:id="ribbonGroup視域分析" title="視域分析">
+                                                        <nodes>
+                                                                <Button fx:id="btnVisibility" onAction="#handleVisibility" contentDisplay="TOP" text="分析">
+                                                                        <graphic>
+                                                                                <ImageView>
+                                                                                        <Image requestedHeight="40" requestedWidth="40" url="@/icons/overlay-add-40.png" />
+                                                                                </ImageView>
+                                                                        </graphic>
+                                                                </Button>
+                                						</nodes>
+                                				</RibbonGroup>
+                                </RibbonTab>
+                        </tabs>
+                </Ribbon>              
         </top>
         <center>
                 <StackPane fx:id="drawerMapContent" prefHeight="623.0" prefWidth="1024.0" BorderPane.alignment="CENTER" />
