@@ -1,48 +1,23 @@
 ﻿package controller;
 
-import java.io.BufferedInputStream;
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.net.URL;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
-import com.esri.arcgisruntime.concurrent.Job;
-import com.esri.arcgisruntime.data.Feature;
-import com.esri.arcgisruntime.data.FeatureCollection;
-import com.esri.arcgisruntime.data.FeatureCollectionTable;
-import com.esri.arcgisruntime.data.Field;
-import com.esri.arcgisruntime.geometry.GeometryType;
+import com.esri.arcgisruntime.concurrent.ListenableFuture;
 import com.esri.arcgisruntime.geometry.Point;
-import com.esri.arcgisruntime.geometry.SpatialReferences;
-import com.esri.arcgisruntime.layers.RasterLayer;
-import com.esri.arcgisruntime.loadable.LoadStatus;
 import com.esri.arcgisruntime.localserver.LocalGeoprocessingService;
 import com.esri.arcgisruntime.localserver.LocalGeoprocessingService.ServiceType;
 import com.esri.arcgisruntime.localserver.LocalServer;
 import com.esri.arcgisruntime.localserver.LocalServerStatus;
-import com.esri.arcgisruntime.mapping.Viewpoint;
+import com.esri.arcgisruntime.mapping.view.Graphic;
 import com.esri.arcgisruntime.mapping.view.GraphicsOverlay;
-import com.esri.arcgisruntime.raster.ColormapRenderer;
-import com.esri.arcgisruntime.raster.Raster;
-import com.esri.arcgisruntime.symbology.ColorUtil;
 import com.esri.arcgisruntime.symbology.SimpleMarkerSymbol;
-import com.esri.arcgisruntime.tasks.geoprocessing.GeoprocessingBoolean;
-import com.esri.arcgisruntime.tasks.geoprocessing.GeoprocessingFeatures;
-import com.esri.arcgisruntime.tasks.geoprocessing.GeoprocessingJob;
-import com.esri.arcgisruntime.tasks.geoprocessing.GeoprocessingParameter;
-import com.esri.arcgisruntime.tasks.geoprocessing.GeoprocessingParameters;
-import com.esri.arcgisruntime.tasks.geoprocessing.GeoprocessingRaster;
-import com.esri.arcgisruntime.tasks.geoprocessing.GeoprocessingString;
 import com.esri.arcgisruntime.tasks.geoprocessing.GeoprocessingTask;
 import com.jfoenix.controls.JFXHamburger;
 import com.pixelduke.control.Ribbon;
@@ -53,23 +28,21 @@ import feoverlay.AlertDialog;
 import feoverlay.Functions;
 import feoverlay.MapManager;
 import feoverlay.OverlayGroupClass;
-import feoverlay.milSymbolPickerController;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Point2D;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.ToggleButton;
+import javafx.scene.input.MouseButton;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.StackPane;
-import javafx.scene.paint.Color;
 import javafx.stage.FileChooser;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -80,6 +53,9 @@ public class RibbonFormController {
 
 	@FXML
 	private RibbonTab RibbonTab透明圖;
+	
+	@FXML
+	private RibbonTab RibbonTab分析;
 
 	@FXML
 	private RibbonGroup ribbonGroup軍隊符號;
@@ -202,7 +178,7 @@ public class RibbonFormController {
 
 	@FXML
 	private Button btnEditBase;
-	
+
 	// 20230413 Win 加
 	@FXML
 	private Button btnCopyPaste;
@@ -236,14 +212,16 @@ public class RibbonFormController {
 			MapManager.mapController.initBaseRibbonControl(btnAddPoint, btnEditBase, btnCompleteBase, btnCancelBase,
 					btnAddMultiPoint, btnAddPolyline, btnAddPolygon, btnAddFreePolyline, btnAddFreePolygon,
 					btnAddRectangle, btnAddArc, btnAddCircle, btnAddCurve, btnAddSector, btnAddText, btnAddTraceLine,
-					btnAddClipLine, null, null, null, btnCopyPaste, null,
-					null, null, null, null, null, null); // 20230609
-																													// Win
-																													// 修
+					btnAddClipLine, null, null, null, btnCopyPaste, null, null, null, null, null, null, null); // 20230609
+																												// Win
+																												// 修
 			drawerMapContent.getChildren().add(pane);
 
 			initEventHandler();
-			initVisibility();
+			
+			initVisibilityController();
+			initVisibilityMap();
+			initVisibilityService();
 		} catch (IOException ex) {
 			ex.printStackTrace();
 		}
@@ -257,13 +235,18 @@ public class RibbonFormController {
 			if (MapManager.is3DView)
 				MapManager.mapController.handleViewKindSwitch(true);
 		});
+		
+		RibbonTab分析.setOnSelectionChanged((e) -> {
+			if (!MapManager.is3DView)
+				MapManager.mapController.handleViewKindSwitch(true);
+		});
 	}
 
 	@FXML
 	public void handleCloseClick() {
 		ReleaseResource();
 		Platform.exit();
-        System.exit(0);
+		System.exit(0);
 	}
 
 	Map<String, Boolean> OverlayersVisible_Hashmap = new HashMap<>();
@@ -405,7 +388,6 @@ public class RibbonFormController {
 		setOverlaysRibbonButtonDisable(false, false, true, false, false);
 	}
 
-
 	/**
 	 * 載入透明圖檔
 	 */
@@ -435,15 +417,14 @@ public class RibbonFormController {
 		MapManager.mapController.openLayerListOverlays();
 	}
 
-
-
 	public void setDisableRibbonTab(boolean disableRibbonTab地圖, boolean disableRibbonTab透明圖,
 			boolean disableRibbonTab3D展示, boolean disableRibbonTab系統) {
 		RibbonTab透明圖.setDisable(disableRibbonTab透明圖);
 	}
 
-
 	public void ReleaseResource() {
+		terminateVisibility();
+		
 		if (null != MapManager.mapController) {
 			try {
 				MapManager.mapController.ReleaseResource();
@@ -459,81 +440,127 @@ public class RibbonFormController {
 	///
 	private static LocalServer server;
 	private LocalGeoprocessingService localGPService;
+	private GraphicsOverlay graphicsOverlayDraw3D;
 	
 	private Stage stageVisibility;
 	private VisibilityToolController visibilityController;
+
+	private void initVisibilityMap() {
+		graphicsOverlayDraw3D = new GraphicsOverlay();
+		MapManager.sceneView.getGraphicsOverlays().add(graphicsOverlayDraw3D);
+		
+		MapManager.sceneView.setOnMouseClicked(e -> {
+			if (!stageVisibility.isShowing() || visibilityController.btnGenerate.isDisable())
+				return;
+			
+			if (e.isStillSincePress()) {
+				if (e.getButton() == MouseButton.PRIMARY) {
+					Point2D screenPoint = new Point2D(e.getX(), e.getY());
+
+					// �}�l�e�x���Ÿ�
+					ListenableFuture<Point> mapPoint = MapManager.sceneView.screenToLocationAsync(screenPoint);
+
+					mapPoint.addDoneListener(() -> {
+						try {
+							graphicsOverlayDraw3D.getGraphics().clear();
+							Point p = mapPoint.get();
+							visibilityController.pointLocation = new Point(p.getX(), p.getY(), p.getZ() + 200, p.getSpatialReference());
+							SimpleMarkerSymbol redCircleSymbol = new SimpleMarkerSymbol(SimpleMarkerSymbol.Style.CIRCLE, 0xFFFF0000, 8);
+							Graphic drawingGraphic = new Graphic(visibilityController.pointLocation, redCircleSymbol);
+							graphicsOverlayDraw3D.getGraphics().add(drawingGraphic);
+
+						} catch (Exception ex) {
+							ex.printStackTrace();
+						}
+					});
+				}
+			}
+		});
+	}
+	
+	public class ThreadExample2 implements Runnable {
+	    public ThreadExample2(){
+
+	    }
+	    @Override
+	    public void run() {
+	    	// check that local server install path can be accessed
+			if (LocalServer.INSTANCE.checkInstallValid()) {
+				server = LocalServer.INSTANCE;
+				// start the local server
+				server.addStatusChangedListener(status -> {
+					if (server.getStatus() == LocalServerStatus.STARTED) {
+						try {
+							String gpServiceURL = new File(System.getProperty("data.dir"),
+									"./samples-data/local_server/Visibility.gpkx").getAbsolutePath();
+							// need map server result to add contour lines to map
+							localGPService = new LocalGeoprocessingService(gpServiceURL,
+									ServiceType.ASYNCHRONOUS_SUBMIT_WITH_MAP_SERVER_RESULT);
+						} catch (Exception e) {
+							e.printStackTrace();
+						}
+
+						localGPService.addStatusChangedListener(s -> {
+							// create geoprocessing task once local geoprocessing service is started
+							if (s.getNewStatus() == LocalServerStatus.STARTED) {
+								// add `/Contour` to use contour geoprocessing tool
+								VisibilityToolController.gpTask = new GeoprocessingTask(localGPService.getUrl() + "/Visibility");
+								visibilityController.btnGenerate.setDisable(false);
+							}
+						});
+						localGPService.startAsync();
+					} else if (server.getStatus() == LocalServerStatus.FAILED) {
+						AlertDialog.informationAlert("本地端Geoprocessing載入失敗", false);
+					}
+				});
+
+				server.startAsync();
+			} else {
+				AlertDialog.informationAlert("本地端Geoprocessing載入失敗", false);
+			}
+	    }
+	}
+	
 	
 	/**
 	 * 初始化
 	 */
-	private void initVisibility() {
-	
-		// check that local server install path can be accessed
-		if (LocalServer.INSTANCE.checkInstallValid()) {
-//			progressBar.setVisible(true);
-			server = LocalServer.INSTANCE;
-			// start the local server
-			server.addStatusChangedListener(status -> {
-				if (server.getStatus() == LocalServerStatus.STARTED) {
-					try {
-						String gpServiceURL = new File(System.getProperty("data.dir"),
-								"./samples-data/local_server/Visibility7.gpkx").getAbsolutePath();
-						// need map server result to add contour lines to map
-						localGPService = new LocalGeoprocessingService(gpServiceURL,
-								ServiceType.ASYNCHRONOUS_SUBMIT_WITH_MAP_SERVER_RESULT);
-					} catch (Exception e) {
-						e.printStackTrace();
-					}
+	private void initVisibilityService() {
+		Thread thread1 = new Thread(new ThreadExample2());
+        thread1.start();
+	}
 
-					localGPService.addStatusChangedListener(s -> {
-						// create geoprocessing task once local geoprocessing service is started
-						if (s.getNewStatus() == LocalServerStatus.STARTED) {
-							// add `/Contour` to use contour geoprocessing tool
-							VisibilityToolController.gpTask = new GeoprocessingTask(localGPService.getUrl() + "/Visibility");
-//							progressBar.setVisible(false);
-						}
-					});
-					localGPService.startAsync();
-				} else if (server.getStatus() == LocalServerStatus.FAILED) {
-					AlertDialog.informationAlert("本地端Geoprocessing載入失敗", false);
-				}
-			});
-
-			server.startAsync();
-		} else {
-			AlertDialog.informationAlert("本地端Geoprocessing載入失敗", false);
+	private void initVisibilityController() {
+		try {
+			visibilityController = new VisibilityToolController(stageVisibility);
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/VisibilityTool.fxml"));
+			loader.setController(visibilityController);
+			Parent root = (Parent) loader.load();
+			Scene scene = new Scene(root, 250, 180);
+			scene.getStylesheets().add(Functions.appStylesheet);
+			stageVisibility = new Stage();
+			stageVisibility.setX(300);
+			stageVisibility.setY(150);
+			stageVisibility.setScene(scene);
+			stageVisibility.initModality(Modality.NONE);
+			stageVisibility.initOwner(Functions.primaryStage);
+			stageVisibility.setMaximized(false);
+			stageVisibility.setResizable(false);
+			stageVisibility.setTitle("視域分析");
+			stageVisibility.setScene(scene);
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
 	}
 
-    /** 點選編輯,開始編輯軍符 */
+	/** 點選編輯,開始編輯軍符 */
 	@FXML
-    void handleVisibility(ActionEvent event) {
-        try {
-            if (stageVisibility == null) {
-            	visibilityController = new VisibilityToolController(stageVisibility);
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/VisibilityTool.fxml"));
-                loader.setController(visibilityController);
-                Parent root = (Parent) loader.load();
-                Scene scene = new Scene(root, 250, 150);
-                scene.getStylesheets().add(Functions.appStylesheet);
-                stageVisibility = new Stage();
-                stageVisibility.setX(300);
-                stageVisibility.setY(150);
-                stageVisibility.setScene(scene);
-                stageVisibility.initModality(Modality.NONE);
-                stageVisibility.initOwner(Functions.primaryStage);
-                stageVisibility.setMaximized(false);
-                stageVisibility.setResizable(false);
-                stageVisibility.setTitle("視域分析");
-                stageVisibility.setScene(scene);
-            }
-            stageVisibility.show();
+	void handleVisibility(ActionEvent event) {
+		if (stageVisibility != null) {
+			stageVisibility.show();
+		}
+	}
 
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-	
 	private void terminateVisibility() {
 		if (server != null)
 			server.stopAsync();

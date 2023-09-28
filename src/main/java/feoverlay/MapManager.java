@@ -34,6 +34,7 @@ import com.esri.arcgisruntime.layers.ArcGISTiledLayer;
 import com.esri.arcgisruntime.layers.ArcGISVectorTiledLayer;
 import com.esri.arcgisruntime.layers.EncLayer;
 import com.esri.arcgisruntime.layers.FeatureLayer;
+import com.esri.arcgisruntime.layers.Layer;
 import com.esri.arcgisruntime.layers.RasterLayer;
 import com.esri.arcgisruntime.loadable.LoadStatus;
 import com.esri.arcgisruntime.mapping.ArcGISMap;
@@ -334,6 +335,14 @@ public class MapManager {
 		Viewpoint viewPoint = new Viewpoint(polygon.getExtent());
 		gv.setViewpointAsync(viewPoint);
 	}
+	
+	public static void RemoveOtherPreLoad() {
+		for (int i = MapManager.sceneView.getArcGISScene().getOperationalLayers().size() - 1; i >= 0; i--) {
+			Layer l = MapManager.sceneView.getArcGISScene().getOperationalLayers().get(i);
+			if  (l.getClass() != FeatureLayer.class)
+				MapManager.sceneView.getArcGISScene().getOperationalLayers().remove(l);
+		};
+	}
 
 	/**
 	 * 新增縣市界及道路圖圖層
@@ -349,6 +358,7 @@ public class MapManager {
 						new File("basemap/" + fileName).getCanonicalPath());
 				if (null == tiledLayer)
 					return;
+				tiledLayer.setName(fileName);
 				tiledLayer.loadAsync();
 				tiledLayer.addDoneLoadingListener(() -> {
 					if (tiledLayer.getLoadStatus() == LoadStatus.LOADED) {

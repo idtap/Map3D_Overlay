@@ -29,7 +29,6 @@ import com.esri.arcgisruntime.loadable.LoadStatus;
 import com.esri.arcgisruntime.mapping.Viewpoint;
 import com.esri.arcgisruntime.raster.ColormapRenderer;
 import com.esri.arcgisruntime.raster.Raster;
-import com.esri.arcgisruntime.symbology.SimpleMarkerSymbol;
 import com.esri.arcgisruntime.tasks.geoprocessing.GeoprocessingBoolean;
 import com.esri.arcgisruntime.tasks.geoprocessing.GeoprocessingFeatures;
 import com.esri.arcgisruntime.tasks.geoprocessing.GeoprocessingJob;
@@ -39,6 +38,7 @@ import com.esri.arcgisruntime.tasks.geoprocessing.GeoprocessingRaster;
 import com.esri.arcgisruntime.tasks.geoprocessing.GeoprocessingString;
 import com.esri.arcgisruntime.tasks.geoprocessing.GeoprocessingTask;
 
+import feoverlay.AlertDialog;
 import feoverlay.Functions;
 import feoverlay.MapManager;
 import javafx.application.Platform;
@@ -47,19 +47,24 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.image.ImageView;
+import javafx.scene.control.ProgressBar;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
 public class VisibilityToolController implements Initializable {
 	@FXML
-	private Button btnGenerate;
+	public Button btnGenerate;
 	@FXML
 	private Button btnSaveVisibility;
+	@FXML
+	private ProgressBar progressBar;
+	@FXML
+	private TextField inner_radius;
+	@FXML
+	private	TextField outer_radius;
 	
 	private Stage _stage_main;
 	private AnchorPane parentPane;
@@ -68,12 +73,9 @@ public class VisibilityToolController implements Initializable {
 	private FeatureCollection featureCollection;
 	public static GeoprocessingTask gpTask;
 	private String tmpTif;
-	private Point pointLocation;
+	public Point pointLocation;
 	private Stage stageVisibility;
 	private VisibilityToolController visibilityController;
-	private SimpleMarkerSymbol redCircleSymbol = new SimpleMarkerSymbol(SimpleMarkerSymbol.Style.CIRCLE, 0xFFFF0000,
-			10);
-	
 	
 	VisibilityToolController(Stage _stage_main) {
 		this._stage_main = _stage_main;
@@ -83,7 +85,8 @@ public class VisibilityToolController implements Initializable {
 	public void initialize(URL arg0, ResourceBundle arg1) {
 
 		try {
-			tmpTif = new File(System.getProperty("data.dir"), "./samples-data/test.tif").getCanonicalPath();
+			tmpTif = new File(Functions.apPath + "/samples-data/test.tif").getCanonicalPath();
+			
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -131,11 +134,23 @@ public class VisibilityToolController implements Initializable {
 	 */
 	@FXML
 	protected void handleGenerateVisibility() {
-		if (pointLocation == null)
+		if (pointLocation == null) {
+			AlertDialog.errorAlert(_stage_main, "錯誤", "請於地圖上標註觀測點", false);
 			return;
+		}
+
+		if (!Functions.isNumber(inner_radius.getText())) {
+			AlertDialog.errorAlert(_stage_main, "輸入值錯誤", "近端距離必須為數值", false);
+			return;
+		}
+		if (!Functions.isNumber(outer_radius.getText())) {
+			AlertDialog.errorAlert(_stage_main, "輸入值錯誤", "遠端距離必須為數值", false);
+			return;
+		}
 		
-		btnGenerate.setDisable(true);
-		
+		Platform.runLater(() -> {
+			btnGenerate.setDisable(true);
+		});
 		clearResults();
 		createFeatureCollectionTableWithPointFeature();
 		doViewShed();
@@ -146,30 +161,26 @@ public class VisibilityToolController implements Initializable {
 	 */
 	private void doViewShed() {
 		// tracking progress of creating contour map
-//		progressBar.setVisible(true);
+		progressBar.setVisible(true);
 		// create parameter using interval set
 		GeoprocessingParameters gpParameters = new GeoprocessingParameters(
 				GeoprocessingParameters.ExecutionType.ASYNCHRONOUS_SUBMIT);
 
-		String rasterURL = new File(System.getProperty("data.dir"), "samples-data/raster-file/TaiwanDem_new_P.tif")
+		String rasterURL = new File(Functions.apPath + "/samples-data/TaiwanDem/TaiwanDem_new_P.tif")
 				.getAbsolutePath();
 
 		final Map<String, GeoprocessingParameter> inputs = gpParameters.getInputs();
 		inputs.put("in_raster", new GeoprocessingRaster(rasterURL, "Raster"));
 		inputs.put("in_observer_features", new GeoprocessingFeatures(featureCollection.getTables().get(0)));
 		inputs.put("nonvisible_cell_value", new GeoprocessingBoolean(true)); // NoData is assigned to nonvisible cells
-		inputs.put("inner_radius", new GeoprocessingString("0"));
-		inputs.put("outer_radius", new GeoprocessingString("20000"));
-//		inputs.put("horizontal_start_angle", new GeoprocessingString("0"));
-//		inputs.put("horizontal_end_angle", new GeoprocessingString("180"));
-//		inputs.put("vertical_lower_angle", new GeoprocessingString("-90"));
-//		inputs.put("vertical_upper_angle", new GeoprocessingString("90"));
+		inputs.put("inner_radius", new GeoprocessingString(inner_radius.getText()));
+		inputs.put("outer_radius", new GeoprocessingString(outer_radius.getText()));
 
 		// adds contour lines to map
 		GeoprocessingJob gpJob = gpTask.createJob(gpParameters);
 
 		gpJob.addProgressChangedListener(() -> {
-//			progressBar.setProgress(((double) gpJob.getProgress()) / 100);
+			progressBar.setProgress(((double) gpJob.getProgress()) / 100);
 		});
 
 		gpJob.addJobDoneListener(() -> {
@@ -208,7 +219,7 @@ public class VisibilityToolController implements Initializable {
 				dialog.setContentText("Error: " + gpJob.getError().getAdditionalMessage());
 				dialog.showAndWait();
 			}
-//			progressBar.setVisible(false);
+			progressBar.setVisible(false);
 		});
 		gpJob.start();
 
@@ -234,7 +245,7 @@ public class VisibilityToolController implements Initializable {
 					MapManager.sceneView.setViewpoint(vp);
 				}
 			} else {
-				showMessage("載入失敗", "圖檔載入失敗!原因:" + myRasterLayer.getLoadError().getMessage());
+				AlertDialog.warningAlert("圖檔載入失敗!原因:" + myRasterLayer.getLoadError().getMessage(), false);
 			}
 		});
 		myRasterFile.loadAsync();
@@ -260,7 +271,7 @@ public class VisibilityToolController implements Initializable {
 	@FXML
 	protected void handleLoadResults() {
 		FileChooser fileChooser = new FileChooser();
-		fileChooser.setInitialDirectory(new File(System.getProperty("data.dir"), "./samples-data"));
+		fileChooser.setInitialDirectory(new File(Functions.apPath + "/cfg/Visibility"));
 		fileChooser.getExtensionFilters()
 				.addAll(new FileChooser.ExtensionFilter("TIFF",
 						"*.tif;"));
@@ -289,10 +300,10 @@ public class VisibilityToolController implements Initializable {
 		String tmpFileName = dtf.format(now) + ".tif";
 		
 		File f = new File(tmpTif);
-		File out = new File(System.getProperty("data.dir"), "./samples-data/" + tmpFileName);
+		File out = new File(Functions.apPath + "/cfg/Visibility/" + tmpFileName);
 		try {
 			copyFileUsingStream(f, out);
-			System.out.print(tmpFileName + "儲存完成!!");
+			AlertDialog.informationAlert(_stage_main, tmpFileName + "儲存完成!!", false);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -332,17 +343,15 @@ public class VisibilityToolController implements Initializable {
 		}
 	}
 	
-	private void showMessage(String title, String message) {
-
-		Platform.runLater(() -> {
-			Alert dialog = new Alert(AlertType.INFORMATION);
-			dialog.initOwner(MapManager.sceneView.getScene().getWindow());
-			dialog.setHeaderText(title);
-			dialog.setContentText(message);
-			dialog.showAndWait();
-
-			Platform.exit();
-		});
+	@FXML
+	private void handClearResults() {
+		MapManager.RemoveOtherPreLoad();
+//		if (MapManager.sceneView.getArcGISScene().getOperationalLayers().size() <= 2)
+//			return;
+//		
+//		int count = MapManager.sceneView.getArcGISScene().getOperationalLayers().size(); 
+//		for (int i = count-1;  i >= 2 ; i--)
+//			MapManager.sceneView.getArcGISScene().getOperationalLayers().remove(2);
 	}
 
 }

@@ -37,6 +37,23 @@ public class Functions {
 	public static Stage primaryStage;
 	public static String appStylesheet = null;
 
+	/**
+	 * 字串是否為數字
+	 * @param value
+	 * @return
+	 */
+	public static Boolean isNumber(String value) {
+		if (value.isEmpty())
+			return false;
+		try {
+			Double parseValue  = Double.parseDouble(value);
+		}
+		catch (NumberFormatException ex) {
+			return false;
+		}
+		return true;
+	}
+	
 	/** 字串左邊添滿 */
 	public static String leftPad(String inputString, int length, char letter) {
 		return String.format("%1$" + length + "s", inputString).replace(' ', letter);
