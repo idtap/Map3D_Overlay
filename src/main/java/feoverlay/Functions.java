@@ -7,30 +7,10 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.Reader;
 import java.nio.charset.Charset;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.time.ZoneId;
-import java.time.format.DateTimeFormatter;
-import java.util.Map;
 
 import org.json.JSONException;
 
-import com.esri.arcgisruntime.geometry.GeodesicSectorParameters;
-import com.esri.arcgisruntime.geometry.GeodeticCurveType;
-import com.esri.arcgisruntime.geometry.Geometry;
-import com.esri.arcgisruntime.geometry.GeometryEngine;
-import com.esri.arcgisruntime.geometry.GeometryType;
-import com.esri.arcgisruntime.geometry.LinearUnit;
-import com.esri.arcgisruntime.geometry.LinearUnitId;
-import com.esri.arcgisruntime.geometry.Point;
-import com.esri.arcgisruntime.geometry.Polygon;
-import com.esri.arcgisruntime.mapping.view.Graphic;
-import com.esri.arcgisruntime.symbology.Symbol;
-
-import javafx.scene.control.Spinner;
-import javafx.scene.control.SpinnerValueFactory;
 import javafx.stage.Stage;
-import javafx.util.StringConverter;
 
 public class Functions {
 	public static String apPath;

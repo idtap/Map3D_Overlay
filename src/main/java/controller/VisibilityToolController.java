@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 import com.esri.arcgisruntime.concurrent.Job;
@@ -297,16 +298,25 @@ public class VisibilityToolController implements Initializable {
 	protected void handleSaveResults() {
 		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyyMMdd_HHmmss");
 		LocalDateTime now = LocalDateTime.now();
-		String tmpFileName = dtf.format(now) + ".tif";
+		String tmpName = dtf.format(now);
 		
-		File f = new File(tmpTif);
-		File out = new File(Functions.apPath + "/cfg/Visibility/" + tmpFileName);
-		try {
-			copyFileUsingStream(f, out);
-			AlertDialog.informationAlert(_stage_main, tmpFileName + "儲存完成!!", false);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		Optional<String> result = AlertDialog.showTextInputDialog(Functions.primaryStage, "儲存視域分析後結果", null, "存檔名稱：",
+				tmpName, "儲存", "取消");
+		if (result.isPresent()) {
+
+			String tmpFileName = result.get().toLowerCase();
+			if (!tmpFileName.endsWith(".tif"))
+				tmpFileName += ".tif";
+
+			File f = new File(tmpTif);
+			File out = new File(Functions.apPath + "/cfg/Visibility/" + tmpFileName);
+			try {
+				copyFileUsingStream(f, out);
+				AlertDialog.informationAlert(_stage_main, tmpFileName + "儲存完成!!", false);
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 	}
 

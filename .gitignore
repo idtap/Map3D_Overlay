@@ -16,3 +16,4 @@ network_analyst
 /cfg/Overlays
 /Map3D_Overlay_lib
 /libs
+/cfg/Visibility/*.tif
