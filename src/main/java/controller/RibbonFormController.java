@@ -464,7 +464,7 @@ public class RibbonFormController {
 						try {
 							graphicsOverlayDraw3D.getGraphics().clear();
 							Point p = mapPoint.get();
-							visibilityController.pointLocation = new Point(p.getX(), p.getY(), p.getZ() + 200, p.getSpatialReference());
+							visibilityController.pointLocation = new Point(p.getX(), p.getY(), p.getZ(), p.getSpatialReference());
 							SimpleMarkerSymbol redCircleSymbol = new SimpleMarkerSymbol(SimpleMarkerSymbol.Style.CIRCLE, 0xFFFF0000, 8);
 							Graphic drawingGraphic = new Graphic(visibilityController.pointLocation, redCircleSymbol);
 							graphicsOverlayDraw3D.getGraphics().add(drawingGraphic);
