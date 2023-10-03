@@ -445,6 +445,9 @@ public class RibbonFormController {
 	private Stage stageVisibility;
 	private VisibilityToolController visibilityController;
 
+	/**
+	 * 初始化圖層
+	 */
 	private void initVisibilityMap() {
 		graphicsOverlayDraw3D = new GraphicsOverlay();
 		MapManager.sceneView.getGraphicsOverlays().add(graphicsOverlayDraw3D);
