@@ -409,12 +409,10 @@ public class VisibilityToolController implements Initializable {
 		if (featureCollection != null)
 			featureCollection.getTables().clear();
 
-		if (MapManager.sceneView.getArcGISScene().getOperationalLayers().size() >= 1) {
-			MapManager.sceneView.getArcGISScene().getOperationalLayers().remove(0);
+//		if (MapManager.sceneView.getArcGISScene().getOperationalLayers().size() >= 1) {
+//			MapManager.sceneView.getArcGISScene().getOperationalLayers().remove(0);
 			btnGenerate.setDisable(false);
-		}
-		
-		graphicsOverlayDraw3D.getGraphics().clear();
+//		}
 	}
 
 	@FXML
