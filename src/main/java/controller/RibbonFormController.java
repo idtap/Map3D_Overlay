@@ -440,7 +440,7 @@ public class RibbonFormController {
 	///
 	private static LocalServer server;
 	private LocalGeoprocessingService localGPService;
-	private GraphicsOverlay graphicsOverlayDraw3D;
+
 	
 	private Stage stageVisibility;
 	private VisibilityToolController visibilityController;
@@ -449,28 +449,28 @@ public class RibbonFormController {
 	 * 初始化圖層
 	 */
 	private void initVisibilityMap() {
-		graphicsOverlayDraw3D = new GraphicsOverlay();
-		MapManager.sceneView.getGraphicsOverlays().add(graphicsOverlayDraw3D);
+		VisibilityToolController.graphicsOverlayDraw3D = new GraphicsOverlay();
+		MapManager.sceneView.getGraphicsOverlays().add(VisibilityToolController.graphicsOverlayDraw3D);
 		
 		MapManager.sceneView.setOnMouseClicked(e -> {
 			if (!stageVisibility.isShowing() || visibilityController.btnGenerate.isDisable())
 				return;
-			
+
+			//使用者地圖上點選"觀測點"
 			if (e.isStillSincePress()) {
 				if (e.getButton() == MouseButton.PRIMARY) {
 					Point2D screenPoint = new Point2D(e.getX(), e.getY());
 
-					// �}�l�e�x���Ÿ�
 					ListenableFuture<Point> mapPoint = MapManager.sceneView.screenToLocationAsync(screenPoint);
 
 					mapPoint.addDoneListener(() -> {
 						try {
-							graphicsOverlayDraw3D.getGraphics().clear();
+							VisibilityToolController.graphicsOverlayDraw3D.getGraphics().clear();
 							Point p = mapPoint.get();
 							visibilityController.pointLocation = new Point(p.getX(), p.getY(), p.getZ(), p.getSpatialReference());
 							SimpleMarkerSymbol redCircleSymbol = new SimpleMarkerSymbol(SimpleMarkerSymbol.Style.CIRCLE, 0xFFFF0000, 8);
 							Graphic drawingGraphic = new Graphic(visibilityController.pointLocation, redCircleSymbol);
-							graphicsOverlayDraw3D.getGraphics().add(drawingGraphic);
+							VisibilityToolController.graphicsOverlayDraw3D.getGraphics().add(drawingGraphic);
 
 						} catch (Exception ex) {
 							ex.printStackTrace();
@@ -481,6 +481,9 @@ public class RibbonFormController {
 		});
 	}
 	
+	/**
+	 * 初始化Local Server 本地端Geoprocessing
+	 */
 	public class ThreadExample2 implements Runnable {
 	    public ThreadExample2(){
 

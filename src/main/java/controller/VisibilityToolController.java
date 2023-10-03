@@ -10,8 +10,6 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
-import java.nio.file.Path;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -34,8 +32,11 @@ import com.esri.arcgisruntime.geometry.SpatialReferences;
 import com.esri.arcgisruntime.layers.RasterLayer;
 import com.esri.arcgisruntime.loadable.LoadStatus;
 import com.esri.arcgisruntime.mapping.Viewpoint;
+import com.esri.arcgisruntime.mapping.view.Graphic;
+import com.esri.arcgisruntime.mapping.view.GraphicsOverlay;
 import com.esri.arcgisruntime.raster.ColormapRenderer;
 import com.esri.arcgisruntime.raster.Raster;
+import com.esri.arcgisruntime.symbology.SimpleMarkerSymbol;
 import com.esri.arcgisruntime.tasks.geoprocessing.GeoprocessingBoolean;
 import com.esri.arcgisruntime.tasks.geoprocessing.GeoprocessingFeatures;
 import com.esri.arcgisruntime.tasks.geoprocessing.GeoprocessingJob;
@@ -44,7 +45,6 @@ import com.esri.arcgisruntime.tasks.geoprocessing.GeoprocessingParameters;
 import com.esri.arcgisruntime.tasks.geoprocessing.GeoprocessingRaster;
 import com.esri.arcgisruntime.tasks.geoprocessing.GeoprocessingString;
 import com.esri.arcgisruntime.tasks.geoprocessing.GeoprocessingTask;
-import com.itextpdf.kernel.pdf.canvas.parser.clipper.Paths;
 
 import feoverlay.AlertDialog;
 import feoverlay.Functions;
@@ -78,10 +78,11 @@ public class VisibilityToolController implements Initializable {
 	private AnchorPane parentPane;
 
 	private FeatureCollection featureCollection;
+	public static GraphicsOverlay graphicsOverlayDraw3D;
 	public static GeoprocessingTask gpTask;
 	private String tmpTif;
 	private String tmpInfo;
-	public Point pointLocation;
+	public static Point pointLocation;
 	private Stage stageVisibility;
 	private VisibilityToolController visibilityController;
 
@@ -327,6 +328,12 @@ public class VisibilityToolController implements Initializable {
 			if (f.exists()) {
 				String[] content = FileUtils.readFileToString(new File(fname), StandardCharsets.UTF_8).split(",");
 				Point center = new Point(Double.parseDouble(content[0]), Double.parseDouble(content[1]),0, SpatialReferences.getWgs84());
+				
+				graphicsOverlayDraw3D.getGraphics().clear();
+				SimpleMarkerSymbol redCircleSymbol = new SimpleMarkerSymbol(SimpleMarkerSymbol.Style.CIRCLE, 0xFFFF0000, 8);
+				Graphic drawingGraphic = new Graphic(center, redCircleSymbol);
+				graphicsOverlayDraw3D.getGraphics().add(drawingGraphic);
+				
 				Viewpoint vp = new Viewpoint(center, 100000);
 				MapManager.sceneView.setViewpoint(vp);
 			}
@@ -406,6 +413,8 @@ public class VisibilityToolController implements Initializable {
 			MapManager.sceneView.getArcGISScene().getOperationalLayers().remove(0);
 			btnGenerate.setDisable(false);
 		}
+		
+		graphicsOverlayDraw3D.getGraphics().clear();
 	}
 
 	@FXML
