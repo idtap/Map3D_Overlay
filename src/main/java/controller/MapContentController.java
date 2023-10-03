@@ -251,18 +251,18 @@ public class MapContentController {
     public void initialize() {
         initMap();
 
-        Timer timer = new Timer();
-        timer.schedule(new TimerTask() {
-            @Override
-            public void run() {
-                try {
-                    timer.cancel();
-                } catch (Exception e) { 
-                    e.printStackTrace();
-                }
-            }
-        }, 5000);
-        
+        //2013/10/3去除不須的等待
+//        Timer timer = new Timer();
+//        timer.schedule(new TimerTask() {
+//            @Override
+//            public void run() {
+//                try {
+//                    timer.cancel();
+//                } catch (Exception e) { 
+//                    e.printStackTrace();
+//                }
+//            }
+//        }, 5000);        
       
         topRightPane.setVisible(false); // 關閉右邊功能視窗
     }
