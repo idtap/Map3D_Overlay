@@ -4,10 +4,14 @@ import java.io.BufferedInputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.URL;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -16,6 +20,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.ResourceBundle;
+
+import org.apache.commons.io.FileUtils;
 
 import com.esri.arcgisruntime.concurrent.Job;
 import com.esri.arcgisruntime.data.Feature;
@@ -38,6 +44,7 @@ import com.esri.arcgisruntime.tasks.geoprocessing.GeoprocessingParameters;
 import com.esri.arcgisruntime.tasks.geoprocessing.GeoprocessingRaster;
 import com.esri.arcgisruntime.tasks.geoprocessing.GeoprocessingString;
 import com.esri.arcgisruntime.tasks.geoprocessing.GeoprocessingTask;
+import com.itextpdf.kernel.pdf.canvas.parser.clipper.Paths;
 
 import feoverlay.AlertDialog;
 import feoverlay.Functions;
@@ -65,19 +72,19 @@ public class VisibilityToolController implements Initializable {
 	@FXML
 	private TextField inner_radius;
 	@FXML
-	private	TextField outer_radius;
-	
+	private TextField outer_radius;
+
 	private Stage _stage_main;
 	private AnchorPane parentPane;
 
-	
 	private FeatureCollection featureCollection;
 	public static GeoprocessingTask gpTask;
 	private String tmpTif;
+	private String tmpInfo;
 	public Point pointLocation;
 	private Stage stageVisibility;
 	private VisibilityToolController visibilityController;
-	
+
 	VisibilityToolController(Stage _stage_main) {
 		this._stage_main = _stage_main;
 	}
@@ -87,7 +94,8 @@ public class VisibilityToolController implements Initializable {
 
 		try {
 			tmpTif = new File(Functions.apPath + "/samples-data/test.tif").getCanonicalPath();
-			
+			tmpInfo = new File(Functions.apPath + "/samples-data/test.info").getCanonicalPath();
+
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -148,7 +156,7 @@ public class VisibilityToolController implements Initializable {
 			AlertDialog.errorAlert(_stage_main, "輸入值錯誤", "遠端距離必須為數值", false);
 			return;
 		}
-		
+
 		Platform.runLater(() -> {
 			btnGenerate.setDisable(true);
 		});
@@ -163,12 +171,32 @@ public class VisibilityToolController implements Initializable {
 	private void doViewShed() {
 		// tracking progress of creating contour map
 		progressBar.setVisible(true);
+
+		String observeInfo = Double.toString(pointLocation.getX()) + "," + Double.toString(pointLocation.getY());
+		File file = new File(tmpInfo);
+		if (file.exists())
+			file.delete();
+
+		FileWriter fr = null;
+		try {
+			fr = new FileWriter(file);
+			fr.write(observeInfo);
+		} catch (IOException e) {
+			e.printStackTrace();
+		} finally {
+			// close resources
+			try {
+				fr.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+
 		// create parameter using interval set
 		GeoprocessingParameters gpParameters = new GeoprocessingParameters(
 				GeoprocessingParameters.ExecutionType.ASYNCHRONOUS_SUBMIT);
 
-		String rasterURL = new File(Functions.apPath + "/samples-data/TaiwanDem/TaiwanDem_new_P.tif")
-				.getAbsolutePath();
+		String rasterURL = new File(Functions.apPath + "/samples-data/TaiwanDem/TaiwanDem_new_P.tif").getAbsolutePath();
 
 		final Map<String, GeoprocessingParameter> inputs = gpParameters.getInputs();
 		inputs.put("in_raster", new GeoprocessingRaster(rasterURL, "Raster"));
@@ -195,7 +223,7 @@ public class VisibilityToolController implements Initializable {
 				if (f.exists())
 					f.delete();
 
-				//取得URL下載分析後之圖層至暫存檔
+				// 取得URL下載分析後之圖層至暫存檔
 				try (BufferedInputStream in = new BufferedInputStream(new URL(r.getUrl()).openStream());
 						FileOutputStream fileOutputStream = new FileOutputStream(tmpTif)) {
 					byte dataBuffer[] = new byte[1024];
@@ -214,7 +242,7 @@ public class VisibilityToolController implements Initializable {
 				}
 			} else {
 				btnGenerate.setDisable(false);
-				
+
 				Alert dialog = new Alert(AlertType.ERROR);
 				dialog.setHeaderText("Geoprocess Job Fail");
 				dialog.setContentText("Error: " + gpJob.getError().getAdditionalMessage());
@@ -226,21 +254,26 @@ public class VisibilityToolController implements Initializable {
 
 	}
 
+	/**
+	 * 載入視域分析結果TIFF檔
+	 * @param path
+	 * @param center
+	 */
 	private void loadRasterLayerFile(String path, Point center) {
 		// Load the raster file
 		Raster myRasterFile = new Raster(path);
 		// Create the layer
 		RasterLayer myRasterLayer = new RasterLayer(myRasterFile);
 		// get a colormap renderer.
-		ColormapRenderer colormapRenderer = getColorMap(); 
+		ColormapRenderer colormapRenderer = getColorMap();
 		// Set the colormap renderer on the raster layer.
 		myRasterLayer.setRasterRenderer(colormapRenderer);
-		
+
 		myRasterLayer.addDoneLoadingListener(() -> {
 			if (myRasterLayer.getLoadStatus() == LoadStatus.LOADED) {
 				// Add the layer to the map
 				MapManager.sceneView.getArcGISScene().getOperationalLayers().add(myRasterLayer);
-				
+
 				if (center != null) {
 					Viewpoint vp = new Viewpoint(center, 100000);
 					MapManager.sceneView.setViewpoint(vp);
@@ -251,9 +284,10 @@ public class VisibilityToolController implements Initializable {
 		});
 		myRasterFile.loadAsync();
 	}
-	
+
 	/**
 	 * 取得視域分析結果色盤
+	 * 
 	 * @return
 	 */
 	private ColormapRenderer getColorMap() {
@@ -265,7 +299,7 @@ public class VisibilityToolController implements Initializable {
 		// Create a colormap renderer.
 		return new ColormapRenderer(colors);
 	}
-	
+
 	/**
 	 * 點擊載入已儲存之視域分析結果圖層
 	 */
@@ -273,24 +307,36 @@ public class VisibilityToolController implements Initializable {
 	protected void handleLoadResults() {
 		FileChooser fileChooser = new FileChooser();
 		fileChooser.setInitialDirectory(new File(Functions.apPath + "/cfg/Visibility"));
-		fileChooser.getExtensionFilters()
-				.addAll(new FileChooser.ExtensionFilter("TIFF",
-						"*.tif;"));
+		fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("TIFF", "*.tif;"));
 
 		File selectedFile = fileChooser.showOpenDialog(Functions.primaryStage);
 		if (selectedFile == null)
 			return;
-		
 
 		// Load the raster file
 		try {
 			loadRasterLayerFile(selectedFile.getCanonicalPath(), null);
+			
+			String fname = selectedFile.getCanonicalPath();
+			int pos = fname.lastIndexOf(".");
+			if (pos > 0) {
+			    fname = fname.substring(0, pos) + ".info";
+			}
+
+			File f = new File(fname);
+			if (f.exists()) {
+				String[] content = FileUtils.readFileToString(new File(fname), StandardCharsets.UTF_8).split(",");
+				Point center = new Point(Double.parseDouble(content[0]), Double.parseDouble(content[1]),0, SpatialReferences.getWgs84());
+				Viewpoint vp = new Viewpoint(center, 100000);
+				MapManager.sceneView.setViewpoint(vp);
+			}
+			
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
-	
+
 	/**
 	 * 點擊儲存視域分析結果圖層
 	 */
@@ -299,15 +345,13 @@ public class VisibilityToolController implements Initializable {
 		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyyMMdd_HHmmss");
 		LocalDateTime now = LocalDateTime.now();
 		String tmpName = dtf.format(now);
-		
+
 		Optional<String> result = AlertDialog.showTextInputDialog(Functions.primaryStage, "儲存視域分析後結果", null, "存檔名稱：",
 				tmpName, "儲存", "取消");
 		if (result.isPresent()) {
 
-			String tmpFileName = result.get().toLowerCase();
-			if (!tmpFileName.endsWith(".tif"))
-				tmpFileName += ".tif";
-
+			//TIF file
+			String tmpFileName = result.get().toLowerCase() + ".tif";
 			File f = new File(tmpTif);
 			File out = new File(Functions.apPath + "/cfg/Visibility/" + tmpFileName);
 			try {
@@ -317,42 +361,53 @@ public class VisibilityToolController implements Initializable {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+			
+			//Info file
+			String tmpInfoName = result.get().toLowerCase() + ".info";
+			File f2 = new File(tmpInfo);
+			File out2 = new File(Functions.apPath + "/cfg/Visibility/" + tmpInfoName);
+			try {
+				copyFileUsingStream(f2, out2);
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 	}
 
 	/**
-	 * 檔案複製 
+	 * 檔案複製
 	 */
 	private static void copyFileUsingStream(File source, File dest) throws IOException {
-	    InputStream is = null;
-	    OutputStream os = null;
-	    try {
-	        is = new FileInputStream(source);
-	        os = new FileOutputStream(dest);
-	        byte[] buffer = new byte[1024];
-	        int length;
-	        while ((length = is.read(buffer)) > 0) {
-	            os.write(buffer, 0, length);
-	        }
-	    } finally {
-	        is.close();
-	        os.close();
-	    }
+		InputStream is = null;
+		OutputStream os = null;
+		try {
+			is = new FileInputStream(source);
+			os = new FileOutputStream(dest);
+			byte[] buffer = new byte[1024];
+			int length;
+			while ((length = is.read(buffer)) > 0) {
+				os.write(buffer, 0, length);
+			}
+		} finally {
+			is.close();
+			os.close();
+		}
 	}
-	
+
 	/**
 	 * 清空視域分析結果圖層
 	 */
 	private void clearResults() {
 		if (featureCollection != null)
 			featureCollection.getTables().clear();
-		
+
 		if (MapManager.sceneView.getArcGISScene().getOperationalLayers().size() >= 1) {
 			MapManager.sceneView.getArcGISScene().getOperationalLayers().remove(0);
 			btnGenerate.setDisable(false);
 		}
 	}
-	
+
 	@FXML
 	private void handClearResults() {
 		MapManager.RemoveOtherPreLoad();
