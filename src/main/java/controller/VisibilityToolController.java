@@ -202,7 +202,7 @@ public class VisibilityToolController implements Initializable {
 		final Map<String, GeoprocessingParameter> inputs = gpParameters.getInputs();
 		inputs.put("in_raster", new GeoprocessingRaster(rasterURL, "Raster"));
 		inputs.put("in_observer_features", new GeoprocessingFeatures(featureCollection.getTables().get(0)));
-		inputs.put("nonvisible_cell_value", new GeoprocessingBoolean(true)); // NoData is assigned to nonvisible cells
+		inputs.put("nonvisible_cell_value", new GeoprocessingBoolean(false)); // NoData is assigned to nonvisible cells
 		inputs.put("inner_radius", new GeoprocessingString(inner_radius.getText()));
 		inputs.put("outer_radius", new GeoprocessingString(outer_radius.getText()));
 
@@ -294,9 +294,10 @@ public class VisibilityToolController implements Initializable {
 	private ColormapRenderer getColorMap() {
 		// Create a color map where values 0-149 are red and 150-249 are yellow.
 		List<Color> colors = new ArrayList<Color>();
-		colors.add(Color.RED);
+		colors.add(Color.TRANSPARENT);
 		colors.add(Color.GREEN);
-
+		colors.add(Color.RED);
+		
 		// Create a colormap renderer.
 		return new ColormapRenderer(colors);
 	}

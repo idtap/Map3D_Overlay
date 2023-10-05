@@ -490,6 +490,8 @@ public class RibbonFormController {
 	    }
 	    @Override
 	    public void run() {
+			visibilityController.btnGenerate.setDisable(true);
+			
 	    	// check that local server install path can be accessed
 			if (LocalServer.INSTANCE.checkInstallValid()) {
 				server = LocalServer.INSTANCE;
