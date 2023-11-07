@@ -3,15 +3,18 @@ package controller;
 import java.awt.event.WindowEvent;
 import java.io.File;
 import java.io.IOException;
+import java.net.URL;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
 import java.util.Timer;
 import java.util.TimerTask;
+import java.util.concurrent.ExecutionException;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
@@ -26,6 +29,7 @@ import com.esri.arcgisruntime.concurrent.ListenableFuture;
 import com.esri.arcgisruntime.data.Feature;
 import com.esri.arcgisruntime.data.FeatureQueryResult;
 import com.esri.arcgisruntime.data.QueryParameters;
+import com.esri.arcgisruntime.data.TransportationNetworkDataset;
 import com.esri.arcgisruntime.geometry.AngularUnit;
 import com.esri.arcgisruntime.geometry.AngularUnitId;
 import com.esri.arcgisruntime.geometry.Envelope;
@@ -47,8 +51,11 @@ import com.esri.arcgisruntime.geometry.PolylineBuilder;
 import com.esri.arcgisruntime.geometry.SpatialReference;
 import com.esri.arcgisruntime.geometry.SpatialReferences;
 import com.esri.arcgisruntime.layers.FeatureLayer;
+import com.esri.arcgisruntime.layers.Layer;
+import com.esri.arcgisruntime.loadable.LoadStatus;
 import com.esri.arcgisruntime.mapping.ArcGISMap;
 import com.esri.arcgisruntime.mapping.ArcGISScene;
+import com.esri.arcgisruntime.mapping.MobileMapPackage;
 import com.esri.arcgisruntime.mapping.RasterElevationSource;
 import com.esri.arcgisruntime.mapping.Surface;
 import com.esri.arcgisruntime.mapping.view.GeoView;
@@ -59,16 +66,29 @@ import com.esri.arcgisruntime.mapping.view.LayerSceneProperties.SurfacePlacement
 import com.esri.arcgisruntime.mapping.view.MapView;
 import com.esri.arcgisruntime.mapping.view.SceneView;
 import com.esri.arcgisruntime.mapping.view.SketchEditor;
+import com.esri.arcgisruntime.security.UserCredential;
 import com.esri.arcgisruntime.symbology.ColorUtil;
+import com.esri.arcgisruntime.symbology.CompositeSymbol;
 import com.esri.arcgisruntime.symbology.MarkerSymbol;
+import com.esri.arcgisruntime.symbology.PictureMarkerSymbol;
 import com.esri.arcgisruntime.symbology.SimpleFillSymbol;
 import com.esri.arcgisruntime.symbology.SimpleLineSymbol;
 import com.esri.arcgisruntime.symbology.SimpleMarkerSymbol;
+import com.esri.arcgisruntime.symbology.SimpleRenderer;
 import com.esri.arcgisruntime.symbology.TextSymbol;
+import com.esri.arcgisruntime.tasks.networkanalysis.DirectionManeuver;
+import com.esri.arcgisruntime.tasks.networkanalysis.PolygonBarrier;
+import com.esri.arcgisruntime.tasks.networkanalysis.Route;
+import com.esri.arcgisruntime.tasks.networkanalysis.RouteParameters;
+import com.esri.arcgisruntime.tasks.networkanalysis.RouteResult;
+import com.esri.arcgisruntime.tasks.networkanalysis.RouteTask;
+import com.esri.arcgisruntime.tasks.networkanalysis.Stop;
+import com.esri.arcgisruntime.tasks.networkanalysis.TravelMode;
 import com.esri.arcgisruntime.toolkit.Compass;
 import com.esri.arcgisruntime.toolkit.OverviewMap;
 import com.pixelduke.control.ribbon.RibbonGroup;
 
+import AnalysisRoute.AnalysisRouteFXController;
 import feoverlay.AlertDialog;
 import feoverlay.Event;
 import feoverlay.Functions;
@@ -78,6 +98,7 @@ import feoverlay.OverlayFileClass;
 import feoverlay.OverlayGroupClass;
 import feoverlay.SketchEditorFE;
 import feoverlay.milSymbolPickerController;
+import javafx.application.Platform;
 import javafx.embed.swing.JFXPanel;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -88,6 +109,7 @@ import javafx.geometry.Pos;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.ToggleButton;
@@ -1159,6 +1181,7 @@ public class MapContentController {
         btnAddClipLine.setOnAction(e -> handleAddClipLine(e));
         btnEditBase.setOnAction(e -> handleEditBase(e));
         btnCopyPaste.setOnAction(e -> handleCopyPaste(e));
+        btnAnalysisRoute.setOnAction(e -> handleAnalysisRoute(e));
 
         btnCompleteBase.setDisable(true);
         btnCancelBase.setDisable(true);
@@ -3615,5 +3638,325 @@ public class MapContentController {
      * 複製貼上相關內容結尾
      **********************************************************/
 
+
+    /********************
+     * 以下開始是路徑分析相關內容
+     **********************************************************/
+
+    private static AnalysisRouteFXController analysisRouteControllerHandle = null;
+    private static JFrame analysisRouteFrame = null;
+
+    private static MobileMapPackage mobileMapPackage;
+    private static Layer displayRoadLayer = null;
+
+    private static RouteTask routeTask;
+    private static RouteParameters routeParameters;
+    private static PictureMarkerSymbol pinSymbol;
+    private static Image pinImage;
+    private static EventHandler<? super MouseEvent> prevRouteClickFun = null;
+    private static GraphicsOverlay routeGraphicsOverlay = new GraphicsOverlay();
+    private static GraphicsOverlay stopsGraphicsOverlay = new GraphicsOverlay();
+    private static GraphicsOverlay barriersGraphicsOverlay = new GraphicsOverlay();
+    private static SimpleFillSymbol barrierSymbol;
+    private static LinkedList<Stop> stopsList = new LinkedList<>();
+    private static LinkedList<PolygonBarrier> barriersList = new LinkedList<>();
+
+    private void handleAnalysisRoute(ActionEvent e) {
+        //AlertDialog.informationAlert(Functions.primaryStage, "路徑分析", true);
+        this.btnAnalysisRoute.setDisable(true);
+
+        // 此處要變更為 2D 
+        if (MapManager.is3DView)
+            handleViewKindSwitch(true);
+
+        // 開啟作業視窗
+        analysisRouteOpen();
+        analysisRouteControllerHandle = (AnalysisRouteFXController) paramLoader.getController();
+
+        // 啟動路網 routeTask
+        startRouteTask(); 
+        
+        // 經過點、障礙物、路徑圖層加入
+        mapView.getGraphicsOverlays().addAll(Arrays.asList(
+            stopsGraphicsOverlay, 
+            barriersGraphicsOverlay, 
+            routeGraphicsOverlay));
+
+        // 地點圖標載入
+        pinImage = new Image(getClass().getResourceAsStream("/icons/orange_symbol.png"), 
+                       0, 40, true, true);
+        pinSymbol = new PictureMarkerSymbol(pinImage);
+        pinSymbol.setOffsetY(20);
+        pinSymbol.loadAsync();
+
+        // 設定障礙物 symbol
+        barrierSymbol = new SimpleFillSymbol(SimpleFillSymbol.Style.DIAGONAL_CROSS, 0xFFFF0000, null);
+
+        // 設 line symbol renderer 給路徑分析繪製
+        SimpleLineSymbol routeLineSymbol = new SimpleLineSymbol(SimpleLineSymbol.Style.SOLID, 0x800000FF, 5.0f);
+        SimpleRenderer routeRenderer = new SimpleRenderer();
+        routeRenderer.setSymbol(routeLineSymbol);
+        routeGraphicsOverlay.setRenderer(routeRenderer);
+
+        // 地圖按鍵處理流程
+        prevRouteClickFun = mapView.getOnMouseClicked();
+        mapView.setOnMouseClicked(event -> {
+            if (event.isStillSincePress()) {
+                Point mapPoint = mapView.screenToLocation(new Point2D(event.getX(), event.getY()));
+                // route 參數需 normalize
+                mapPoint = (Point) GeometryEngine.normalizeCentralMeridian(mapPoint);
+                // 滑鼠左鍵為添加經過點，右鍵為回上一步
+                if (event.getButton() == MouseButton.PRIMARY) {
+                    routeGraphicsOverlay.getGraphics().clear();  // 前次路徑分析清除
+                    // 區分添加經過點或是障礙物
+                    if (analysisRouteControllerHandle.btnAddStop_isSelected()) {
+                        // 產生經過點 Stop() 加到 list
+                        Stop stopPoint = new Stop(
+                            new Point(mapPoint.getX(), mapPoint.getY(), mapPoint.getSpatialReference())
+                        );
+                        stopsList.add(stopPoint);
+
+                        // 產生文字編號圖標加入圖層
+                        CompositeSymbol newStopSymbol = createCompositeStopSymbol(stopsList.size());
+                        Graphic stopGraphic = new Graphic(mapPoint, newStopSymbol);
+                        stopsGraphicsOverlay.getGraphics().add(stopGraphic);
+                    // 否則是障礙物添加模式
+                    } 
+                    else if (analysisRouteControllerHandle.btnAddBarrier_isSelected()) {
+                        // 依障礙物大小
+                        Polygon bufferedBarrierPolygon = GeometryEngine.buffer(
+                            mapPoint, 
+                            analysisRouteControllerHandle.getBarrierSize()
+                        );
+                        // 加入 list
+                        PolygonBarrier barrier = new PolygonBarrier(bufferedBarrierPolygon);
+                        barriersList.add(barrier);
+                        // 加入圖層
+                        Graphic barrierGraphic = new Graphic(bufferedBarrierPolygon, barrierSymbol);
+                        barriersGraphicsOverlay.getGraphics().add(barrierGraphic);
+                    }
+                } 
+                // 滑鼠右按回上一步
+                else if (event.getButton() == MouseButton.SECONDARY) {
+                    // 經過點且非空
+                    if (analysisRouteControllerHandle.btnAddStop_isSelected() && !stopsList.isEmpty()) {
+                        // 移除路徑
+                        routeGraphicsOverlay.getGraphics().clear();
+                        // stop list 移除尾筆
+                        stopsList.removeLast();
+                        // 圖層同樣移除尾筆
+                        stopsGraphicsOverlay.getGraphics().remove(
+                            stopsGraphicsOverlay.getGraphics().size() - 1
+                        );
+                    } 
+                    // 障礙物且非空
+                    else if (analysisRouteControllerHandle.btnAddBarrier_isSelected() && !barriersList.isEmpty()) {
+                        routeGraphicsOverlay.getGraphics().clear();
+                        barriersList.removeLast();
+                        barriersGraphicsOverlay.getGraphics().remove(
+                            barriersGraphicsOverlay.getGraphics().size() - 1
+                        );
+                    }
+                }
+                // 重新分析路徑
+                createRouteAndDisplay();
+            }
+        });
+        
+        // 結束關閉
+        analysisRouteFrame.addWindowListener(new java.awt.event.WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                analysisRouteClose();
+            }
+        });
+    }
+
+    // 含文字圖形複合 symbol
+    private CompositeSymbol createCompositeStopSymbol(Integer stopNumber) {
+        TextSymbol stopTextSymbol = new TextSymbol(
+            16, (stopNumber).toString(), 0xFFFFFFFF, 
+            TextSymbol.HorizontalAlignment.CENTER, 
+            TextSymbol.VerticalAlignment.BOTTOM);
+        stopTextSymbol.setOffsetY((float) pinImage.getHeight() / 2);
+        return new CompositeSymbol(Arrays.asList(pinSymbol, stopTextSymbol));
+    }
+
+    private void displayRouteMessage(String title, String message) {
+        Platform.runLater(() -> {
+          Alert dialog = new Alert(Alert.AlertType.INFORMATION);
+          dialog.setHeaderText(title);
+          dialog.setContentText(message);
+          dialog.showAndWait();
+        });
+    }
+
+    // 啟動路網 routeTask
+    private void startRouteTask() {
+        // 換用含圖的 mmpk
+        File mmpkFile = new File("basemap/Taiwan.mmpk");
+        mobileMapPackage = new MobileMapPackage(mmpkFile.getAbsolutePath());
+        mobileMapPackage.loadAsync();
+        mobileMapPackage.addDoneLoadingListener(() -> {
+            if (mobileMapPackage.getLoadStatus() == LoadStatus.LOADED && 
+                !mobileMapPackage.getMaps().isEmpty()) {
+                // 將 mobileMapPackage 地圖首個 layer(此為道路圖) 加到目前地圖中              
+                FeatureLayer featureLayer = (FeatureLayer)mobileMapPackage.getMaps().get(0).getOperationalLayers().get(0);
+                displayRoadLayer = featureLayer.copy();
+                mapView.getMap().getOperationalLayers().add( displayRoadLayer );
+                // 開啟 routeTask 後續作業
+                // 取下 ND dataset
+                TransportationNetworkDataset networkDataset = 
+                    mobileMapPackage.getMaps().get(0).getTransportationNetworks().get(0);
+                // 依 ND dataset 開啟 routeTask
+                if( routeTask == null ) {
+                    routeTask = new RouteTask(networkDataset);
+                    routeTask.loadAsync();
+                    routeTask.addDoneLoadingListener(() -> {
+                        if (routeTask.getLoadStatus() == LoadStatus.LOADED) {
+                            System.out.println("routeTask loaded");
+                            if( routeParameters == null ) {
+                                try {
+                                  // create route parameters
+                                  routeParameters = routeTask.createDefaultParametersAsync().get();
+
+                                  // set flags to return stops and directions
+                                  routeParameters.setReturnStops(true);
+                                  routeParameters.setReturnDirections(true);
+
+                                  analysisRouteControllerHandle.addAllTravelModes(routeTask);
+                                } catch (InterruptedException | ExecutionException e) {
+                                  displayRouteMessage("route parameters 建立失敗", e.getMessage());
+                                  routeParameters = null;
+                                }
+                            }
+                        }
+                    });
+                }
+                else {
+                    analysisRouteControllerHandle.addAllTravelModes(routeTask);
+                }
+            }
+            else {
+                AlertDialog.errorAlert("無法開啟 basemap/Taiwan.mmpk 地圖，\n無法執行路徑分析，按鍵後退出", true);
+                analysisRouteClose();
+                analysisRouteFrame.dispose();
+            }
+        });
+
+    }
+
+    private void analysisRouteOpen() {
+        try {
+            paramLoader = new FXMLLoader(getClass().getResource("../AnalysisRoute/routeAnalysisFX.fxml"));
+            Parent root = paramLoader.load();
+            Scene scene = new Scene(root);
+            final JFXPanel jfxPanel = new JFXPanel();
+            jfxPanel.setScene(scene);
+
+            analysisRouteFrame = new JFrame("路徑分析作業");
+            analysisRouteFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+            analysisRouteFrame.setAlwaysOnTop(true);
+            analysisRouteFrame.add(jfxPanel);
+            analysisRouteFrame.setSize(270, 510);
+            analysisRouteFrame.setLocation(10, 205);
+            analysisRouteFrame.setVisible(true);
+        } catch (Exception e) {
+            // on any error, display the stack trace.
+            //e.printStackTrace();
+        }
+    }
+
+    private void analysisRouteClose() {
+        if( displayRoadLayer != null )
+            mapView.getMap().getOperationalLayers().remove( displayRoadLayer );
+        displayRoadLayer = null;
+
+        stopsList.clear();
+        barriersList.clear();
+        stopsGraphicsOverlay.getGraphics().clear();
+        barriersGraphicsOverlay.getGraphics().clear();
+        routeGraphicsOverlay.getGraphics().clear();
+
+        if (prevRouteClickFun != null) {
+            mapView.setOnMouseClicked(prevRouteClickFun);
+            prevRouteClickFun = null;
+        }
+
+        mapView.getGraphicsOverlays().remove(stopsGraphicsOverlay);
+        mapView.getGraphicsOverlays().remove(barriersGraphicsOverlay);
+        mapView.getGraphicsOverlays().remove(routeGraphicsOverlay);
+
+        this.btnAnalysisRoute.setDisable(false);
+    }
+
+    // 重新產生路徑
+    public void createRouteAndDisplay() {
+        // 至少兩個經過點
+        if (stopsList.size() >= 2) {
+            routeGraphicsOverlay.getGraphics().clear();  // 路徑圖層清除
+            analysisRouteControllerHandle.directionsList_clear();  // 分析結果清除
+
+            // route parameters 添加 stop 及 barrier
+            routeParameters.setStops(stopsList);
+            routeParameters.setPolygonBarriers(barriersList);
+
+            // 開始分析
+            final ListenableFuture<RouteResult> routeResultFuture =
+                routeTask.solveRouteAsync(routeParameters);
+            routeResultFuture.addDoneListener(() -> {
+                try {
+                    RouteResult routeResult = routeResultFuture.get();
+                    // 有分析結果
+                    if (!routeResult.getRoutes().isEmpty()) {
+                        // 取下
+                        Route firstRoute = routeResult.getRoutes().get(0);
+                        // 轉 geometry
+                        Geometry routeGeometry = firstRoute.getRouteGeometry();
+                        // 加入圖層
+                        Graphic routeGraphic = new Graphic(routeGeometry);
+                        routeGraphicsOverlay.getGraphics().add(routeGraphic);
+
+                        // 將結果加入 tile pane
+                        String output = String.format("分析結果: %d 分鐘 (%.2f 公里)",
+                            Math.round(firstRoute.getTravelTime()), firstRoute.getTotalLength() / 1000);
+                        analysisRouteControllerHandle.routeInformationTitledPane_setText(output);
+
+                        // 將結果每一項加到 listview 顯示
+                        for (DirectionManeuver maneuver : firstRoute.getDirectionManeuvers()) {
+                            analysisRouteControllerHandle.directionsList_add(maneuver.getDirectionText());
+                        }
+                    }
+                    else {
+                        displayRouteMessage("分析失敗", "找無任何路徑");
+                    }
+                } catch (InterruptedException | ExecutionException e) {
+                    displayRouteMessage("分析失敗", "route 執行有誤");
+                }
+            });
+        } else {
+            // 分析結果本應 list 到視窗，但此種 network 無
+        }
+    }
+
+    public void clearRouteAndGraphics() {
+        routeParameters.clearStops();
+        stopsList.clear();
+        routeParameters.clearPointBarriers();
+        barriersList.clear();
+        stopsGraphicsOverlay.getGraphics().clear();
+        barriersGraphicsOverlay.getGraphics().clear();
+        routeGraphicsOverlay.getGraphics().clear();
+    }
+
+    public void setTravelMode(TravelMode sele_mode ) {
+        routeParameters.setTravelMode(sele_mode);
+        createRouteAndDisplay();
+    }
+
+
+    /********************
+     * 路徑分析相關內容結尾
+     **********************************************************/
 
  }

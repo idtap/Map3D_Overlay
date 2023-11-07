@@ -212,7 +212,7 @@ public class RibbonFormController {
 			MapManager.mapController.initBaseRibbonControl(btnAddPoint, btnEditBase, btnCompleteBase, btnCancelBase,
 					btnAddMultiPoint, btnAddPolyline, btnAddPolygon, btnAddFreePolyline, btnAddFreePolygon,
 					btnAddRectangle, btnAddArc, btnAddCircle, btnAddCurve, btnAddSector, btnAddText, btnAddTraceLine,
-					btnAddClipLine, null, null, null, btnCopyPaste, null, null, null, null, null, null, null); // 20230609
+					btnAddClipLine, null, null, null, btnCopyPaste, null, null, null, null, null, null, btnAnalysisRoute); // 20230609
 																												// Win
 																												// 修
 			drawerMapContent.getChildren().add(pane);
@@ -573,4 +573,9 @@ public class RibbonFormController {
 		if (server != null)
 			server.stopAsync();
 	}
+
+	@FXML
+	private Button btnAnalysisRoute;
+
+
 }

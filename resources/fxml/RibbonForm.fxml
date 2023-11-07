@@ -310,6 +310,7 @@
                         </tabs>
                         <tabs>
                                 <RibbonTab fx:id="RibbonTab分析" styleClass="ribbonPane" text="分析">  
+                                		<ribbonGroups>
                                                <RibbonGroup fx:id="ribbonGroup視域分析" title="視域分析">
                                                         <nodes>
                                                                 <Button fx:id="btnVisibility" onAction="#handleVisibility" contentDisplay="TOP" text="分析">
@@ -321,8 +322,26 @@
                                                                 </Button>
                                 						</nodes>
                                 				</RibbonGroup>
-                                </RibbonTab>
+                                        </ribbonGroups>
+                                </RibbonTab>                                
                         </tabs>
+                        <tabs>
+                                <RibbonTab fx:id="RibbonTab分析2" styleClass="ribbonPane" text="路徑分析">  
+                                		<ribbonGroups>
+                                                <RibbonGroup fx:id="ribbonGroup路徑分析"  title="  路徑分析  ">
+                                                        <nodes>
+                                                                <Button fx:id="btnAnalysisRoute" contentDisplay="TOP" text="路徑分析">
+                                                                        <graphic>
+                                                                                <ImageView>
+                                                                                        <Image requestedHeight="40" requestedWidth="40" url="@/icons/find-path-32.png" />
+                                                                                </ImageView>
+                                                                        </graphic>
+                                                                </Button>
+                                                        </nodes>
+                                                </RibbonGroup>
+                                        </ribbonGroups>
+                                </RibbonTab>                                
+                        </tabs>                        
                 </Ribbon>              
         </top>
         <center>

@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Accordion?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.control.ToggleButton?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox maxWidth="200.0" styleClass="background" stylesheets="/css/styleSight.css" xmlns="http://javafx.com/javafx/17.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="AnalysisRoute.AnalysisRouteFXController">
+
+    <VBox maxHeight="400" spacing="10">
+        <padding>
+            <Insets topRightBottomLeft="10" />
+        </padding>
+        <Label text="輸入切換:" />
+        <HBox maxWidth="Infinity" minWidth="200">
+            <ToggleButton fx:id="btnAddStop" minWidth="100" selected="true" text="經過點">
+                <toggleGroup>
+                    <ToggleGroup fx:id="toggleGroup" />
+                </toggleGroup>
+            </ToggleButton>
+            <ToggleButton fx:id="btnAddBarrier" minWidth="100" text="障礙物" toggleGroup="$toggleGroup" />
+        </HBox>
+      <Label text="(註:滑鼠左鍵添加,右鍵回上一步)" />
+        <Separator />
+        <Label text="分析參數:" />
+        <VBox spacing="10" styleClass="panel-region">
+            <padding>
+                <Insets left="10" />
+            </padding>
+         <children>
+            <HBox prefHeight="20.0" prefWidth="190.0">
+               <children>
+                  <Label text="障礙物大小:">
+                     <HBox.margin>
+                        <Insets top="5.0" />
+                     </HBox.margin>
+                  </Label>
+                  <TextField fx:id="barrierSize" prefHeight="26.0" prefWidth="57.0" text="100">
+                     <HBox.margin>
+                        <Insets left="5.0" />
+                     </HBox.margin>
+                  </TextField>
+                  <Label prefHeight="19.0" prefWidth="65.0" text="(公尺半徑)">
+                     <HBox.margin>
+                        <Insets top="5.0" />
+                     </HBox.margin>
+                  </Label>
+               </children>
+            </HBox>
+            <HBox prefHeight="25.0" prefWidth="232.0">
+               <children>
+                  <Label text="分析模式:">
+                     <HBox.margin>
+                        <Insets top="5.0" />
+                     </HBox.margin>
+                  </Label>
+                  <ComboBox fx:id="travelModes" prefHeight="26.0" prefWidth="127.0">
+                     <HBox.margin>
+                        <Insets left="5.0" />
+                     </HBox.margin>
+                  </ComboBox>
+               </children>
+            </HBox>
+         </children>
+        </VBox>
+        <Separator />
+    </VBox>
+    <!--Directions Accordion-->
+    <VBox maxHeight="250" spacing="10" styleClass="panel-region">
+        <Accordion layoutX="20.0" layoutY="100.0" prefHeight="400.0" prefWidth="680.0">
+            <panes>
+                <TitledPane fx:id="routeInformationTitledPane" text="分析結果:">
+                    <ListView fx:id="directionsList" />
+                </TitledPane>
+            </panes>
+        </Accordion>
+    </VBox>
+</VBox>
