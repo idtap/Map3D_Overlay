@@ -75,4 +75,18 @@ public class AnalysisRouteFXController {
     @FXML private void clearRouteAndGraphics() {
         MapManager.mapController.clearRouteAndGraphics();
     }
+    
+    @FXML
+    private TextField txtSearch;
+    
+    @FXML
+    public void btnSearch_click() {
+    	if (txtSearch.getText().trim() != "")
+    		MapManager.mapController.searchRoad(txtSearch.getText().trim());
+    }
+    
+    @FXML
+    public void btnClear_click() {
+    	MapManager.mapController.clearSearchResult();
+    }
 }
