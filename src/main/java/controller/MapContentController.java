@@ -3655,7 +3655,8 @@ public class MapContentController {
 	private static SimpleFillSymbol barrierSymbol;
 	private static LinkedList<Stop> stopsList = new LinkedList<>();
 	private static LinkedList<PolygonBarrier> barriersList = new LinkedList<>();
-
+	private ListenableFuture<FeatureQueryResult> tableQueryResult;
+	
 	private void handleAnalysisRoute(ActionEvent e) {
 		// AlertDialog.informationAlert(Functions.primaryStage, "路徑分析", true);
 		this.btnAnalysisRoute.setDisable(true);
@@ -3772,8 +3773,6 @@ public class MapContentController {
 			dialog.showAndWait();
 		});
 	}
-
-	private ListenableFuture<FeatureQueryResult> tableQueryResult;
 
 	/*
 	 * 先清空之前查詢結果
