@@ -435,6 +435,8 @@ public class MapContentController {
 		initLayerlistOverlays();
 
 		initAddShapefiles();
+
+		MapManager.addVtpkBaseLayers();
 	}
 
 	private void initAddShapefiles() {
@@ -3642,7 +3644,8 @@ public class MapContentController {
 	private static JFrame analysisRouteFrame = null;
 
 	private static MobileMapPackage mobileMapPackage;
-	private static Layer displayRoadLayer = null;
+	private static GraphicsOverlay displayRoadLayer = null;
+	private static Layer dataRoadLayer = null;
 
 	private static RouteTask routeTask;
 	private static RouteParameters routeParameters;
@@ -3656,7 +3659,7 @@ public class MapContentController {
 	private static LinkedList<Stop> stopsList = new LinkedList<>();
 	private static LinkedList<PolygonBarrier> barriersList = new LinkedList<>();
 	private ListenableFuture<FeatureQueryResult> tableQueryResult;
-	
+
 	private void handleAnalysisRoute(ActionEvent e) {
 		// AlertDialog.informationAlert(Functions.primaryStage, "路徑分析", true);
 		this.btnAnalysisRoute.setDisable(true);
@@ -3774,36 +3777,43 @@ public class MapContentController {
 		});
 	}
 
+	private GraphicsOverlay getDisplayRoadLayer() {
+		if (displayRoadLayer == null) {
+			displayRoadLayer = new GraphicsOverlay();
+			mapView.getGraphicsOverlays().add(displayRoadLayer);
+		}
+		return displayRoadLayer;
+	}
+
+	/**
+	 * 取得台灣路網圖層
+	 * 
+	 * @return
+	 */
+	private Layer getTaiwanRoadLayer() {
+		Layer ret = null;
+		for (int i = 0; i < MapManager.mapView.getMap().getOperationalLayers().size(); i++) {
+			Layer l = MapManager.mapView.getMap().getOperationalLayers().get(i);
+			if (l.getName().equals("taiwanroad.vtpk")) {
+				ret = l;
+				break;
+			}
+		}
+		;
+		return ret;
+	}
+
 	/*
-	 * 先清空之前查詢結果
+	 * 清空之前道路查詢結果
 	 */
 	public void clearSearchResult() {
-		ListenableFuture<FeatureQueryResult> selected = ((FeatureLayer) displayRoadLayer).getSelectedFeaturesAsync();
-		selected.addDoneListener(() -> {
-			try {
-				FeatureQueryResult result = selected.get();
-				Feature feature = null;
-				for (Iterator<Feature> it = result.iterator(); it.hasNext();) {
-					// get state feature and zoom to it
-					feature = it.next();
-					// set the state feature to be selected
-					((FeatureLayer) displayRoadLayer).unselectFeature(feature);
-				}
-					
-			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (ExecutionException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		});
+		getDisplayRoadLayer().getGraphics().clear();
 	}
-	
+
 	public void searchRoad(String searchKey) {
 		clearSearchResult();
-		
-		FeatureTable featureTable = ((FeatureLayer) displayRoadLayer).getFeatureTable();
+
+		FeatureTable featureTable = ((FeatureLayer) dataRoadLayer).getFeatureTable();
 		// create a query for the state that was entered
 		QueryParameters query = new QueryParameters();
 		query.setWhereClause("NAME LIKE '%" + searchKey + "%'");
@@ -3821,10 +3831,12 @@ public class MapContentController {
 						// get state feature and zoom to it
 						feature = it.next();
 						// set the state feature to be selected
-						((FeatureLayer) displayRoadLayer).selectFeature(feature);
+						SimpleLineSymbol lineSymbol = new SimpleLineSymbol(SimpleLineSymbol.Style.SOLID, 0xFF64c113, 4);
+						Graphic g = new Graphic(feature.getGeometry(), lineSymbol);
+						g.setSelected(true);
+						getDisplayRoadLayer().getGraphics().add(g);
 					}
-					Envelope envelope = feature.getGeometry().getExtent();
-					mapView.setViewpointGeometryAsync(envelope, 200);
+					mapView.setViewpointGeometryAsync(getDisplayRoadLayer().getExtent(), 50);
 				} else {
 					AlertDialog.informationAlert("查無資料!", false);
 				}
@@ -3837,6 +3849,8 @@ public class MapContentController {
 
 	// 啟動路網 routeTask
 	private void startRouteTask() {
+		getTaiwanRoadLayer().setVisible(true);
+
 		// 換用含圖的 mmpk
 		File mmpkFile = new File("basemap/Taiwan.mmpk");
 		mobileMapPackage = new MobileMapPackage(mmpkFile.getAbsolutePath());
@@ -3846,8 +3860,7 @@ public class MapContentController {
 				// 將 mobileMapPackage 地圖首個 layer(此為道路圖) 加到目前地圖中
 				FeatureLayer featureLayer = (FeatureLayer) mobileMapPackage.getMaps().get(0).getOperationalLayers()
 						.get(0);
-				displayRoadLayer = featureLayer.copy();
-				mapView.getMap().getOperationalLayers().add(displayRoadLayer);
+				dataRoadLayer = featureLayer.copy();
 
 				// 開啟 routeTask 後續作業
 				// 取下 ND dataset
@@ -3912,9 +3925,8 @@ public class MapContentController {
 	}
 
 	private void analysisRouteClose() {
-		if (displayRoadLayer != null)
-			mapView.getMap().getOperationalLayers().remove(displayRoadLayer);
-		displayRoadLayer = null;
+		getTaiwanRoadLayer().setVisible(false);
+		clearSearchResult();
 
 		stopsList.clear();
 		barriersList.clear();
