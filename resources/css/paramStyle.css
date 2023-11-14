@@ -18,7 +18,7 @@
 }
 .color-picker-label{
         -fx-font: 14px "Noto Sans CJK";
-        -fx-text-fill:dark;
+        -fx-text-fill: black;
 }
 
 .scroll-bar{

@@ -10,6 +10,7 @@ import java.nio.charset.Charset;
 
 import org.json.JSONException;
 
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 public class Functions {
@@ -102,5 +103,31 @@ public class Functions {
 		}
 		return sb.toString();
 	}
-
+	
+	/*
+	 * @param doubleTextField
+	 * @param minValue
+	 * @param maxValue
+	 */
+	private static void setDoubleTextField(TextField doubleTextField, double minValue, double maxValue) {
+		doubleTextField.textProperty().addListener((observable, oldValue, newValue) -> {
+	        try {
+	            if (!newValue.isEmpty()) {
+	                // Try to parse the new input as a double
+	                double value = Double.parseDouble(newValue);
+	                
+	                // If the value is out of the specified range, set the text field to the old value	                
+	                // Check if the value is within the specified limits
+	                if (value < minValue) {
+	                    doubleTextField.setText(String.valueOf(minValue));
+	                } else if (value > maxValue) {
+	                    doubleTextField.setText(String.valueOf(maxValue));
+	                }
+	            }
+	        } catch (NumberFormatException e) {
+	            // Handle non-numeric input
+	            doubleTextField.setText(oldValue);
+	        }
+	    });
+	}
 }

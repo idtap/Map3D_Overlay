@@ -472,8 +472,8 @@ public class GroupGraphicsClass {
 			});
 		}
 		graphicsSelected.clear();
-		
-		RaiseCanGroupOrNotEvent(false, null);
+
 		RaiseCanUngroupOrNotEvent(false);
+		RaiseCanGroupOrNotEvent(false, null);
 	}
 }

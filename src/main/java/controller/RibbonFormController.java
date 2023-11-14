@@ -38,10 +38,12 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.input.MouseButton;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.stage.FileChooser;
 import javafx.stage.Modality;
@@ -115,7 +117,7 @@ public class RibbonFormController {
 	private BorderPane mainPane;
 
 	@FXML
-	private StackPane drawerMapContent;
+	private AnchorPane drawerMapContent;
 
 	@FXML
 	private JFXHamburger hamburger;
@@ -179,6 +181,17 @@ public class RibbonFormController {
 	@FXML
 	private Button btnEditBase;
 
+	//EditLocationPane 
+	@FXML
+	private HBox movablePane;
+	@FXML
+	private TextField txtLon;
+	@FXML
+	private TextField txtLat;
+	@FXML
+	private Button btnApply;
+	
+	
 	// 20230413 Win 加
 	@FXML
 	private Button btnCopyPaste;
@@ -215,13 +228,15 @@ public class RibbonFormController {
 					btnAddClipLine, null, null, null, btnCopyPaste, null, null, null, null, null, null, btnAnalysisRoute); // 20230609
 																												// Win
 																												// 修
-			drawerMapContent.getChildren().add(pane);
+			drawerMapContent.getChildren().add(0,pane);
 
 			initEventHandler();
 			
 			initVisibilityController();
 			initVisibilityMap();
 			initVisibilityService();
+			
+			MapManager.mapController.setEditLocationPane(movablePane, txtLon, txtLat, btnApply);
 		} catch (IOException ex) {
 			ex.printStackTrace();
 		}

@@ -91,6 +91,7 @@ import com.pixelduke.control.ribbon.RibbonGroup;
 
 import AnalysisRoute.AnalysisRouteFXController;
 import feoverlay.AlertDialog;
+import feoverlay.EditLocationPane;
 import feoverlay.Event;
 import feoverlay.Functions;
 import feoverlay.GroupGraphicsClass;
@@ -113,6 +114,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.control.Tooltip;
 import javafx.scene.image.Image;
@@ -121,6 +123,7 @@ import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
@@ -743,7 +746,8 @@ public class MapContentController {
 	private void handleDeleteGraphic(ActionEvent e) {
 		if (MapManager.isAddEditOverlay)
 			return;
-
+		MapManager.isAddEditOverlay = false;
+		
 		Graphic graphicSelected = groupManager.getSelectedOneGraphic();
 		List<Graphic> groupGraphicsSelected = groupManager.getSelectedGroupGraphics();
 
@@ -766,16 +770,16 @@ public class MapContentController {
 
 			groupManager.clearAllLayserSelections();
 			sketchEditorFE.CancelDraw();
-//          if (MapManager.isAddEditOverlay) {
-//              MapManager.isAddEditOverlay = false;
-//              //
-//              sketchEditorFE.CancelDraw();            
-//              
-//              //Cancel透明圖
-//              cleanOperate();
-//              this.btnCompleteBase.setDisable(true);
-//              this.btnCancelBase.setDisable(true);
-//          }
+			
+			controlAddButtonsDisabled(false);
+			cleanOperate();
+			btnCompleteBase.setDisable(true);
+			btnCancelBase.setDisable(true);
+			btnCopyPaste.setDisable(true);
+			btnEditFE.setDisable(true);
+			btnEditBase.setDisable(true);
+			setDisableOverlayRibbonGroup(false, false, false, false);
+			editLocationPane.setUnvisible();
 		}
 	}
 
@@ -1083,6 +1087,8 @@ public class MapContentController {
 
 		if (milSymbolPicker.getDialogStage().isShowing())
 			milSymbolPicker.getDialogStage().close();
+		
+		editLocationPane.setUnvisible();
 	}
 
 	/**
@@ -1099,6 +1105,8 @@ public class MapContentController {
 
 		if (milSymbolPicker.getDialogStage().isShowing())
 			milSymbolPicker.getDialogStage().close();
+		
+		editLocationPane.setUnvisible();
 	}
 
 	/**
@@ -1419,6 +1427,8 @@ public class MapContentController {
 				}
 				// 儲存透明圖
 				MapManager.overlayFileObject.SaveOverlayLayerToJson();
+				
+				editLocationPane.setUnvisible();
 			}
 		}
 
@@ -1455,6 +1465,8 @@ public class MapContentController {
 		btnCopyPaste.setDisable(true);
 		this.btnEditBase.setDisable(true);
 		setDisableOverlayRibbonGroup(false, false, false, false);
+		
+		editLocationPane.setUnvisible();
 	}
 
 	// 取消
@@ -1473,6 +1485,8 @@ public class MapContentController {
 		this.btnCancelBase.setDisable(true);
 		this.btnEditBase.setDisable(true);
 		setDisableOverlayRibbonGroup(false, false, false, false);
+		
+		editLocationPane.setUnvisible();
 	}
 
 	// 繪點
@@ -1506,6 +1520,8 @@ public class MapContentController {
 					nowGraphic.setSymbol(pointMarkerSymbol);
 					sketchlayer.getGraphics().add(nowGraphic);
 					prevGraphic = nowGraphic;
+					
+//					editLocationPane.setEditPoint(nowGraphic);
 				}
 			}
 		});
@@ -1542,6 +1558,8 @@ public class MapContentController {
 							pointControllerHandle.getPointSize());
 					nowGraphic.setSymbol(pointMarkerSymbol);
 					nowGraphic.setGeometry(multiPointBuilder.toGeometry());
+					
+//					editLocationPane.setPointCollection(multiPointCollection);
 				}
 			}
 		});
@@ -4012,4 +4030,15 @@ public class MapContentController {
 	 * 路徑分析相關內容結尾
 	 **********************************************************/
 
+	//EditLocationPane 
+	
+	EditLocationPane editLocationPane;
+	
+	public void setEditLocationPane(HBox movablePane, TextField txtLon,
+			TextField txtLat, Button btnApply) {
+		editLocationPane = new EditLocationPane(
+				baseSketchEditor, movablePane, txtLon,
+				txtLat, btnApply);
+	}
+	
 }

@@ -8,16 +8,19 @@
 <?import com.pixelduke.control.ribbon.RibbonItem?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ToggleButton?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.collections.*?>
 
-<BorderPane fx:id="mainPane" prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/17.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.RibbonFormController">
+<BorderPane fx:id="mainPane" prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.RibbonFormController">
         <top>
                 <Ribbon fx:id="ribbon1" prefWidth="1024.0">
                         <tabs>
@@ -25,28 +28,28 @@
                                         <ribbonGroups>
                                                 <RibbonGroup fx:id="ribbonGroup透明圖檔" title="透明圖檔">
                                                         <nodes>
-                                                                <Button fx:id="btnAddOverlays" onAction="#handleAddOverlays" contentDisplay="TOP" text="建立">
+                                                                <Button fx:id="btnAddOverlays" contentDisplay="TOP" onAction="#handleAddOverlays" text="建立">
                                                                         <graphic>
                                                                                 <ImageView>
                                                                                         <Image requestedHeight="40" requestedWidth="40" url="@/icons/overlay-add-40.png" />
                                                                                 </ImageView>
                                                                         </graphic>
                                                                 </Button>
-                                                                <Button fx:id="btnEditOverlays" onAction="#handleEditOverlays" contentDisplay="TOP" text="編輯">
+                                                                <Button fx:id="btnEditOverlays" contentDisplay="TOP" onAction="#handleEditOverlays" text="編輯">
                                                                         <graphic>
                                                                                 <ImageView>
                                                                                         <Image requestedHeight="40" requestedWidth="40" url="@/icons/overlay-edit-40.png" />
                                                                                 </ImageView>
                                                                         </graphic>
                                                                 </Button>
-                                                                <Button fx:id="btnCloseOverlays" disable="true" onAction="#handleCloseOverlays" contentDisplay="TOP" text="關閉">
+                                                                <Button fx:id="btnCloseOverlays" contentDisplay="TOP" disable="true" onAction="#handleCloseOverlays" text="關閉">
                                                                         <graphic>
                                                                                 <ImageView>
                                                                                         <Image requestedHeight="40" requestedWidth="40" url="@/icons/close-window-24.png" />
                                                                                 </ImageView>
                                                                         </graphic>
                                                                 </Button>
-                                                                <Button fx:id="btnLoadOverlays" onAction="#handleLoadOverlays" contentDisplay="TOP" text="載入">
+                                                                <Button fx:id="btnLoadOverlays" contentDisplay="TOP" onAction="#handleLoadOverlays" text="載入">
                                                                         <graphic>
                                                                                 <ImageView>
                                                                                         <Image requestedHeight="40" requestedWidth="40" url="@/icons/add-layer-32.png" />
@@ -94,145 +97,116 @@
                                                                 </Button>
                                                         </nodes>
                                                 </RibbonGroup>
-                                                <RibbonGroup fx:id="ribbonGroup基本圖形"  title="基本圖形">
+                                                <RibbonGroup fx:id="ribbonGroup基本圖形" title="基本圖形">
                                                         <nodes>
                                                                 <Column>
-                                                                        <Button fx:id="btnAddPoint" text="單點"
-                                                                                styleClass="normal" minWidth="-Infinity">
+                                                                        <Button fx:id="btnAddPoint" minWidth="-Infinity" styleClass="normal" text="單點">
                                                                                 <graphic>
                                                                                         <ImageView>
-                                                                                                <Image requestedHeight="20" requestedWidth="20"
-                                                                                                        url="@/icons/point-16.png" />
+                                                                                                <Image requestedHeight="20" requestedWidth="20" url="@/icons/point-16.png" />
                                                                                         </ImageView>
                                                                                 </graphic>
                                                                         </Button>
-                                                                        <Button fx:id="btnAddMultiPoint" text="多點"
-                                                                                styleClass="normal" minWidth="-Infinity">
+                                                                        <Button fx:id="btnAddMultiPoint" minWidth="-Infinity" styleClass="normal" text="多點">
                                                                                 <graphic>
                                                                                         <ImageView>
-                                                                                                <Image requestedHeight="20" requestedWidth="20"
-                                                                                                        url="@/icons/multipoint-16.png" />
+                                                                                                <Image requestedHeight="20" requestedWidth="20" url="@/icons/multipoint-16.png" />
                                                                                         </ImageView>
                                                                                 </graphic>
                                                                         </Button>
-                                                                        <Button fx:id="btnAddPolyline" text="線"
-                                                                                styleClass="normal" minWidth="-Infinity">
+                                                                        <Button fx:id="btnAddPolyline" minWidth="-Infinity" styleClass="normal" text="線">
                                                                                 <graphic>
                                                                                         <ImageView>
-                                                                                                <Image requestedHeight="20" requestedWidth="20"
-                                                                                                        url="@/icons/polyline-16.png" />
+                                                                                                <Image requestedHeight="20" requestedWidth="20" url="@/icons/polyline-16.png" />
                                                                                         </ImageView>
                                                                                 </graphic>
                                                                         </Button>
                                                                 </Column>
                                                                 <Column>
-                                                                        <Button fx:id="btnAddPolygon" text="多邊形"
-                                                                                styleClass="normal" minWidth="-Infinity">
+                                                                        <Button fx:id="btnAddPolygon" minWidth="-Infinity" styleClass="normal" text="多邊形">
                                                                                 <graphic>
                                                                                         <ImageView>
-                                                                                                <Image requestedHeight="20" requestedWidth="20"
-                                                                                                        url="@/icons/polygon-16.png" />
+                                                                                                <Image requestedHeight="20" requestedWidth="20" url="@/icons/polygon-16.png" />
                                                                                         </ImageView>
                                                                                 </graphic>
                                                                         </Button>
-                                                                        <Button fx:id="btnAddFreePolyline" text="自由線"
-                                                                                styleClass="normal" minWidth="-Infinity">
+                                                                        <Button fx:id="btnAddFreePolyline" minWidth="-Infinity" styleClass="normal" text="自由線">
                                                                                 <graphic>
                                                                                         <ImageView>
-                                                                                                <Image requestedHeight="20" requestedWidth="20"
-                                                                                                        url="@/icons/freehand-polyline-16.png" />
+                                                                                                <Image requestedHeight="20" requestedWidth="20" url="@/icons/freehand-polyline-16.png" />
                                                                                         </ImageView>
                                                                                 </graphic>
                                                                         </Button>
-                                                                        <Button fx:id="btnAddFreePolygon" text="自由面"
-                                                                                styleClass="normal" minWidth="-Infinity">
+                                                                        <Button fx:id="btnAddFreePolygon" minWidth="-Infinity" styleClass="normal" text="自由面">
                                                                                 <graphic>
                                                                                         <ImageView>
-                                                                                                <Image requestedHeight="20" requestedWidth="20"
-                                                                                                        url="@/icons/brush-16.png" />
+                                                                                                <Image requestedHeight="20" requestedWidth="20" url="@/icons/brush-16.png" />
                                                                                         </ImageView>
                                                                                 </graphic>
                                                                         </Button>
                                                                 </Column>
                                                                 <Column>
-                                                                        <Button fx:id="btnAddRectangle" text="矩形"
-                                                                                styleClass="normal" minWidth="-Infinity">
+                                                                        <Button fx:id="btnAddRectangle" minWidth="-Infinity" styleClass="normal" text="矩形">
                                                                                 <graphic>
                                                                                         <ImageView>
-                                                                                                <Image requestedHeight="20" requestedWidth="20"
-                                                                                                        url="@/icons/rectangle-16.png" />
+                                                                                                <Image requestedHeight="20" requestedWidth="20" url="@/icons/rectangle-16.png" />
                                                                                         </ImageView>
                                                                                 </graphic>
                                                                         </Button>
-                                                                        <Button fx:id="btnAddArc" text="弧線" styleClass="normal"
-                                                                                minWidth="-Infinity">
+                                                                        <Button fx:id="btnAddArc" minWidth="-Infinity" styleClass="normal" text="弧線">
                                                                                 <graphic>
                                                                                         <ImageView>
-                                                                                                <Image requestedHeight="20" requestedWidth="20"
-                                                                                                        url="@/icons/arc-16.png" />
+                                                                                                <Image requestedHeight="20" requestedWidth="20" url="@/icons/arc-16.png" />
                                                                                         </ImageView>
                                                                                 </graphic>
                                                                         </Button>
-                                                                        <Button fx:id="btnAddCircle" text="圓/橢圓"
-                                                                                styleClass="normal" minWidth="-Infinity">
+                                                                        <Button fx:id="btnAddCircle" minWidth="-Infinity" styleClass="normal" text="圓/橢圓">
                                                                                 <graphic>
                                                                                         <ImageView>
-                                                                                                <Image requestedHeight="20" requestedWidth="20"
-                                                                                                        url="@/icons/circle-16.png" />
+                                                                                                <Image requestedHeight="20" requestedWidth="20" url="@/icons/circle-16.png" />
                                                                                         </ImageView>
                                                                                 </graphic>
                                                                         </Button>
                                                                 </Column>
                                                                 <Column>
-                                                                        <Button fx:id="btnAddCurve" text="曲線"
-                                                                                styleClass="normal" minWidth="-Infinity">
+                                                                        <Button fx:id="btnAddCurve" minWidth="-Infinity" styleClass="normal" text="曲線">
                                                                                 <graphic>
                                                                                         <ImageView>
-                                                                                                <Image requestedHeight="20" requestedWidth="20"
-                                                                                                        url="@/icons/curve-16.png" />
+                                                                                                <Image requestedHeight="20" requestedWidth="20" url="@/icons/curve-16.png" />
                                                                                         </ImageView>
                                                                                 </graphic>
                                                                         </Button>
-                                                                        <Button fx:id="btnAddSector" text="扇形"
-                                                                                styleClass="normal" minWidth="-Infinity">
+                                                                        <Button fx:id="btnAddSector" minWidth="-Infinity" styleClass="normal" text="扇形">
                                                                                 <graphic>
                                                                                         <ImageView>
-                                                                                                <Image requestedHeight="20" requestedWidth="20"
-                                                                                                        url="@/icons/sector-16.png" />
+                                                                                                <Image requestedHeight="20" requestedWidth="20" url="@/icons/sector-16.png" />
                                                                                         </ImageView>
                                                                                 </graphic>
                                                                         </Button>
-                                                                        <Button fx:id="btnAddText" text="文字" styleClass="normal"
-                                                                                minWidth="-Infinity">
+                                                                        <Button fx:id="btnAddText" minWidth="-Infinity" styleClass="normal" text="文字">
                                                                                 <graphic>
                                                                                         <ImageView>
-                                                                                                <Image requestedHeight="20" requestedWidth="20"
-                                                                                                        url="@/icons/text-16.png" />
+                                                                                                <Image requestedHeight="20" requestedWidth="20" url="@/icons/text-16.png" />
                                                                                         </ImageView>
                                                                                 </graphic>
                                                                         </Button>
                                                                 </Column>
                                                                 <Column>
-                                                                        <Button fx:id="btnAddTraceLine" text="追蹤線"
-                                                                                styleClass="normal" minWidth="-Infinity">
+                                                                        <Button fx:id="btnAddTraceLine" minWidth="-Infinity" styleClass="normal" text="追蹤線">
                                                                                 <graphic>
                                                                                         <ImageView>
-                                                                                                <Image requestedHeight="20" requestedWidth="20"
-                                                                                                        url="@/icons/trace-16.png" />
+                                                                                                <Image requestedHeight="20" requestedWidth="20" url="@/icons/trace-16.png" />
                                                                                         </ImageView>
                                                                                 </graphic>
                                                                         </Button>
-                                                                        <Button fx:id="btnAddClipLine" text="截切線"
-                                                                                styleClass="normal" minWidth="-Infinity">
+                                                                        <Button fx:id="btnAddClipLine" minWidth="-Infinity" styleClass="normal" text="截切線">
                                                                                 <graphic>
                                                                                         <ImageView>
-                                                                                                <Image requestedHeight="20" requestedWidth="20"
-                                                                                                        url="@/icons/clip-16.png" />
+                                                                                                <Image requestedHeight="20" requestedWidth="20" url="@/icons/clip-16.png" />
                                                                                         </ImageView>
                                                                                 </graphic>
                                                                         </Button>
-                                                                        <Button text=""
-                                                                                styleClass="normal" minWidth="-Infinity">
+                                                                        <Button minWidth="-Infinity" styleClass="normal" text="">
                                                                         </Button>
                                                                 </Column>
                                                                 <Button fx:id="btnCompleteBase" contentDisplay="TOP" text="確認">
@@ -249,7 +223,7 @@
                                                                                 </ImageView>
                                                                         </graphic>
                                                                 </Button>
-                                                                <Button fx:id="btnEditBase" disable="true" contentDisplay="TOP" text="修改">
+                                                                <Button fx:id="btnEditBase" contentDisplay="TOP" disable="true" text="修改">
                                                                         <graphic>
                                                                                 <ImageView>
                                                                                         <Image requestedHeight="40" requestedWidth="40" url="@/icons/pencil-32.png" />
@@ -296,7 +270,7 @@
                                                 </RibbonGroup>
                                                 <RibbonGroup fx:id="ribbonGroup刪除功能" title="其他">
                                                         <nodes>
-                                                                <Button fx:id="btnDeleteGraphic" disable="true" contentDisplay="TOP" text="刪除">
+                                                                <Button fx:id="btnDeleteGraphic" contentDisplay="TOP" disable="true" text="刪除">
                                                                         <graphic>
                                                                                 <ImageView>
                                                                                         <Image requestedHeight="40" requestedWidth="40" url="@/icons/trash-32.png" />
@@ -313,7 +287,7 @@
                                 		<ribbonGroups>
                                                <RibbonGroup fx:id="ribbonGroup視域分析" title="視域分析">
                                                         <nodes>
-                                                                <Button fx:id="btnVisibility" onAction="#handleVisibility" contentDisplay="TOP" text="分析">
+                                                                <Button fx:id="btnVisibility" contentDisplay="TOP" onAction="#handleVisibility" text="分析">
                                                                         <graphic>
                                                                                 <ImageView>
                                                                                         <Image requestedHeight="40" requestedWidth="40" url="@/icons/overlay-add-40.png" />
@@ -328,7 +302,7 @@
                         <tabs>
                                 <RibbonTab fx:id="RibbonTab分析2" styleClass="ribbonPane" text="路徑分析">  
                                 		<ribbonGroups>
-                                                <RibbonGroup fx:id="ribbonGroup路徑分析"  title="  路徑分析  ">
+                                                <RibbonGroup fx:id="ribbonGroup路徑分析" title="  路徑分析  ">
                                                         <nodes>
                                                                 <Button fx:id="btnAnalysisRoute" contentDisplay="TOP" text="路徑分析">
                                                                         <graphic>
@@ -345,7 +319,29 @@
                 </Ribbon>              
         </top>
         <center>
-                <StackPane fx:id="drawerMapContent" prefHeight="623.0" prefWidth="1024.0" BorderPane.alignment="CENTER" />
+              <AnchorPane fx:id="drawerMapContent" >
+		         <children>
+		            <HBox fx:id="movablePane" visible="false"  maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="33.0" prefWidth="315.0" spacing="3.0" style="-fx-background-color: black;" StackPane.alignment="TOP_LEFT">
+						<children>
+				            <Label text="經度:">
+				               <HBox.margin>
+				                  <Insets top="2.0" />
+				               </HBox.margin>
+				            </Label>
+				            <TextField fx:id="txtLon" prefHeight="23.0" prefWidth="89.0" />
+				            <Label text="緯度:">
+				               <HBox.margin>
+				                  <Insets top="2.0" />
+				               </HBox.margin>
+				            </Label>
+				            <TextField fx:id="txtLat" prefHeight="23.0" prefWidth="89.0" />
+				            <Button fx:id="btnApply" mnemonicParsing="false" text="套用" />
+				         </children>
+				         <padding>
+				            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+				         </padding>            
+		            </HBox>
+		         </children>
+		      </AnchorPane>
         </center>
 </BorderPane>
-

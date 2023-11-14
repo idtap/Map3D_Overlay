@@ -9,7 +9,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.control.*?>
 
-<StackPane fx:id="mapStackPane" maxHeight="1080.0" maxWidth="1920.0" prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/17.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MapContentController">
+<StackPane fx:id="mapStackPane" maxHeight="1080.0" maxWidth="1920.0" prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/17.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MapContentController">
    <AnchorPane prefHeight="192.0" prefWidth="441.0">
       <StackPane.margin>
          <Insets />
