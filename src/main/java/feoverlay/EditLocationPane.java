@@ -55,7 +55,7 @@ public class EditLocationPane implements SelectedVertexChangedListener {
 		setDoubleTextField(txtLon, -180, 180);
 		setDoubleTextField(txtLat, -90, 90);
 
-		movablePane.setLayoutX(500);
+		movablePane.setLayoutX(750);
 		movablePane.setOnMousePressed(event -> {
 			xOffset = event.getSceneX();
 			yOffset = event.getSceneY();
