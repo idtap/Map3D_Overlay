@@ -3834,7 +3834,7 @@ public class MapContentController {
 		FeatureTable featureTable = ((FeatureLayer) dataRoadLayer).getFeatureTable();
 		// create a query for the state that was entered
 		QueryParameters query = new QueryParameters();
-		query.setWhereClause("NAME LIKE '%" + searchKey + "%'");
+		query.setWhereClause("NAME LIKE '" + searchKey + "%'");
 
 		// search for the state feature in the feature table
 		tableQueryResult = featureTable.queryFeaturesAsync(query);
@@ -3923,7 +3923,7 @@ public class MapContentController {
 
 	private void analysisRouteOpen() {
 		try {
-			paramLoader = new FXMLLoader(getClass().getResource("../AnalysisRoute/routeAnalysisFX.fxml"));
+			paramLoader = new FXMLLoader(getClass().getResource("/fxml/routeAnalysisFX.fxml"));
 			Parent root = paramLoader.load();
 			Scene scene = new Scene(root);
 			final JFXPanel jfxPanel = new JFXPanel();
