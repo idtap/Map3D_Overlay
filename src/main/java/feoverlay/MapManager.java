@@ -348,7 +348,7 @@ public class MapManager {
 	 * 新增縣市界及道路圖圖層
 	 */
 	public static void addVtpkBaseLayers() {
-		vtpkBaseLayerfileNames = new String[] { "taiwanroad.vtpk", "taiwancounty.vtpk" };
+		vtpkBaseLayerfileNames = new String[] {"taiwancounty.vtpk", "taiwanroad.vtpk" };
 
 		for (int i = 0; i < vtpkBaseLayerfileNames.length; i++) {
 			String fileName = vtpkBaseLayerfileNames[i];
