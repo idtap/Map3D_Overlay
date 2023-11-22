@@ -3848,6 +3848,14 @@ public class MapContentController {
 					for (Iterator<Feature> it = result.iterator(); it.hasNext();) {
 						// get state feature and zoom to it
 						feature = it.next();
+						
+						//列出可辨別道路之清單
+						String s = String.format("COUNTY:%s,ROADNUM1:%s,ROADALIAS:%s,RDNAMESECT:%s,NAME:%s",
+								feature.getAttributes().get("COUNTY"), feature.getAttributes().get("ROADNUM1"), 
+								feature.getAttributes().get("ROADALIAS"),feature.getAttributes().get("RDNAMESECT"),
+								feature.getAttributes().get("NAME"));
+						System.out.println(s);
+						
 						// set the state feature to be selected
 						SimpleLineSymbol lineSymbol = new SimpleLineSymbol(SimpleLineSymbol.Style.SOLID, 0xFF64c113, 4);
 						Graphic g = new Graphic(feature.getGeometry(), lineSymbol);
