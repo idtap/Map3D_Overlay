@@ -2,10 +2,12 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Accordion?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.TitledPane?>
@@ -14,7 +16,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox maxWidth="220.0" prefHeight="574.0" prefWidth="220.0" styleClass="background" stylesheets="/css/styleSight.css" xmlns="http://javafx.com/javafx/17.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="AnalysisRoute.AnalysisRouteFXController">
+<VBox maxWidth="257.0" prefHeight="654.0" prefWidth="257.0" styleClass="background" stylesheets="/css/styleSight.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="AnalysisRoute.AnalysisRouteFXController">
    <VBox maxHeight="400" spacing="10">
       <padding>
          <Insets topRightBottomLeft="8" />
@@ -24,31 +26,31 @@
          <TextField fx:id="txtSearch" prefHeight="26.0" prefWidth="57.0" />
          <HBox maxWidth="Infinity" minWidth="200">
             <children>
-               <Button onAction="#btnSearch_click" minWidth="100" text="查詢">
+               <Button minWidth="100" onAction="#btnSearch_click" prefHeight="27.0" prefWidth="120.0" text="查詢">
                </Button>
-               <Button onAction="#btnClear_click" minWidth="100" text="清除結果" />
+               <Button minWidth="100" onAction="#btnClear_click" prefHeight="26.0" prefWidth="120.0" text="清除結果" />
             </children>
          </HBox>
          <Separator />
       </children>
    </VBox>
-    <VBox maxHeight="400" spacing="10">
+    <VBox maxHeight="400" prefHeight="302.0" prefWidth="257.0" spacing="10">
         <padding>
             <Insets topRightBottomLeft="8" />
         </padding>
         <Label text="輸入切換:" />
         <HBox maxWidth="Infinity" minWidth="200">
-            <ToggleButton fx:id="btnAddStop" minWidth="100" selected="true" text="經過點">
+            <ToggleButton fx:id="btnAddStop" minWidth="100" prefWidth="120.0" selected="true" text="經過點">
                 <toggleGroup>
                     <ToggleGroup fx:id="toggleGroup" />
                 </toggleGroup>
             </ToggleButton>
-            <ToggleButton fx:id="btnAddBarrier" minWidth="100" text="障礙物" toggleGroup="$toggleGroup" />
+            <ToggleButton fx:id="btnAddBarrier" minWidth="100" prefWidth="120.0" text="障礙物" toggleGroup="$toggleGroup" />
         </HBox>
       <Label text="(註:滑鼠左鍵添加,右鍵回上一步)" />
         <Separator />
         <Label text="分析參數:" />
-        <VBox spacing="10" styleClass="panel-region">
+        <VBox prefHeight="147.0" prefWidth="240.0" spacing="10" styleClass="panel-region">
             <padding>
                 <Insets left="10" />
             </padding>
@@ -72,14 +74,54 @@
                   </Label>
                </children>
             </HBox>
-            <HBox prefHeight="25.0" prefWidth="232.0">
+            <HBox prefHeight="73.0" prefWidth="231.0">
+               <children>
+                  <VBox prefHeight="73.0" prefWidth="77.0">
+                     <children>
+                        <RadioButton fx:id="optSpeed" mnemonicParsing="false" selected="true" text="速度">
+                            <toggleGroup>
+                                <ToggleGroup fx:id="toggleGroup2" />
+                            </toggleGroup>
+                        </RadioButton>
+                        <RadioButton fx:id="optBigCar" mnemonicParsing="false" text="貨車" toggleGroup="$toggleGroup2" />
+                        <RadioButton fx:id="optSmallCar" mnemonicParsing="false" text="客車" toggleGroup="$toggleGroup2" />
+                        <RadioButton fx:id="optMen" mnemonicParsing="false" text="行人" toggleGroup="$toggleGroup2" />
+                     </children>
+                  </VBox>
+                  <VBox prefHeight="73.0" prefWidth="157.0">
+                     <children>
+                        <HBox prefHeight="20.0" prefWidth="190.0">
+                           <children>
+                              <Label text="速度:">
+                                 <HBox.margin>
+                                    <Insets top="5.0" />
+                                 </HBox.margin>
+                              </Label>
+                              <TextField fx:id="txtSpeed" prefHeight="26.0" prefWidth="57.0" text="50">
+                                 <HBox.margin>
+                                    <Insets left="5.0" />
+                                 </HBox.margin>
+                              </TextField>
+                              <Label prefHeight="19.0" prefWidth="65.0" text="(km/hr)">
+                                 <HBox.margin>
+                                    <Insets top="5.0" />
+                                 </HBox.margin>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <CheckBox fx:id="chkHightway" mnemonicParsing="false" selected="true" text="避開高速公路" />
+                     </children>
+                  </VBox>
+               </children>
+            </HBox>
+            <HBox prefHeight="25.0" prefWidth="232.0" visible="false">
                <children>
                   <Label text="分析模式:">
                      <HBox.margin>
                         <Insets top="5.0" />
                      </HBox.margin>
                   </Label>
-                  <ComboBox fx:id="travelModes" prefHeight="26.0" prefWidth="127.0">
+                  <ComboBox fx:id="travelModes" prefHeight="26.0" prefWidth="168.0">
                      <HBox.margin>
                         <Insets left="5.0" />
                      </HBox.margin>
@@ -88,13 +130,12 @@
             </HBox>
          </children>
         </VBox>
-        <Separator />
     </VBox>
     <!--Directions Accordion-->
     <VBox maxHeight="250" spacing="10" styleClass="panel-region">
         <Accordion layoutX="20.0" layoutY="100.0" prefHeight="400.0" prefWidth="680.0">
             <panes>
-                <TitledPane fx:id="routeInformationTitledPane" text="分析結果:">
+                <TitledPane fx:id="routeInformationTitledPane" prefHeight="194.0" prefWidth="220.0" text="分析結果:">
                     <ListView fx:id="directionsList" />
                 </TitledPane>
             </panes>
