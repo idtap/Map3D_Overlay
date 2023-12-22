@@ -15,6 +15,10 @@ import javafx.scene.control.TitledPane;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.control.ToggleGroup;
 import javafx.util.StringConverter;
+import javafx.event.Event;
+import javafx.event.EventHandler;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 
 public class AnalysisRouteFXController {
 
@@ -47,8 +51,17 @@ public class AnalysisRouteFXController {
         chkHightway.selectedProperty().addListener(o -> {
             switchTravelMode();               
         });
+        
+        txtSpeed.addEventFilter(KeyEvent.KEY_RELEASED, event -> {        	
+        	if (event.getCode() == KeyCode.ENTER) {
+        		//System.out.print(",key:"+event.getCode());
+        		MapManager.mapController.setTravelMode(travelModes.getSelectionModel().getSelectedItem());
+        	}
+        });
+
     }
 
+        
     public void addAllTravelModes( RouteTask routeTask ) {
         travelModes.getItems().addAll(routeTask.getRouteTaskInfo().getTravelModes());
     }

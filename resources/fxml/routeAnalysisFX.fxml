@@ -97,7 +97,8 @@
                                     <Insets top="5.0" />
                                  </HBox.margin>
                               </Label>
-                              <TextField fx:id="txtSpeed" prefHeight="26.0" prefWidth="57.0" text="50">
+                              <TextField 
+                                 fx:id="txtSpeed" prefHeight="26.0" prefWidth="57.0" text="50">
                                  <HBox.margin>
                                     <Insets left="5.0" />
                                  </HBox.margin>

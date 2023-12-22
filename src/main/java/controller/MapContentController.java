@@ -4004,7 +4004,7 @@ public class MapContentController {
                         routeGraphicsOverlay.getGraphics().add(routeGraphic);
 
                         // 將結果加入 tile pane
-                        String output = String.format("分析結果: %d 分鐘 (%.2f 公里)", Math.round(firstRoute.getTravelTime()),
+                        String output = String.format("分析結果: %.2f 分鐘 (%.2f 公里)", firstRoute.getTravelTime(),
                                 firstRoute.getTotalLength() / 1000);
                         if( analysisRouteControllerHandle.optSpeed_isSelected() )
                             output = String.format("分析結果: %d 分鐘 (%.2f 公里)", 
@@ -4013,8 +4013,16 @@ public class MapContentController {
                         analysisRouteControllerHandle.routeInformationTitledPane_setText(output);
 
                         // 將結果每一項加到 listview 顯示
-                        for (DirectionManeuver maneuver : firstRoute.getDirectionManeuvers()) {
-                            analysisRouteControllerHandle.directionsList_add(maneuver.getDirectionText());
+                        for (DirectionManeuver maneuver : firstRoute.getDirectionManeuvers()) 
+                        {
+                            double totalLength = maneuver.getLength();
+                            double totalTime = maneuver.getDuration();
+                            if( analysisRouteControllerHandle.optSpeed_isSelected() )
+                                totalTime = totalLength / 1000 * 60 / analysisRouteControllerHandle.getMoveSpeed();
+                            String timePress = String.format("(%.2f分鐘,%.3f公里)", 
+                                            totalTime,
+                                            totalLength / 1000);
+                            analysisRouteControllerHandle.directionsList_add(maneuver.getDirectionText()+timePress);
                         }
                     } else {
                         displayRouteMessage("分析失敗", "無符合條件的路徑可以行走");
